@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Petsitter.ViewModels.BookingVM>
+
+@{
+    ViewData["Title"] = "Upcoming Bookings";
+}
+<div class="text-center">
+    <h1>Upcoming Bookings</h1>
+    <a asp-action="ViewPastBookings" class="text-white mx-auto btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Past Bookings</a>
+</div>
+
+@if (Model.Count() == 0)
+{
+    <p class="mt-4">No bookings yet! Browse available sitters <a asp-action="FindASitter">here</a> to book.</p>
+} else
+{
+    <hr/>
+    <div class="list-of-bookings">
+    @foreach (var item in Model)
+    {
+        <section class="booking-section">
+            
+            <div style="font-weight: bold;">@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)</div>
+            <div>
+                <span class="sitter-name">@Html.DisplayFor(modelItem => item.SitterName)</span> caring for <span>@item.Pets[0].Name</span>
+                @for (int i = 1; i < @item.Pets.Count - 1; i++)
+                {
+                    <span>, @item.Pets[i].Name</span>
+                }
+                @if (@item.Pets.Count > 1)
+                {
+                    <span> & @item.Pets[item.Pets.Count - 1].Name</span>
+                }
+            </div>
+            <div class="pb-2">
+                <a asp-action="BookingDetails" asp-route-bookingID="@item.BookingId" class="text-white mx-auto btn" style="background:#a1a3f6; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">See Booking Details</a>
+            </div>
+            <hr />
+        </section>
+    }
+    </div>
+}
+

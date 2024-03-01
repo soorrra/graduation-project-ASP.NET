@@ -1,0 +1,125 @@
+﻿@model Petsitter.ViewModels.PetVM
+
+@{
+    ViewData["Title"] = "EditPet";
+}
+
+<h1 class="text-center">Update @Model.Name's Profile</h1>
+
+@{
+
+    IEnumerable<Pet> pets = ViewData["PetData"] as IEnumerable<Pet>;
+}
+
+<div class="container-fluid editpet-container">
+    <div class="mt-3 back-to-profile lead" style="font-size:large;">
+        <a asp-action="GetProfile" class="back-link">
+            <span class="arrow"></span>
+            <span class="text text-lg-start mt-2">Back to Profile</span>
+        </a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form asp-action="EditPet" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="UserId" />
+                <input type="hidden" asp-for="PetId" />
+
+                <div class="form-group text-center d-flex flex-column align-items-center justify-content-center">
+                    <label asp-for="PetImage" class="control-label d-none"></label>
+                    <div class="d-flex justify-content-center">
+                        @foreach (Pet pet in pets)
+                        {
+                            if (pet.PetImage == null)
+                            {
+                                <p>No Pet Image Given, add new Pet Image!</p>
+                            }
+                            else
+                            {
+                                <dd class="pet-image d-flex justify-content-center">
+                                    <img src="data:image/png;base64,
+                                @Convert.ToBase64String(pet.PetImage)" alt="Pet Image" style="max-width: 100%; max-height: 300px; border: 2px solid #ccc; box-shadow: 0px 0px 10px #ccc; border-radius: 10px;" />
+                                </dd>
+                            }
+                        }
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="input-group">
+                            <input asp-for="PetImage" class="form-control-file mt-3 mb-3" onchange="readURL(this);" accept="image/*" />
+                            <span asp-validation-for="PetImage" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <label class="control-label lead">What type of pet?</label>
+                    <div class="d-flex justify-content-center">
+                        <label for="dog" class="radio-label m-4">
+                            <input asp-for="PetType" type="radio" value="Dog" id="dog" class="hidden-radio" />
+                            <span class="radio-icon">
+                                <i class="fas fa-dog fa-4x"></i>
+                                <span class="radio-circle"></span>
+                            </span>
+                        </label>
+                        <label for="cat" class="radio-label m-4">
+                            <input asp-for="PetType" type="radio" value="Cat" id="cat" class="hidden-radio" />
+                            <span class="radio-icon">
+                                <i class="fas fa-cat fa-4x"></i>
+                                <span class="radio-circle"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="control-label">Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="PetSize" class="control-label">Pet Size</label>
+                        <select asp-for="PetSize" asp-items="@(new SelectList(Model.AvailableSizes))" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="form-group row second-row">
+                    <div class="col-md-6">
+                        <label asp-for="BirthYear" class="control-label">Birth Year</label>
+                        <select asp-for="BirthYear" class="form-control">
+                            <option value="">--Select Year--</option>
+                            @for (int year = DateTime.Now.Year; year >= 2002; year--)
+                            {
+                                <option value="@year">@year</option>
+                            }
+                        </select>
+                        <span asp-validation-for="BirthYear" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Instructions" class="control-label">Instructions</label>
+                        <input asp-for="Instructions" class="form-control" />
+                        <span asp-validation-for="Instructions" class="text-danger"></span>
+                    </div>
+                    <label asp-for="Sex" class="control-label mt-2">Sex</label>
+                    <div class="col-md-12 radio-group">
+                        <input asp-for="Sex" type="radio" id="f" value="F" />
+                        <label for="f">F</label>
+                        <input asp-for="Sex" type="radio" id="m" value="M" />
+                        <label for="m">M</label>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <button class="save-btn rounded-3 lead">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

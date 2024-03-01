@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "NoBookedPet";
+}
+
+<section class="mt-5">
+    <h3 style="color:crimson">Your pet is already booked on sitter service, this will not allow to delete your pet on the list</h3>
+    <h4 class="mt-4" style="line-height:1.2;">
+        Want to check your upcoming booking? click here
+        <a asp-controller="Booking" asp-action="ViewMyBookings" class="text-decoration-underline">
+            Upcoming Booking
+        </a>
+        <br/>
+        or go back to your profile? click here
+        <a asp-controller="Customer" asp-action="GetProfile" class="text-decoration-underline">
+            My Profile
+        </a>
+    </h4>
+    <h4 class="mt-4">If you have any questions, please reach out to our admin team <a href="mailto:ssdteamgreen@gmail.com">here.</a></h4>
+</section>
+

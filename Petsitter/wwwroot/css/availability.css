@@ -1,0 +1,71 @@
+﻿
+
+.availability {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+}
+    .availability form {
+        width: min-content;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    /* Style for the form labels */
+    .availability .control-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    /* Style for the form inputs */
+    .availability .form-control {
+        display: block;
+        width: 100%;
+        height: 38px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555555;
+        background-color: #ffffff;
+        background-image: none;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        margin: 10px;
+    }
+
+
+
+    /* Style for the "Save" button */
+    .availability form .btn {
+        background-color: #6366F1;
+/*        color: #dce6f496;
+
+*/  
+color:white;
+border: 1px solid #ccc;
+        font-weight: bold;
+        width: 100%;
+        margin: 10px;
+    }
+        .availability form .btn:hover {
+            background-color: #dce6f496;
+            color: #6366F1;
+        }
+    /* Style for the FullCalendar */
+     #calendar {
+        max-width: 600px;
+    }
+
+@media only screen and (max-width: 997px) {
+    .availability {
+        flex-direction: column;
+        align-items: center;
+    }
+}

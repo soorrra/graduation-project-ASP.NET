@@ -1,0 +1,208 @@
+﻿@model Petsitter.ViewModels.SitterProfileVM
+
+@{
+    ViewData["Title"] = "Profile";
+
+    string message = Model != null ? Model.Message : String.Empty;
+
+
+
+}
+
+@{
+
+    User user = ViewData["UserProfileImg"] as User;
+    byte[] defaultImg = ViewData["ProfileImg"] as byte[];
+    string defaultImgString = Convert.ToBase64String(defaultImg);
+
+
+}
+<div class="getprofile-container">
+
+    <div class="profile-wrapper">
+        <h2>Welcome @Html.DisplayFor(model => model.FirstName)!</h2>
+        <h3>
+            Explore your profile and click
+            <a asp-action="EditProfile" asp-route-id="@Model.UserId">
+               
+                <span class="material-symbols-outlined">
+                    account_box
+                </span>
+            </a>
+            to edit your Profile!!
+        </h3>
+
+    </div>
+
+    <hr class="mt-4" />
+
+    <div class="profile-container">
+        <label asp-for="SitterId" class="control-label" hidden></label>
+        <input asp-for="SitterId" class="form-control" hidden />
+        <span asp-validation-for="SitterId" class="text-danger" read></span>
+        <dl class="row">
+            <dd class="col-sm-10">
+                @if (Convert.ToBase64String(user.ProfileImage) == defaultImgString)
+                {
+                    <div class="img-warning">
+                        <button type="button" class="close">&times;</button>
+                        <span class="material-symbols-outlined fa-3x">
+                            warning
+                        </span>
+                        <div class="p-2">
+                            <p class="m-0">Add a photo to increase your chance to be selected by our Pet parents</p>
+                        </div>
+                        <a asp-action="EditProfile" asp-route-id="@Model.UserId" class="btn btn-img">Add Picture</a>
+                    </div>
+                }
+
+                <div class="d-flex align-items-center w-100">
+                  <div class="d-flex flex-column">
+                                       @if (user.ProfileImage == null)
+                        {
+                                                         <img style="max-width: 400px;" src="~/images/default-image.jpg" alt="Default Profile Image" />
+
+                            }
+                        else
+                        {
+                            <img style="max-width: 400px;" src="data:image/png;base64,
+                            @Convert.ToBase64String(user.ProfileImage)" alt="@Html.DisplayFor(model => model.FirstName) Profile Image" />
+
+
+                        }
+
+                        <div class="rating">
+                        <span class="@IsStarSelected(1, @Model.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(2, @Model.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(3, @Model.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(4, @Model.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(5, @Model.AvgRating)">&#9733;</span>
+                    </div></div>
+
+                    <div class="p-4">
+                            @if (Model.ProfileBio != null)
+                            {
+                                <h3 class="text-decoration-underline">PROFILE BIO</h3>
+                                <p>
+                                    @Html.DisplayFor(model => model.ProfileBio)
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    click here
+                                    <a asp-action="EditProfile" asp-route-id="@Model.UserId">
+                                        <span class="material-symbols-outlined">
+                                            account_box
+                                        </span>
+                                    </a>
+                                    and add your profile bio
+                                </p>
+                            }
+
+                        </div>
+                    </div>
+                
+
+
+            </dd>
+
+
+
+
+            <h3 id="1">CONTACT DETAILS</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <dt class="mb-2">First Name</dt>
+                    <dd>@Html.DisplayFor(model => model.FirstName)</dd>
+                </div>
+                <div class="col-sm-6">
+                    <dt class="mb-2">Last Name</dt>
+                    <dd>@Html.DisplayFor(model => model.LastName)</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <dt class="mb-2">Email</dt>
+                    <dd>@Html.DisplayFor(model => model.Email)</dd>
+                </div>
+                <div class="col-sm-6">
+                    <dt class="mb-2">Phone Number</dt>
+                    <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 id="2">POSTAL ADDRESS</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <dt class="mb-2">City</dt>
+                    <dd>@Html.DisplayFor(model => model.City)</dd>
+                </div>
+                <div class="col-sm-6">
+                    <dt class="mb-2">Postal Code</dt>
+                    <dd>@Html.DisplayFor(model => model.PostalCode)</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <dt class="mb-2">Street Address</dt>
+                    <dd>@Html.DisplayFor(model => model.StreetAddress)</dd>
+                </div>
+            </div>
+
+        </dl>
+
+
+        <h3 id="3">Pet Preferences</h3>
+        <dd class="col-sm-10">
+
+
+            <div class="d-flex align-items-start justify-content-between w-100">
+                <div>
+                    <h6> What type of pets do you accept?</h6>
+
+                    <div class="pets">
+                        @foreach (var petType in Model.PetTypesAvailable)
+                        {
+                            <input class="form-check-input" type="checkbox" name="SelectedPetTypes" value="@petType"
+                            @(Model.SelectedPetTypes.Contains(petType) ? "checked" : "") disabled>
+                            <label class="form-check-label">@petType</label>
+                        }
+                    </div>
+                </div>
+
+                <div>
+
+                    <h6> What you want clients to pay per service?</h6>
+                    <p>@String.Format("{0:C}", Model.RatePerPetPerDay)</p>
+                </div>
+            </div>
+
+
+
+        </dd>
+
+
+
+
+    </div>
+</div>
+@functions {
+    public string IsStarSelected(int star, double? rating)
+    {
+        if (star <= rating)
+        {
+            return "highlight";
+        }
+        else
+        {
+            return "no-highlight";
+        }
+    }
+}
+
+

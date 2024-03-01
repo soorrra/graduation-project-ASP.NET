@@ -1,0 +1,114 @@
+﻿/* Find A Sitter Page */
+
+.find-a-sitter-section .name-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.find-a-sitter-section h2 {
+    margin-bottom: 0;
+}
+
+.find-a-sitter-section .rating, .sitter-detail .rating {
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+.find-a-sitter-section .highlight, .sitter-detail .highlight {
+    color: gold;
+}
+
+.find-a-sitter-section .no-highlight, .sitter-detail .no-highlight {
+    color: lightgrey;
+}
+
+.find-a-sitter-section .price, .sitter-detail .price {
+    font-weight: bold;
+    color: red;
+}
+
+.find-a-sitter-section .more-info-link {
+    margin-top: 0.75em;
+}
+
+.find-a-sitter-section .sitter-image {
+    max-width: 50%;
+}
+
+@media (min-width: 450px) {
+    .find-a-sitter-section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1em;
+    }
+
+    .find-a-sitter-section > div {
+        align-self: center;
+    }
+
+    .find-a-sitter-section .sitter-image {
+        max-width: 200px;
+    }
+}
+
+@media (min-width: 600px) {
+    .find-a-sitter-filter-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+    }
+
+    .clear-button {
+        grid-column: 1 / span 2;
+        width: 40%;
+        justify-self: center;
+    }
+
+    .pet-types {
+        justify-content: center;
+    }
+}
+
+/* Booking + Editing Forms */
+.book-class {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 997px) {
+    .book-class {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.booking-form {
+    max-width: 400px;
+/*    margin: 0 auto;
+*/
+}
+
+/* Sitter Details Page */
+@media (min-width: 770px) {
+    .sitter-detail .profile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        text-align: left !important;
+        column-gap: 10rem;
+    }
+}
+
+@media (min-width: 770px) {
+    .list-of-bookings {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .booking-section {
+        padding: 1em;
+    }
+}

@@ -1,0 +1,77 @@
+﻿@model Petsitter.ViewModels.BookingVM
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<h1 class="text-center">Confirmed Booking with @Html.DisplayFor(model => model.SitterName)</h1>
+
+<div>
+    <div class="mt-3 mb-3 back-to-profile flex align-items-center">
+        <a asp-action="ViewMyBookings" class="back-link">
+            <span class="arrow"></span>
+            <span class="text mt-2" style="font-weight: normal; font-size: 1em;">View All Bookings</span>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-md">
+        </div>
+        <dl class="row text-center col-md-6">
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.SitterName)
+            </dt>
+            <dd class="col-sm-7">
+                <a asp-action="SitterDetails" asp-route-sitterID="@Model.SitterId">@Html.DisplayFor(model => model.SitterName)</a>
+            </dd>
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.Pets)
+            </dt>
+            <dd class="col-sm-7">
+                <span>@Model.Pets[0].Name</span>
+                @for (int i = 1; i < @Model.Pets.Count - 1; i++)
+                {
+                    <span>, @Model.Pets[i].Name</span>
+                }
+                @if (@Model.Pets.Count > 1)
+                {
+                    <span> & @Model.Pets[Model.Pets.Count - 1].Name</span>
+                }
+            </dd>
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+            @if (Model.SpecialRequests != null)
+            {
+                <dt class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.SpecialRequests)
+                </dt>
+                <dd class="col-sm-7">
+                    @Html.DisplayFor(model => model.SpecialRequests)
+                </dd>
+            }
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-7">
+                $@Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.PaymentId)
+            </dt>
+            <dd class="col-sm-7">
+                $@Html.DisplayFor(model => model.PaymentId)
+            </dd>
+        </dl>
+        <div class="col-md">
+        </div>
+    </div>
+</div>

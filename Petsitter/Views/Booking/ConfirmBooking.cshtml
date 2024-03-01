@@ -1,0 +1,151 @@
+﻿@model Petsitter.ViewModels.BookingVM
+
+@{
+    ViewData["Title"] = "Confirm Your Booking";
+}
+
+<h1 class="text-center">Confirm Your Booking with @Html.DisplayFor(model => model.SitterName)</h1>
+
+<div>
+    <div class="mt-3 mb-3 back-to-profile flex align-items-center">
+        <a asp-action="Edit" asp-route-bookingId="@Model.BookingId" class="back-link">
+            <span class="arrow"></span>
+            <span class="text mt-2" style="font-weight: normal; font-size: 1em;">Edit Booking</span>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-md">
+        </div>
+        <dl class="row text-center col-md-6">
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.Pets)
+            </dt>
+            <dd class="col-sm-7">
+                <span>@Model.Pets[0].Name</span>
+                @for (int i = 1; i < @Model.Pets.Count - 1; i++)
+                {
+                    <span>, @Model.Pets[i].Name</span>
+                }
+                @if (@Model.Pets.Count > 1)
+                {
+                    <span> & @Model.Pets[Model.Pets.Count - 1].Name</span>
+                }
+            </dd>
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+            @if (Model.SpecialRequests != null)
+            {
+                <dt class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.SpecialRequests)
+                </dt>
+                <dd class="col-sm-7">
+                    @Html.DisplayFor(model => model.SpecialRequests)
+                </dd>
+            }
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-7">
+                $@Html.DisplayFor(model => model.Price)
+            </dd>
+        </dl>
+        <div class="col-md">
+        </div>
+    </div>
+    
+    <div class="text-center">
+        <div id="paypal-button"></div>
+    </div>
+</div>
+
+
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    paypal.Button.render({
+        env: 'sandbox',
+        style: {
+            size: 'medium',
+            color: 'gold',
+            shape: 'pill',
+            label: 'checkout'
+        },
+        client: {
+            sandbox: 'AdlHdDBqL4w2dMDhLEdgxOj-CJ6dLm5XdTxSdQD2k3ZhNioLsx3LiIkjpqlWa_zm_cWE5kr97Jtojv3d',
+            // production: '3W8F5EEJKUJP4KSY'  // Switch to ‘production’ when live.
+        },
+
+        commit: true,
+
+        payment: function (data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [{
+                        custom: 'Custom data goes here!',
+                        amount: {
+                            total:
+    @Html.DisplayFor(model => model.Price)
+                                , currency:
+                                "CAD"
+                        }
+                    }]
+                }
+            });
+        },
+
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute().then(function (payment) {
+                console.log(payment)
+                var dataObject = {
+                    "cart": payment.cart,
+                    "intent": payment.intent,
+                    "paymentID": payment.id,
+                    "create_time": payment.create_time,
+                    "paymentState": payment.state,
+                    "payerEmail": payment.payer.payer_info.email,
+                    "payerID": payment.payer.payer_info.payer_id,
+                    "payerFirstName": payment.payer.payer_info.first_name,
+                    "payerLastName": payment.payer.payer_info.last_name,
+                    "payerMiddleName": payment.payer.payer_info.middle_name,
+                    "payerCountryCode": payment.payer.payer_info.country_code,
+                    "paymentMethod": payment.payer.payment_method,
+                    "payerStatus": payment.payer.status,
+                    "amount": payment.transactions[0].amount.total,
+                    "currency": payment.transactions[0].amount.currency,
+                    "custom": "@Html.DisplayFor(model => model.BookingId)"
+                }
+                console.log(dataObject)
+
+                $.ajax({
+                    type: "post",
+                    url: "/Booking/PaySuccess",
+                    data: JSON.stringify(dataObject),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+
+                    success: function (msg) {
+                        window.location.href
+                            = "/Booking/BookingDetails?bookingID=" + @Html.DisplayFor(model => model.BookingId);
+                    },
+
+                    error: function (msg) {
+                        alert("Payment failed! Please try again.");
+                    }
+                });
+            })
+        },
+
+        onCancel: function (data, actions) {
+        },
+    }, '#paypal-button');
+</script>

@@ -1,0 +1,186 @@
+﻿@*@model IEnumerable<Petsitter.Models.User>
+*@
+@model IEnumerable<Petsitter.ViewModels.SitterVM>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@*<div class="text-center">
+
+*@
+
+
+
+<div class="wrapper">
+    <div class="container storeTitle">
+        <div class="row flex-column-reverse flex-lg-row webBriefDescription">
+            <div class="col-lg-4 text-center">
+                <h1 class="display-4" id="h1-pet">@Localizer["Welcome"]</h1>
+                <p>@Localizer["Join the quickly growing community of PetSitters!"]</p>
+                <a class="btn" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Find a pet sitter"]</a>
+
+            </div>
+            <div class="col-lg-8 ">
+
+                <img class="petsitterBrief" src="~/Images/petsitter-image.jpg" alt="petsitter">
+            </div>
+        </div>
+    </div>
+
+    @*   <img class="adv" src="~/images/HUFFPOST.svg" alt="HUFFPOST"> *@
+
+    <hr class="mt-4">
+
+
+    <div class="howItWorks">
+        <h1>@Localizer["How it works"]</h1>
+        <div class="PicHowItWorks">
+            <img class="PicHowItWorksimg" src="~/Images/WashingandGrooming_puppybathtime.jpg" alt="petsitter">
+        </div>
+
+        <ol class="wayOfHowItWorks">
+            <li>
+                <legend>@Localizer["Register for an account"]</legend>
+                <p>@Localizer["FirstCap"]</p>
+            </li>
+
+            <li>
+                <legend>@Localizer["Browse sitters in your area"]</legend>
+                <p>@Localizer["SecCap"]</p>
+            </li>
+            <li>
+                <legend>@Localizer["Hire the best pet sitter"]</legend>
+                <p>@Localizer["TherdCap"]</p>
+            </li>
+
+        </ol>
+        <a class="btn getStartedbtn" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Get Started"]</a>
+
+    </div>
+
+    <hr class="mt-4">
+
+
+    <div class="wayToHireacceptProfessionalCleaner">
+
+        <h1>@Localizer["A new way to care for your pets"]</h1>
+        <div class="hireAProfessionalCleaner">
+            <div class="medialocation">
+
+                <img class="locationpic item-a" src="~/images/location.svg" alt="location picture">
+                <div>
+                    <h2 class="item-b">@Localizer["Local pet sitters near you"]</h2>
+                    <p class="item-c">@Localizer["With a quickly growing community, you'll find what you need"]</p>
+                </div>
+            </div>
+            <div class="mediaHireYouTerm">
+
+                <img class="HireYouTerm item-d" src="~/images/HireYouterm.svg" alt="Hire you term">
+                <div>
+
+                    <h2 class="item-e">@Localizer["Hire on your own terms"]</h2>
+                    <p class="item-f">@Localizer["Choose a pet sitter who fits your schedule and pay them directly"]</p>
+                </div>
+            </div>
+
+            <div class="mediaPersonalized">
+                <img class="Personalized item-g" src="~/images/PersonalizedPetSitting.png" alt="Personalize Pet Sitting">
+                <div>
+                    <h2 class="item-h">@Localizer["Personalized pet sittting"]</h2>
+                    <p class="item-i">@Localizer["Contact your chosen pet sitter and personalize your pet's experience"]</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <hr class="mt-4">
+
+    <div class="container mx-auto">
+        <h1 class="text-center">@Localizer["Top pet sitters"]</h1>
+
+        <div class="row">
+
+            @if (Model.Any())
+            {
+
+                @foreach (var item in Model.Where(s => s.SitterId != 1))
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 h-100">
+                            <div class="card-body">
+                                <div style="display: flex; align-items: center;">
+                                    @if (item.ProfileImage == null)
+                                    {
+                                        <div style="width: 50px; height: 50px; border: 2px solid black; border-radius: 50%; margin-right: 10px;"></div>
+                                    }
+                                    else
+                                    {
+                                        <img style="width: 50px; height: 50px; border: 2px solid black; border-radius: 50%; margin-right: 10px;" src="data:image/png;base64,@Convert.ToBase64String(item.ProfileImage)" alt="User Profile Image" />
+                                    }
+                                    <div class="d-flex flex-column justify-content-start align-items-start">
+                                        <h5 class="card-title" style="margin: 0; text-align: center;">@Html.DisplayFor(modelItem => item.FirstName)</h5>
+                                        <small class="text-muted">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                if (i <= item.AvgRating)
+                                                {
+                                                    <i class="fas fa-star text-warning"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="far fa-star"></i>
+                                                }
+                                            }
+
+                                        </small>
+                                    </div>
+                                </div>
+
+
+
+
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.ProfileBio)</p>
+                                @*                                <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.startDate) - @Html.DisplayFor(modelItem => item.endDate)</small></p>
+                        *@
+
+                            </div>
+                            <div class="card-footer d-flex justify-content-between flex-wrap">
+                                <span><span class="price" style="color:red">$@Html.DisplayFor(modelItem => item.Rate)</span> @Localizer["per day"]</span>
+
+                                <div class="more-info-link">
+                                    <a asp-controller="Booking" asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="link-light"><button class="mx-auto">@Localizer["View profile"]</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+            else
+            {
+                <p>@Localizer["No sitters found"]</p>
+            }
+        </div>
+
+
+    </div>
+
+    <hr class="mt-4">
+
+
+    <div class="FindPetsitter">
+        <h1>@Localizer["Ready to find a pet sitter ?"]</h1>
+        <a class="btn" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Find a pet sitter now"]</a>
+
+    </div>
+
+</div>

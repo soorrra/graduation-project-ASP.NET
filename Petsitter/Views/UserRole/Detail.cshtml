@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Petsitter.ViewModels.RoleVM>
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h3>@ViewBag.UserName</h3>
+
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Assign Roles", "Create",
+    new { userName = @ViewBag.UserName })
+    </p>
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th>
+                First Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @ViewBag.FirstName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Users</a>

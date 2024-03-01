@@ -1,0 +1,120 @@
+﻿@model Petsitter.Models.Pet
+@{
+    ViewData["Title"] = "GetPet";
+}
+
+<h1 class="text-yellow-400">Detail for @Html.DisplayFor(model => model.Name)</h1>
+<div class="mt-3 back-to-profile lead" style="font-size:large;">
+    <a asp-action="GetProfile" class="back-link">
+        <span class="arrow"></span>
+        <span class="text text-lg-start mt-2">Back to Profile</span>
+    </a>
+</div>
+
+<hr class="mt-4" />
+
+@{
+
+    IEnumerable<Pet> pets = ViewData["PetData"] as IEnumerable<Pet>;
+}
+
+
+<div class="getpet-container">
+    <div class="row">
+        <div class="col-md-6">
+            @foreach (Pet pet in pets)
+            {
+                if (pet.PetImage == null)
+                {
+                    <p class="text-center">No Pet Image Given, click edit button add new Pet Image!</p>
+                }
+                else
+                {
+                    <div class="pet-image mt-5">
+                        <img src="data:image/png;base64,@Convert.ToBase64String(pet.PetImage)" alt="Pet Image" style="max-width: 100%; min-width:fit-content; max-height: 300px; border: 2px solid #ccc; box-shadow: 0px 0px 10px #ccc; border-radius: 10px;">
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="row p-2">
+                <div class="col-6 text-center mb-md-5">
+                    <dt class="mb-2 lead">
+                        Pet Type
+                    </dt>
+                    <dd>
+                        @if(Model.PetType == "Dog")
+                        {
+                            <div>
+                                <i class="fa-solid fa-dog" style="width:30px; font-size:23px;"></i>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <i class="fa-solid fa-cat" style="width:30px; font-size:23px;"></i>
+                            </div>
+                        }   
+                    </dd>
+                </div>
+                <div class="col-6 text-center mb-md-5">
+                    <dt class="mb-2 lead">
+                        Pet Name
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-6 text-center mb-md-5">
+                    <dt class="mb-2 lead">
+                        Pet Size
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PetSize)
+                    </dd>
+                </div>
+                <div class="col-6 text-center  mb-md-5">
+                    <dt class="mb-2 lead">
+                        Birth Year
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BirthYear)
+                    </dd>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-6 text-center  mb-md-5">
+                    <dt class="mb-2 lead">
+                        Pet Sex
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Sex)
+                    </dd>
+                </div>
+                <div class="col-6 text-center  mb-md-5">
+                    <dt class="mb-2 lead">
+                        Instruction
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Instructions)
+                    </dd>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center mt-4 update-section">
+    <h4>Want to update @Html.DisplayFor(model => model.Name)'s profile? Click the icon below</h4>
+    <a asp-action="EditPet" asp-route-id="@Model.PetId" class="back-link pet-icon">
+        @if (@Model.PetType == "Dog")
+        {
+            <i class="fa-solid fa-dog"></i>
+        }
+        else
+        {
+            <i class="fa-solid fa-cat"></i>
+        }
+    </a>
+</div>

@@ -1,0 +1,168 @@
+﻿@model Petsitter.ViewModels.SitterDashboardVM
+
+@{
+    ViewData["Title"] = "Details";
+    // double latitudeCustomer = Model.PointCustomer.Latitude;
+    // double longitudeCustomer = Model.PointCustomer.Longitude;
+    // double latitudeSitter = Model.PointSitter.Latitude;
+    // double longitudeSitter = Model.PointSitter.Longitude;
+
+
+}
+
+<h1>Details</h1>
+<div class="details-booking-sitter">
+    <div class="mt-3 mb-3 back-to-profile lead" style="font-size:large;">
+
+<a asp-action="Dashboard" class="back-link">
+    <span class="arrow" style="color:#6366F1;">
+
+    </span>
+                <span class="text text-lg-start mt-1">
+        Back to list
+            </span></a>
+</div>
+
+<h4>
+  BookingID :         @Html.DisplayFor(model => model.bookingId)
+</h4>
+<hr />
+<div class="details">
+<div class="tabs">
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'tab1')" id="defaultOpen">Service Details</button>
+    <button class="tablinks" onclick="openTab(event, 'tab2')">Pet Parent Details</button>
+</div>
+        </div>
+<div id="tab1" class="tabcontent">
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            petParent
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.petParent)
+
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.review)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.review)
+        </dd>
+        <dt class="col-sm-3">
+          Location        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.user.City)
+        </dd>
+
+    </dl>
+
+</div>
+
+<div id="tab2" class="tabcontent">
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            pet Parent
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.petParent)
+
+        </dd>
+        <dt class="col-sm-3">
+            Email
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.user.Email)
+
+        </dd>
+        <dt class="col-sm-3">
+            street Address
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.user.StreetAddress)
+
+        </dd>
+        <dt class="col-sm-3">
+            Phone Number
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.user.PhoneNumber)
+
+        </dd>
+     
+  </dl>
+
+
+</div>
+</div>
+    <div id="map"></div>
+
+ </div>
+
+
+<div id="map"></div>
+
+<script>
+    ymaps.ready(function () {
+        var myMap = new ymaps.Map('map', {
+            center: [59.91795236804815, 30.304908500000003],
+            zoom: 15
+        });
+
+        // var customerMarker = new ymaps.Placemark([latitudeCustomer, longitudeCustomer], {
+        //     hintContent: 'Pet Parent Address'
+        // }, {
+        //     preset: 'islands#blueCircleDotIcon'
+        // });
+
+        // var sitterMarker = new ymaps.Placemark([latitudeSitter, longitudeSitter], {
+        //     hintContent: 'My Address'
+        // }, {
+        //     preset: 'islands#redCircleDotIcon'
+        // });
+
+        myMap.geoObjects.add(customerMarker);
+        myMap.geoObjects.add(sitterMarker);
+    });
+</script>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=6309a5d2-bfb3-4d78-b34d-43448bb33e5b&lang=ru_RU">
+</script>
+
+
+
+
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

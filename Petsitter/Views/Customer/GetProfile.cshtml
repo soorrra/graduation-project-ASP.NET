@@ -1,0 +1,207 @@
+﻿@model Petsitter.ViewModels.CustomerVM
+
+@{
+    ViewData["Title"] = "GetProfile";
+}
+
+
+<div class="getprofile-container">
+    <div class="profile-wrapper">
+        <h2>Welcome @Html.DisplayFor(model => model.FirstName)!</h2>
+        <h4 class="text-break text-center">
+            To add your pet and update your account details, click the 
+            <a asp-action="EditProfile" asp-route-id="@Model.CustomerId">
+                <span class="material-symbols-outlined">
+                    account_box
+                </span>
+            </a>
+            icon
+        </h4>
+    </div>
+
+    <hr class="mt-4" />
+
+    @{
+
+        IEnumerable<User> users = ViewData["UserData"] as IEnumerable<User>;
+        byte[] defaultImg = ViewData["ProfileImg"] as byte[];
+        string defaultImgString = Convert.ToBase64String(defaultImg);
+    }
+
+    <div class="profile-container">
+        <dl class="row">
+            <dd class="col-sm-10">
+               
+                @foreach (User user in users)
+                { @if (Convert.ToBase64String(user.ProfileImage) == defaultImgString)
+                    {
+                        <div class="img-warning">
+                            <button type="button" class="close">&times;</button>
+                            <span class="material-symbols-outlined fa-3x">
+                                warning
+                            </span>
+                            <div class="p-2">
+                                <p class="m-0">Add a photo to increase your chance to be selected by our Pet parents</p>
+                            </div>
+                            <a asp-action="EditProfile" asp-route-id="@Model.CustomerId" class="btn btn-img">Add Picture</a>
+                        </div>
+                    }
+                    if (user.ProfileImage == null)
+                    {
+                        <p>No Profile Image Given, go edit profile link add your new Profile Image!</p>
+                    }
+                    else
+                    {
+                        <div class="d-flex align-items-center w-100">
+                            <img style="max-width: 400px; margin-right:1em;" src="data:image/png;base64,
+                            @Convert.ToBase64String(user.ProfileImage)" class="rounded-3" alt="User Profile Image" />
+                            <div>
+                                <h4 class="text-decoration-underline">Profile Bio</h4>
+                                <p>This is the first photo pet owners will see. We recommend using a well-lit, clear photo of your face (without sunglasses).</p>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </dd>
+            <h4 class="text-decoration-underline mt-4">Contact Details</h4>
+            <div class="row">
+                <div class="col-sm-6">
+                    <dt class="mb-2">First Name</dt>
+                    <dd>@Html.DisplayFor(model => model.FirstName)</dd>
+                </div>
+                <div class="col-sm-6">
+                    <dt class="mb-2">Last Name</dt>
+                    <dd>@Html.DisplayFor(model => model.LastName)</dd>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-6">
+                    <dt class="mb-2">Email</dt>
+                    <dd>@Html.DisplayFor(model => model.Email)</dd>
+                </div>
+                <div class="col-sm-6">
+                    <dt class="mb-2">Phone Number</dt>
+                    <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="text-decoration-underline mt-4">Postal Address</h4>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-6">
+                    <dt class="mb-2">City</dt>
+                    <dd>@Html.DisplayFor(model => model.City)</dd>
+                </div>
+                <div class="col-sm-6">
+                    <dt class="mb-2">Postal Code</dt>
+                    <dd>@Html.DisplayFor(model => model.PostalCode)</dd>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <dt class="mb-2">Street Address</dt>
+                    <dd>@Html.DisplayFor(model => model.StreetAddress)</dd>
+                </div>
+            </div>
+
+            @{
+
+                IEnumerable<Pet> pets = ViewData["PetLists"] as IEnumerable<Pet>;
+            }
+
+           @* @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success">@ViewBag.Message</div>
+            }*@
+
+        <h4 class="text-decoration-underline mt-4">Your Pets</h4>
+            @if (Model.BookedPets != null && Model.BookedPets.Count() > 0)
+            {
+                <p class="lead">
+                    You have @Model.BookedPets.Count() bookings with:
+                    @String.Join(", ", Model.BookedPets.Select(bp => bp?.Pet?.Name).Distinct())
+                </p>
+            }
+        <table class="table">
+            @if (pets.Count() == 0)
+            {
+                <p class="lead">You have no pets</p>
+            }
+            else
+            {
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach (Pet pet in pets)
+                {
+                        <tr class="pet-lists">
+                            <td class="d-flex justify-content-between lead">
+                            @if (@pet.PetType == "Dog")
+                            {
+                                <div>
+                                    <i class="fa-solid fa-dog"></i>
+                                    <a asp-action="GetPet" asp-route-id="@pet.PetId" class="text-decoration-none text-black">@pet.Name</a>
+                                    @{bool hasPastBooking = false;}
+                                        @if (Model.Booking.Join(Model.BookedPets,
+                                            booking => booking.BookingId,
+                                            bookingPet => bookingPet.BookingId,
+                                            (booking, bookingPet) => new { Booking = booking, BookingPet = bookingPet })
+                                      .Any(b => b.Booking.EndDate < DateTime.Now && b.BookingPet.PetId == pet.PetId))
+                                        {
+                                            <i class="fa-solid fa-calendar-days" style="color:red;margin-left:3px;"></i>
+                                            <span style="font-size:0.8em;">Booking date is passed!</span>
+                                        }
+                                        else if(Model.BookedPets.Any(bp => bp.PetId == pet.PetId))
+                                        {
+                                            <i class="fa-solid fa-check" style="color:chartreuse; margin-left:3px;"></i>
+                                        }
+
+                                  
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <i class="fa-solid fa-cat"></i>
+                                    <a asp-action="GetPet" asp-route-id="@pet.PetId" class="text-decoration-none text-black">@pet.Name</a>
+                                        @{
+                                            bool hasPastBooking = false;
+                                        }
+
+                                        @if (Model.Booking.Join(Model.BookedPets,
+                                            booking => booking.BookingId,
+                                            bookingPet => bookingPet.BookingId,
+                                            (booking, bookingPet) => new { Booking = booking, BookingPet = bookingPet })
+                                       .Any(b => b.Booking.EndDate < DateTime.Now && b.BookingPet.PetId == pet.PetId))
+                                        {
+                                            <i class="fa-solid fa-calendar-days" style="color:red;margin-left:3px;"></i>
+                                            <span style="font-size:0.8em;">Booking date is passed!</span>
+                                        }
+                                        else if (Model.BookedPets.Any(bp => bp.PetId == pet.PetId))
+                                        {
+                                            <i class="fa-solid fa-check" style="color:chartreuse; margin-left:3px;"></i>
+                                        }
+                                </div>
+                            }
+                            <div>
+                                <a asp-action="EditPet" asp-route-id="@pet.PetId">
+                                    <span class="material-symbols-outlined edit">edit</span>
+                                </a>
+
+                                    <a class="btn-delete" data-id="@pet.PetId" data-controller="Customer" data-action="DeletePet" data-body-message="Are you sure to delete @pet.Name on your pet list?">
+                                    <span class="material-symbols-outlined delete">delete</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                }
+        </table>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,60 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="account" method="post">
+                <h1 class="mb-3 mt-5">@ViewData["Title"]</h1>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                            <label asp-for="Input.Email" class="form-label">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                            <label asp-for="Input.Password" class="form-label">Password</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            <label class="form-check-label" asp-for="Input.RememberMe">Remember me</label>
+                        </div>
+                        <button id="login-submit" type="submit" class="w-100 btn mb-3 text-white"
+                                style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
+                            Sign In
+                        </button>
+                        <hr />
+                        <div class="text-center">
+                            <p class="mb-1">
+                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                            </p>
+                            <p class="mb-1">
+                                Not signed up on Petsitter yet?
+                            </p>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" 
+                            class="text-white w-50 btn mb-3 mt-3" style="background:#6366F1; 
+                            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
+                                Sign Up
+                            </a>                            
+                            @*<p class="mb-0">
+                                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                            </p>*@
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

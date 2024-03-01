@@ -1,0 +1,281 @@
+﻿@model PaginatedList<Petsitter.ViewModels.ReviewVM>
+
+
+@{
+    ViewData["Title"] = "ReviewList";
+}
+
+<main class="sitter-detail">
+
+<h1>Review Page</h1>
+               
+       <div class="reviewListContainer">
+        <div class="row"> 
+            <div class="col-md-6">
+                <div>
+                      <h2>@ViewBag.FirstName</h2>
+                      <div class="starDetail rating" data-rating="-1">
+                        <span class="@IsStarSelected(1, @ViewBag.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(2, @ViewBag.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(3, @ViewBag.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(4, @ViewBag.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(5, @ViewBag.AvgRating)">&#9733;</span>
+                        <p style="display: inline-block; margin-left: 10px; font-size: 0.8em;">
+                            @if (ViewBag.TotalReview == 0)
+                            {
+                                <span>No ratings</span>
+                            }
+                            else
+                            {
+                                <span>@ViewBag.TotalReview @((ViewBag.TotalReview == 1) ? "rating" : "ratings")</span>
+                            }
+                        </p>
+                        </div>
+                       <p>OverAll: @ViewBag.AvgRating OUT OF 5</p>
+
+                </div>
+            </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="d-none d-md-block">
+                                    <div>
+                                            <h2>Review Summary</h2>
+                                            <div class="starDetail" data-rating="5">
+                                                <span>5 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star5%" data-rating="5"></span>
+                                                </span>
+                                                <span>@ViewBag.Star5%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="4">
+                                                <span>4 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star4%" data-rating="4"></span>
+                                                </span>
+                                                <span>@ViewBag.Star4%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="3">
+                                                <span>3 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star3%" data-rating="3"></span>
+                                                </span>
+                                                <span>@ViewBag.Star3%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="2">
+                                                <span>2 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star2%" data-rating="2"></span>
+                                                </span>
+                                                <span>@ViewBag.Star2%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="1">
+                                                <span>1 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star1%" data-rating="1"></span>
+                                                </span>
+                                                <span>@ViewBag.Star1%</span>
+                                            </div>
+                                    </div>
+
+                                    <div>
+                                        <span class="price">$@ViewBag.Rate</span> per day
+                                    </div>
+  
+                                    <div>
+                                        @ViewBag.ProfileBio
+                                    </div>
+                    
+                        </div>
+
+                        <div class="d-md-none">
+                                    <div>
+                                            <h2>Review Summary</h2>
+                                            <div class="starDetail" data-rating="5">
+                                                <span>5 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star5%" data-rating="5"></span>
+                                                </span>
+                                                <span>@ViewBag.Star5%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="4">
+                                                <span>4 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star4%" data-rating="4"></span>
+                                                </span>
+                                                <span>@ViewBag.Star4%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="3">
+                                                <span>3 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star3%" data-rating="3"></span>
+                                                </span>
+                                                <span>@ViewBag.Star3%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="2">
+                                                <span>2 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star2%" data-rating="2"></span>
+                                                </span>
+                                                <span>@ViewBag.Star2%</span>
+                                            </div>
+                                            <div class="starDetail" data-rating="1">
+                                                <span>1 Star</span>
+                                                <span class="percentage-bar">
+                                                    <span class="percentage-bar-inner" style="width: @ViewBag.Star1%" data-rating="1"></span>
+                                                </span>
+                                                <span>@ViewBag.Star1%</span>
+                                            </div>
+                                    </div>
+
+                                    <div>
+                                        <span class="price">$@ViewBag.Rate</span> per day
+                                    </div>
+  
+                                    <div>
+                                        @ViewBag.ProfileBio
+                                 </div>                  
+                        </div>
+
+                  </div>
+
+               </div>
+          </div>
+
+
+
+    <hr class="mt-4">
+
+
+<div class="row">
+
+      @if (Model.Count == 0)
+            {
+            <p>No Reviews Available.</p>
+        }
+        else{
+
+
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div style="display: flex; align-items: center;">
+                                @if (item.profileImage == null)
+                                {
+                                    <div style="width: 50px; height: 50px; border: 2px solid black; border-radius: 50%; margin-right: 10px;"></div>
+                                }
+                                else
+                                {
+                                    <img style="width: 50px; height: 50px; border: 2px solid black; border-radius: 50%; margin-right: 10px;" src="data:image/png;base64,@Convert.ToBase64String(item.profileImage)" alt="User Profile Image" />
+                                }
+                                <h5 class="card-title" style="margin: 0; text-align: center;">@Html.DisplayFor(modelItem => item.petParent)</h5>
+                            </div>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.review)</p>
+                            <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.startDate) - @Html.DisplayFor(modelItem => item.endDate)</small></p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= item.rating)
+                                    {
+                                        <i class="fas fa-star text-warning"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="far fa-star"></i>
+                                    }
+                                }
+                            </small>
+                    </div>
+                </div>
+            </div>
+            }
+    }
+</div>
+</main>
+
+
+
+<style>
+    .percentage-bar {
+        display: inline-block;
+        width: 150px;
+        height: 15px;
+        background-color: lightgray;
+        margin: 0 5px;
+        position: relative;
+    }
+
+    .percentage-bar-inner {
+        display: block;
+        width: 0;
+        height: 100%;
+        background-color: #deb217;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .starDetail{
+                 font-size: 0.8em;
+
+    }
+    .star5{
+  }
+
+</style>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".starDetail").on("click", function() {
+                var rating = $(this).data("rating");
+                var sitterID = '@ViewBag.SitterID';
+                var url = '/Sitter/ReviewList?sitterID=' + sitterID + '&rating=' + rating;
+                window.location.href = url;
+            });
+        });
+    </script>
+}
+
+@functions {
+    public string IsStarSelected(int star, double? rating)
+    {
+        if (star <= rating)
+        {
+            return "highlight";
+        }
+        else
+        {
+            return "no-highlight";
+        }
+    }
+}
+
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="ReviewList"
+   asp-route-page="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="ReviewList"
+   asp-route-page="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+
+
+
+
+
