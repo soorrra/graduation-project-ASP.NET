@@ -5,44 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";  
 }  
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-
-<div class="panel panel-primary">  
-    <div class="panel-heading">  
-        <h3 class="box-title">  
-            <b>Users</b>  
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="box-title">
+            <b>Users</b>
         </h3>
         <div class="admin link-header">
             <a asp-controller="UserRole" asp-action="Index">Edit User Roles</a>
         </div>
-    </div>  
-    <!-- /.box-header -->  
-    <div class="panel-body">  
-        <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">  
-            <thead>  
-                <tr>  
-                    <td><b>User ID</b></td>  
+    </div>
+    <!-- /.box-header -->
+    <div class="panel-body">
+        <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
+            <thead>
+                <tr>
+                    <td><b>User ID</b></td>
                     <td><b>Email</b></td>
                     <td><b>First Name</b></td>
                     <td><b>Last Name</b></td>
-                </tr>  
-            </thead>  
-            @foreach (var user in Model)  
-            {  
-                <tr>  
-                    <td>@user.UserID</td>  
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserID</td>
                     <td>@user.Email</td>
                     <td>@user.FirstName</td>
                     <td>@user.LastName</td>
-                </tr>  
-            }  
-        </table>  
-    </div>  
-   
-    <div class="panel-footer">  
-        <p class="box-title"><b>Total Users 
-            ered as of @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>  
-    </div>  
-</div>  
+
+                    <td>
+                        <span class="table-remove">
+                            <a class="btn-delete" data-id="@user.UserID" data-controller="Admin" data-action="DeleteUser" data-body-message="Are you sure to delete @user.UserID on your pet list?">
+                                <span class="material-symbols-outlined delete">delete</span>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <p class="box-title">
+            <b>
+                Total Users
+                ered as of @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  :
+            </b><span class="label label-primary">@Model.Count()</span>
+        </p>
+    </div>
+</div>
 <style>
     .admin {
         margin: 1rem;
@@ -51,7 +63,27 @@
 </style>
 
 @section scripts{
+
     <script>
+        // $(document).ready(function () {
+        //     $('.btn-delete').on('click', function () {
+        //         var userId = $(this).data('id');
+        //         var confirmationMessage = $(this).data('body-message');
+
+        //         if (confirm(confirmationMessage)) {
+        //             $.ajax({
+        //                 url: '/Admin/DeleteUser/' + userId,
+        //                 method: 'GET',
+        //                 success: function (data) {
+                         
+        //                 },
+        //                 error: function (jqXHR, textStatus, errorThrown) {
+                         
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
         $(function () {
             $('#UsersWithRoles').DataTable({
                 "paging": true,

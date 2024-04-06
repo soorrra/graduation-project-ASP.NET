@@ -111,7 +111,7 @@ namespace Petsitter.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
+                name: "AspNets",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),

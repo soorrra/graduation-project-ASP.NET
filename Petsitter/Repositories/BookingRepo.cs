@@ -270,7 +270,7 @@ namespace Petsitter.Repositories
             return newBooking.BookingId;
         }
 
-        public int Create_(BookingFormVM booking, int userId)
+        public int CreateBookByUser(BookingFormVM booking, int userId)
         {
             // Create a new Booking object.
             Booking Booking = new Booking(booking.StartDate, booking.EndDate, booking.SpecialRequests, (int)booking.SitterId, userId);
@@ -300,6 +300,27 @@ namespace Petsitter.Repositories
                 _db.Add(bookingPet);
                 _db.SaveChanges();
             }
+
+            return Booking.BookingId;
+        }
+
+        public int CreateBookBySitter(BookingFormVM booking, int sitterId, int userId)
+        {
+            // Create a new Booking object.
+            Booking Booking = new Booking(booking.StartDate, booking.EndDate, booking.SpecialRequests, sitterId, userId);
+        
+            // List pets in booking.
+
+            // Add price to booking.
+
+
+
+            // Save to database.
+            _db.Add(Booking);
+            _db.SaveChanges();
+
+            // Create BookingPet objects and add to database.
+          
 
             return Booking.BookingId;
         }

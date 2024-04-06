@@ -10,28 +10,28 @@ namespace Petsitter.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly ILogger<AdminController> _logger;
-        private readonly PetsitterContext _db;
-        private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment webHostEnvironment;
+        private ILogger<AdminController> _logger;
+        private PetsitterContext _db;
+        private ApplicationDbContext _context;
+        private IWebHostEnvironment webHostEnvironment;
         private readonly SitterRepos sitterRepos;
         private readonly CustomerRepo customerRepo;
         private readonly PetRepo petRepo;
-        private readonly AdminRepo adminRepo;
-        
+        private AdminRepo adminRepo;
 
-        public AdminController(ILogger<AdminController> logger, PetsitterContext db, IWebHostEnvironment webHost, ApplicationDbContext context )
+
+        public AdminController(ILogger<AdminController> logger, PetsitterContext context, IWebHostEnvironment webHost)
         {
-            _logger            = logger;
-            _db                = db;
+            _logger = logger;
+            _db = context;
             webHostEnvironment = webHost;
-            _context           = context;
+           
 
-            sitterRepos  = new SitterRepos(_db, webHostEnvironment);
+            sitterRepos = new SitterRepos(_db, webHostEnvironment);
             customerRepo = new CustomerRepo(_db, webHostEnvironment);
-            petRepo      = new PetRepo(_db, webHostEnvironment);
-            adminRepo    = new AdminRepo(_db, webHostEnvironment, _context);
-
+            petRepo = new PetRepo(_db, webHostEnvironment);
+            adminRepo = new AdminRepo(_db, webHostEnvironment);
+            
         }
 
         public IActionResult AdminDashboard()
@@ -43,6 +43,15 @@ namespace Petsitter.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult DeleteUser(int id)
+        {
+            AdminRepo adminRep = new AdminRepo(_db, webHostEnvironment);
+            Tuple<string, int>  deleteUserRecord = adminRep.DeleteUserRecord(id);
+            var deleteMessage = deleteUserRecord.Item1;
+
+            return RedirectToAction("AdminDashboard","Admin", 
+            new { message = deleteMessage });
         }
     }
 }

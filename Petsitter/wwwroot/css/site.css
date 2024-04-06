@@ -79,6 +79,15 @@ align-items:center;
     border-radius: 20px;
     text-decoration: none;
 }
+
+.green-button {
+    background-color: lightgreen;
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    text-decoration: none; 
+}
+
 .petsitterBrief {
 /*    width: 500px;
 */    width: 100%;

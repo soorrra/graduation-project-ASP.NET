@@ -34,22 +34,20 @@ namespace Petsitter.Controllers
         }
 
         [Authorize]
-        public IActionResult ViewCreateBooking()
+        public IActionResult ViewCreateBookingSitter()
         {
             BookingFormVM bookingg = new BookingFormVM();
 
-            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            
             BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
-            List<BookingPetVM> pets = bookingRepo.GetBookingPetVMsByUserId(userId);
-            bookingg.Pets = pets;
-
+           
             return View(bookingg);  
         }
 
         [Authorize]
         // POST: Initial Book
         [HttpPost]
-        public IActionResult ViewCreateBooking(BookingFormVM bbookingForm)
+        public IActionResult ViewCreateBookingSitter(BookingFormVM bbookingForm)
         {
             // If the message is null, set to an empty string.
             bbookingForm.Message ??= "";
@@ -61,13 +59,14 @@ namespace Petsitter.Controllers
           
                         if (ModelState.IsValid)
                         {
-                            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
-                            
+                            int userId =1;
+                            int sitterId=1;
+
                             // Create booking
-                            int bookingId = bookingRepo.Create_(bbookingForm, userId);
+                            int bookingId = bookingRepo.CreateBookBySitter(bbookingForm, sitterId ,userId);
 
                             // Redirect to confirmation and payment page
-                            return RedirectToAction("BookingDetails", "Booking", new {  bookingId });
+                            //return RedirectToAction("BookingDetails", "Booking", new {  bookingId });
 
     
                         }
@@ -77,6 +76,49 @@ namespace Petsitter.Controllers
             return View(bbookingForm);
         }
 
+        [Authorize]
+        public IActionResult ViewCreateBookingUser()
+        {
+            BookingFormVM bookingg = new BookingFormVM();
+
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
+            List<BookingPetVM> pets = bookingRepo.GetBookingPetVMsByUserId(userId);
+            bookingg.Pets = pets;
+
+            return View(bookingg);
+        }
+
+        [Authorize]
+        // POST: Initial Book
+        [HttpPost]
+        public IActionResult ViewCreateBookingUser(BookingFormVM bbookingForm)
+        {
+            // If the message is null, set to an empty string.
+            bbookingForm.Message ??= "";
+
+            // Check that at least one pet was selected.
+            BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
+
+
+
+            if (ModelState.IsValid)
+            {
+                int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+
+                // Create booking
+                int bookingId = bookingRepo.CreateBookByUser(bbookingForm, userId);
+
+                // Redirect to confirmation and payment page
+                return RedirectToAction("BookingDetails", "Booking", new { bookingId });
+
+
+            }
+
+
+            // Show booking page again.
+            return View(bbookingForm);
+        }
 
 
 
@@ -129,15 +171,9 @@ namespace Petsitter.Controllers
             BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
             BookingVM booking = bookingRepo.GetBookingVM(bookingID);
 
-            // Check that the booking belongs to the currently logged in user
-            if (booking.UserId == Convert.ToInt32(HttpContext.Session.GetString("UserID")))
-            {
+            
                 return View(booking);
-            }
-            else // If the booking is for a different user, redirect them to the no permission page.
-            {
-                return RedirectToAction("NoPermission", "Home");
-            }
+           
         }
 
         public IActionResult FindASitter(int? page, List<string> petTypes, string selectedDates)

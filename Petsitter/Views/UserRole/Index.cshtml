@@ -23,23 +23,22 @@
                     <th>
                         <a asp-action="Create">Create New User Role</a>
                     </th>
+                 
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@item.Email</td>
                         <td>
-                            @item.Email
+                            @Html.ActionLink("View Roles", "Detail", new { userName = item.Email })
+
                         </td>
-                        <td>
-                            @Html.ActionLink(
-                        "View Roles"
-                        , "Detail"
-                        , new { userName = item.Email })
-                        </td>
+                       
                     </tr>
                 }
+
             </tbody>
         </table>  
     </div>   
@@ -57,6 +56,18 @@
                 "autoWidth": true
             });
         });
+        const $tableID = $('#UsersWithRoles');
+       
+        // $tableID.on('click', '.table-remove', function () {
+        //     $(this).parents('tr').detach();
+        // });
+
+        // $tableID.on('click', '.table-edit', function () {
+        //     const $row = $(this).closest('tr');
+        //     const email = $row.find('td:eq(0)').text();
+        //     alert('Edit clicked for email: ' + email);
+        // });
+       
     </script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 }
