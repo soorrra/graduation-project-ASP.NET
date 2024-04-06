@@ -59,8 +59,8 @@ namespace Petsitter.Controllers
           
                         if (ModelState.IsValid)
                         {
-                            int userId =1;
-                            int sitterId=1;
+                            int userId = 2;
+                            int sitterId = 1;
 
                             // Create booking
                             int bookingId = bookingRepo.CreateBookBySitter(bbookingForm, sitterId ,userId);

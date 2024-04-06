@@ -308,11 +308,13 @@ namespace Petsitter.Repositories
         {
             // Create a new Booking object.
             Booking Booking = new Booking(booking.StartDate, booking.EndDate, booking.SpecialRequests, sitterId, userId);
-        
+
             // List pets in booking.
 
             // Add price to booking.
-
+            // Add price to booking.
+            int petsCount = 1;
+            Booking = AddPriceToBooking_(Booking, petsCount);
 
 
             // Save to database.
