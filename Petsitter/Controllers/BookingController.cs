@@ -45,6 +45,18 @@ namespace Petsitter.Controllers
         }
 
         [Authorize]
+        public IActionResult CreateBookAnnouncement(int bookingID)
+        {
+            BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
+            List<BookingVM> myBookings = bookingRepo.GetBookingVMsBySItterId();
+
+            int bookingId = bookingRepo.CreateBookingAnnouncement(bookingID);
+
+            return View(myBookings);
+
+        }
+
+        [Authorize]
         // POST: Initial Book
         [HttpPost]
         public IActionResult ViewCreateBookingSitter(BookingFormVM bbookingForm)

@@ -75,7 +75,9 @@
         </div>
         
     </div>
-    <div class="pb-2">
-        <a asp-action="BookingDetailsAnnouncement"  class="text-white mx-auto btn" style="background:#a1a3f6; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book</a>
-    </div>
+    
+    <a asp-action="CreateBookAnnouncement" asp-route-bookingId="@Model.BookingId" class="back-link">
+        <span class="arrow"></span>
+        <span class="text mt-2" style="font-weight: normal; font-size: 1em;">Edit Book</span>
+    </a>
 </div>

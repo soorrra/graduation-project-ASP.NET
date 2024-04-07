@@ -376,6 +376,22 @@ namespace Petsitter.Repositories
             return booking.BookingId;
         }
 
+        public int CreateBookingAnnouncement(int BookingId)
+        {
+            // Get the booking to be updated.
+            Booking booking = GetBooking(BookingId);
+
+            // Update the properties.
+            booking.SitterId = 47;
+            
+            // Save changes to the database.
+            _db.Update(booking);
+            _db.SaveChanges();
+
+
+            return booking.BookingId;
+        }
+
         public bool CheckPetSelection(BookingFormVM bookingForm)
         {
             int selectedPets = 0;
