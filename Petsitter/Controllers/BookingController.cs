@@ -33,6 +33,11 @@ namespace Petsitter.Controllers
             return View(myBookings);
         }
 
+        public IActionResult chat(int sitterid)
+        {
+            return View("chat");
+        }
+
         [Authorize]
         public IActionResult ViewCreateBookingSitter()
         {
@@ -262,10 +267,6 @@ namespace Petsitter.Controllers
             return View(booking);
         }
 
-        //public IActionResult chat(int sitterid)
-        //{
-        //    return view("chat");
-        //}
 
         [Authorize]
         // POST: Initial Book

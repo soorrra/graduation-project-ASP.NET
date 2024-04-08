@@ -5,35 +5,23 @@
 <h1>Index</h1>
 
 <div class="container">
-    <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="col-2">Sender</div>
-        <div class="col-4"><input type="text" id="senderInput" /></div>
-    </div>
-    <div class="row">
-        <div class="col-2">Receiver</div>
-        <div class="col-4"><input type="text" id="receiverInput" /></div>
-    </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
+        <div class="col-md-6">
+            <span>Name = </span><br />
+            <input type="text" id="txtUser" /><br />
+            <span>Message: </span>
+            <textarea rows="10" cols="50" id="txtMsg"></textarea><br />
+            <button type="submit" class="btn btn-info" id="btnSendMsg">Send</button>
+        </div>
+        <div class="col-md-6">
+            <h3>Messages: </h3>
+            <ul id="list" class="alert alert-info"></ul>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-</div>
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/site.js"></script>
+}
