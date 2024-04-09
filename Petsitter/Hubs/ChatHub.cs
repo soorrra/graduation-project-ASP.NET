@@ -9,7 +9,8 @@ namespace Petsitter.Hubs
     {
         public async Task SendMessage(string fromUser, string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", fromUser, message);
+            var userName = Context.User.Identity.Name;
+            await Clients.All.SendAsync("ReceiveMessage", userName, message);
         }
     }
 }

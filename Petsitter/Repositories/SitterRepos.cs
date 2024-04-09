@@ -112,6 +112,8 @@ namespace Petsitter.Repositories
 
             return sitterProfileVM;
         }
+
+        
         public Tuple<int, string> EditSitter(SitterProfileVM sitterProfileVM)
         {
             //string stringFileName = UploadCustomerFile(sitterProfileVM);
