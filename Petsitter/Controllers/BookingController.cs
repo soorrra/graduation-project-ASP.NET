@@ -33,9 +33,30 @@ namespace Petsitter.Controllers
             return View(myBookings);
         }
 
-        public IActionResult chat(int sitterid)
+        public IActionResult Chat(int sitterID)
         {
-            return View("chat");
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            // Получите пользователя из текущей сессии
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login"); // Перенаправление на страницу входа, если пользователь не аутентифицирован
+            }
+
+            CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);
+            SitterVM sitter = sitterRepo.GetSitterVM(sitterID);
+
+            sitter.SitterId = sitterID;  // Метод для получения информации о ситтере по идентификатору
+
+            if (sitter == null)
+            {
+                return RedirectToAction("SitterNotFound"); // Обработка случая, если ситтер не найден
+            }
+
+            ViewData["FirstName"] = sitter.FirstName;
+            ViewData["SitterID"] = sitterID;
+
+            return View("Chat");
         }
 
         [Authorize]
