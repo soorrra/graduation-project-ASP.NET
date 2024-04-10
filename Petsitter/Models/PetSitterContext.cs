@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using NuGet.Protocol.Plugins;
 using Petsitter.Data;
 
 namespace Petsitter.Models
@@ -24,6 +25,7 @@ namespace Petsitter.Models
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserType> UserTypes { get; set; } = null!;
         public virtual DbSet<IPN> IPNs { get; set; } = null!;
+        public virtual DbSet<Message> Messages { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
