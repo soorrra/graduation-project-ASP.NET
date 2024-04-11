@@ -24,9 +24,10 @@ namespace Petsitter.Hubs
             // Сохранение сообщения в базу данных
             var newMessage = new Message
             {
+                messageID=1,
                 chatID = 1, // Здесь нужно указать соответствующий chatID
-                fromUserID = 1, // Здесь нужно указать соответствующий fromUserID
-                toUserID = 2, // Здесь нужно указать соответствующий toUserID
+                fromUserID = 60, // Здесь нужно указать соответствующий fromUserID
+                toUserID = 59, // Здесь нужно указать соответствующий toUserID
                 messageText = message,
                 timestamp = DateTime.UtcNow
             };

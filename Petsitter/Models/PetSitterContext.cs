@@ -26,6 +26,8 @@ namespace Petsitter.Models
         public virtual DbSet<UserType> UserTypes { get; set; } = null!;
         public virtual DbSet<IPN> IPNs { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
+        public virtual DbSet<Chat> Chats { get; set; } = null!;
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -306,6 +308,52 @@ namespace Petsitter.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("userType");
+            });
+
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.ToTable("Messages");
+
+                entity.Property(e => e.messageID).HasColumnName("messageID");
+                entity.Property(e => e.chatID).HasColumnName("chatID");
+                entity.Property(e => e.fromUserID).HasColumnName("fromUserID");
+                entity.Property(e => e.toUserID).HasColumnName("toUserID");
+                entity.Property(e => e.messageText).HasMaxLength(255).IsUnicode(false);
+                entity.Property(e => e.timestamp).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Chat)
+                    .WithMany()
+                    .HasForeignKey(d => d.chatID)
+                    .HasConstraintName("FK_Messages_Chats");
+
+                entity.HasOne(d => d.FromUser)
+                    .WithMany()
+                    .HasForeignKey(d => d.fromUserID)
+                    .HasConstraintName("FK_Messages_FromUsers");
+
+                entity.HasOne(d => d.ToUser)
+                    .WithMany()
+                    .HasForeignKey(d => d.toUserID)
+                    .HasConstraintName("FK_Messages_ToUsers");
+            });
+
+            modelBuilder.Entity<Chat>(entity =>
+            {
+                entity.ToTable("Chats");
+
+                entity.Property(e => e.chatID).HasColumnName("chatID");
+                entity.Property(e => e.user1ID).HasColumnName("user1ID");
+                entity.Property(e => e.user2ID).HasColumnName("user2ID");
+
+                entity.HasOne(d => d.User1)
+                    .WithMany()
+                    .HasForeignKey(d => d.user1ID)
+                    .HasConstraintName("FK_Chats_User1");
+
+                entity.HasOne(d => d.User2)
+                    .WithMany()
+                    .HasForeignKey(d => d.user2ID)
+                    .HasConstraintName("FK_Chats_User2");
             });
 
             OnModelCreatingPartial(modelBuilder);

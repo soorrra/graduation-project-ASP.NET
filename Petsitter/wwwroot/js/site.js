@@ -10,7 +10,7 @@ connection.on("ReceiveMessage", function (fromUser, message) {
 connection.start().then(function () {
     $("#btnSendMsg").on("click", function () {
         var message = $("#txtMsg").val();
-        var fromUser = $("#txtUser").attr('value'); 
+        var fromUser = $("#txtUser").val(); 
 
         connection.invoke("SendMessage", fromUser, message);
     });

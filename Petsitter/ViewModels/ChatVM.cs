@@ -4,9 +4,9 @@ namespace Petsitter.ViewModels
 {
     public class ChatVM
     {
-        public int SitterId { get; set; }
+        public int chatID { get; set; }
 
-        [DisplayName("Sitter Name")]
-        public string SitterName { get; set; }
+        public int? user1ID { get; set; }
+        public int? user2ID { get; set; }
     }
 }
