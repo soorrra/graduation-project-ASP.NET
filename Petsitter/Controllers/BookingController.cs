@@ -35,26 +35,33 @@ namespace Petsitter.Controllers
 
         public IActionResult Chat(int sitterID)
         {
+            //сомнительная хрень, все х переделывай 
             int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
-            // Получите пользователя из текущей сессии
+            int fromUserID = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+
 
             if (userId == null)
             {
-                return RedirectToAction("Login"); // Перенаправление на страницу входа, если пользователь не аутентифицирован
+                return RedirectToPage("./Register");
+
             }
+            //
+
 
             CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);
             SitterVM sitter = sitterRepo.GetSitterVM(sitterID);
+            int toUserId = sitterRepo.getUserIdBySitterId(sitterID);
 
-            sitter.SitterId = sitterID;  // Метод для получения информации о ситтере по идентификатору
+            sitter.SitterId = sitterID;  
 
             if (sitter == null)
             {
-                return RedirectToAction("SitterNotFound"); // Обработка случая, если ситтер не найден
+                return RedirectToAction("SitterNotFound"); 
             }
 
             ViewData["FirstName"] = sitter.FirstName;
-            ViewData["SitterID"] = sitterID;
+            ViewData["fromUserID"] = fromUserID;
+            ViewData["toUserID"] = toUserId;
 
             return View("Chat");
         }

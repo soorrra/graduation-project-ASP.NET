@@ -59,6 +59,15 @@ namespace Petsitter.Repositories
         }
 
 
+        public int getUserIdBySitterId(int sitterId)
+        {
+            var userId = _db.Sitters
+                .Where(s => s.SitterId == sitterId)
+                .Select(s => s.UserId)
+                .FirstOrDefault();
+
+            return (int)userId;
+        }
 
 
 

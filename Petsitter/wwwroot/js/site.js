@@ -10,9 +10,10 @@ connection.on("ReceiveMessage", function (fromUser, message) {
 connection.start().then(function () {
     $("#btnSendMsg").on("click", function () {
         var message = $("#txtMsg").val();
-        var fromUser = $("#txtUser").val(); 
+        var fromUserID = $("#fromUserID").val();
+        var toUserID = $("#toUserID").val();
 
-        connection.invoke("SendMessage", fromUser, message);
+        connection.invoke("SendMessage", message, fromUserID, toUserID);
     });
 }).catch(function (err) {
     return console.error(err.toString());

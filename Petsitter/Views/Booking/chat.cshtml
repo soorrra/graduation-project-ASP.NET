@@ -7,8 +7,7 @@
         <div class="col-md-6">
             <h1 class="text-center">Chat with @ViewData["FirstName"]</h1>
 
-            <span>Name = </span><br />
-            <input type="text" id="txtUser" /><br />
+          
             <span>Message: </span>
             <textarea rows="10" cols="50" id="txtMsg"></textarea><br />
             <button type="submit" class="btn btn-info" id="btnSendMsg">Send</button>
@@ -18,9 +17,15 @@
             <ul id="list" class="alert alert-info"></ul>
         </div>
     </div>
+    <input type="hidden" id="fromUserID" value="@ViewData["fromUserID"]" />
+    <input type="hidden" id="toUserID" value="@ViewData["toUserID"]" />
+
 </div>
 
 @{
+    <input type="hidden" id="fromUserID" value="@ViewData["fromUserID"]" />
+    <input type="hidden" id="toUserID" value="@ViewData["toUserID"]" />
+
     ViewData["SitterID"] = @ViewData["SitterID"];
 }
 

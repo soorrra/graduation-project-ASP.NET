@@ -16,7 +16,7 @@ namespace Petsitter.Hubs
             _db = db;
         }
 
-        public async Task SendMessage(string fromUser, string message)
+        public async Task SendMessage( string message, int fromUserID, int toUserID)
         {
             var userName = Context.User.Identity.Name;
             await Clients.All.SendAsync("ReceiveMessage", userName, message);
@@ -24,10 +24,9 @@ namespace Petsitter.Hubs
             // Сохранение сообщения в базу данных
             var newMessage = new Message
             {
-                messageID=1,
                 chatID = 1, // Здесь нужно указать соответствующий chatID
-                fromUserID = 60, // Здесь нужно указать соответствующий fromUserID
-                toUserID = 59, // Здесь нужно указать соответствующий toUserID
+                fromUserID = fromUserID, // Здесь нужно указать соответствующий fromUserID
+                toUserID = toUserID, // Здесь нужно указать соответствующий toUserID
                 messageText = message,
                 timestamp = DateTime.UtcNow
             };
