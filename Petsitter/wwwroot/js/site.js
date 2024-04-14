@@ -13,7 +13,11 @@ connection.start().then(function () {
         var fromUserID = $("#fromUserID").val();
         var toUserID = $("#toUserID").val();
 
-        connection.invoke("SendMessage", message, fromUserID, toUserID);
+        if (message.trim() !== "") {
+            connection.invoke("SendMessage", message, parseInt(fromUserID), parseInt(toUserID));
+
+            $("#txtMsg").val("");
+        }
     });
 }).catch(function (err) {
     return console.error(err.toString());
