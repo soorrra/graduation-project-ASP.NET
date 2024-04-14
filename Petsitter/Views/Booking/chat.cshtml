@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Petsitter.ViewModels.MessageVM>
+@{
     ViewData["Title"] = "Chat with " + @ViewData["FirstName"];
 }
 
@@ -14,9 +15,36 @@
         </div>
         <div class="col-md-6">
             <h3>Messages: </h3>
-            <ul id="list" class="alert alert-info"></ul>
+            <ul id="list" class="alert alert-info">
+                @foreach (var item in Model)
+                {
+                    int? fromUserID = ViewData["fromUserID"] as int?;
+                    if (item.fromUserID == fromUserID.Value)
+                    {
+                        <li>
+                            <div style="font-weight: bold;">
+                                @ViewData["UserName"]
+                                @Html.DisplayFor(modelItem => item.fromUserID)
+                            </div>
+                            @Html.DisplayFor(modelItem => item.messageText)
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <div style="font-weight: bold;">
+                                @ViewData["FirstName"]
+                                @Html.DisplayFor(modelItem => item.fromUserID)
+                            </div>
+                            @Html.DisplayFor(modelItem => item.messageText)
+                        </li>
+                    }
+                }
+            </ul>
         </div>
     </div>
+    <div >
+
     <input type="hidden" id="fromUserID" value="@ViewData["fromUserID"]" />
     <input type="hidden" id="toUserID" value="@ViewData["toUserID"]" />
 

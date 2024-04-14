@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Petsitter.Data.Services;
@@ -35,9 +36,12 @@ namespace Petsitter.Controllers
 
         public IActionResult Chat(int sitterID)
         {
+            ChatRepo chatRepo = new ChatRepo(_db);
             //сомнительная хрень, все х переделывай 
+            string userName = HttpContext.Session.GetString("UserName");
             int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
             int fromUserID = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            List<MessageVM> myMessages = chatRepo.GetMessageVMByUserId(fromUserID);
 
 
             if (userId == null)
@@ -62,8 +66,11 @@ namespace Petsitter.Controllers
             ViewData["FirstName"] = sitter.FirstName;
             ViewData["fromUserID"] = fromUserID;
             ViewData["toUserID"] = toUserId;
+            ViewData["Messages"] = myMessages;
+            ViewData["UserName"] = userName;
 
-            return View("Chat");
+
+            return View(myMessages);
         }
 
         [Authorize]

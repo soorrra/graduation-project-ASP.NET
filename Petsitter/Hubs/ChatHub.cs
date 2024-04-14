@@ -65,5 +65,16 @@ namespace Petsitter.Hubs
                 return newChat.chatID;
             }
         }
+
+        public async Task GetMessages(int fromUserID, int toUserID)
+        {
+            var messages = _db.Messages
+                .Where(m => (m.fromUserID == fromUserID && m.toUserID == toUserID) || (m.fromUserID == toUserID && m.toUserID == fromUserID))
+                .OrderBy(m => m.timestamp)
+                .ToList();
+
+            await Clients.Caller.SendAsync("LoadMessages", messages);
+        }
+
     }
 }
