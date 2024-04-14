@@ -19,7 +19,7 @@ namespace Petsitter.Hubs
         public async Task SendMessage( string message, int fromUserID, int toUserID)
         {
             var userName = Context.User.Identity.Name;
-            await Clients.All.SendAsync("ReceiveMessage", userName, message);
+          //  await Clients.All.SendAsync("ReceiveMessage", userName, message);
 
             var chatId = GetOrCreateChatId(fromUserID, toUserID);
 
