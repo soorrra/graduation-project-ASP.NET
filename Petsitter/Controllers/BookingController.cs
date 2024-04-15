@@ -34,44 +34,7 @@ namespace Petsitter.Controllers
             return View(myBookings);
         }
 
-        public IActionResult Chat(int sitterID)
-        {
-            ChatRepo chatRepo = new ChatRepo(_db);
-            //сомнительная хрень, все х переделывай 
-            string userName = HttpContext.Session.GetString("UserName");
-            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
-            int fromUserID = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
-            List<MessageVM> myMessages = chatRepo.GetMessageVMByUserId(fromUserID);
-
-
-            if (userId == null)
-            {
-                return RedirectToPage("./Register");
-
-            }
-            //
-
-
-            CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);
-            SitterVM sitter = sitterRepo.GetSitterVM(sitterID);
-            int toUserId = sitterRepo.getUserIdBySitterId(sitterID);
-
-            sitter.SitterId = sitterID;  
-
-            if (sitter == null)
-            {
-                return RedirectToAction("SitterNotFound"); 
-            }
-
-            ViewData["FirstName"] = sitter.FirstName;
-            ViewData["fromUserID"] = fromUserID;
-            ViewData["toUserID"] = toUserId;
-            ViewData["Messages"] = myMessages;
-            ViewData["UserName"] = userName;
-
-
-            return View(myMessages);
-        }
+       
 
         [Authorize]
         public IActionResult ViewCreateBookingSitter()

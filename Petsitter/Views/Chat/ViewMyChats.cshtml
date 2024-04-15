@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Petsitter.ViewModels.MessageVM>
+
+<h1 class="text-center">My chats</h1>
+
+<div class="list-of-chats">
+    @if (Model.Any()) 
+    {
+        @foreach (var item in Model.Where(s => s.fromUserID==))
+        {
+            <section class="find-a-sitter-section">
+                @if (item.ProfileImage != null)
+                {
+                    <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" class="img-fluid mx-auto my-3 d-block img-thumbnail sitter-image" />
+                }
+                <div>
+                    <div class="name-rate">
+                        <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
+                        <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> per day</span>
+                    </div>
+                    <div class="text-uppercase" style="font-weight:bold;">
+                        @Html.DisplayFor(modelItem => item.City)
+                    </div>
+                    <div class="rating">
+                        <span class="@IsStarSelected(1, @item.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(2, @item.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(3, @item.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(4, @item.AvgRating)">&#9733;</span>
+                        <span class="@IsStarSelected(5, @item.AvgRating)">&#9733;</span>
+                    </div>
+                    <div>@Html.DisplayFor(modelItem => item.ProfileBio)</div>
+                    <div class="more-info-link">
+                        <a asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1;
+                            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @Html.DisplayFor(modelItem => item.FirstName)</a>
+                    </div>
+                </div>
+            </section>
+        }
+    }
+    else
+    {
+        <p>No sitters found.</p>
+    }
+</div>

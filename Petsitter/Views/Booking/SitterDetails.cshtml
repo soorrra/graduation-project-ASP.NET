@@ -117,7 +117,7 @@
                 <a asp-action="Book" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @ViewBag.FirstName</a>
         </div>
             <div>
-                <a asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Write a message to @ViewBag.FirstName</a>
+                <a asp-controller ="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Write a message to @ViewBag.FirstName</a>
             </div>
         <div>
             @ViewBag.ProfileBio
