@@ -24,10 +24,9 @@
                             <p class="lead">@chat.User2.FirstName</p>
                             @if (chat.User2.ProfileImage != null)
                             {
-                                <img src="data:image/png;base64, @Convert.ToBase64String(chat.User2.ProfileImage)" alt="@Html.DisplayFor(modelItem => chat.User2.FirstName) Profile Image" class="img-fluid mx-auto my-3 d-block img-thumbnail sitter-image" />
-                                <div class="more-info-link">
-                                    <a asp-controller="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Write a message to @ViewBag.FirstName</a>
-                                </div>
+                                <a asp-controller="Chat" asp-action="ChatFromMyChats" asp-route-userID="@chat.User2.UserId">
+                                    <img src="data:image/png;base64, @Convert.ToBase64String(chat.User2.ProfileImage)" alt="@Html.DisplayFor(modelItem => chat.User2.FirstName) Profile Image" style="width: 50px; height: 50px; border-radius: 9999px" />
+                                </a>
                             }
                         }
                         else
@@ -35,21 +34,14 @@
                             <p class="lead">@chat.User1.FirstName</p>
                             @if (chat.User1.ProfileImage != null)
                             {
-                                <img src="data:image/png;base64, @Convert.ToBase64String(chat.User1.ProfileImage)" alt="@Html.DisplayFor(modelItem => chat.User1.FirstName) Profile Image" class="img-fluid mx-auto my-3 d-block img-thumbnail sitter-image" />
-                                <div class="more-info-link">
-                                    <a asp-controller="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Write a message to @ViewBag.FirstName</a>
-                                </div>
+                                <a asp-controller="Chat" asp-action="ChatFromMyChats" asp-route-userID="@chat.User1.UserId">
+                                    <img src="data:image/png;base64, @Convert.ToBase64String(chat.User1.ProfileImage)" alt="@Html.DisplayFor(modelItem => chat.User1.FirstName) Profile Image" style="width: 50px; height: 50px; border-radius: 9999px" />
+                                </a>
                             }
                         }
-                     
-                       
                     </div>
                 </td>
             </tr>
         }
-
     }
 </table>
-<h1 class="text-center">My Chats</h1>
-
-
