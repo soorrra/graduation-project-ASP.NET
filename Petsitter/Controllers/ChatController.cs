@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Cms;
 using Petsitter.Data.Services;
 using Petsitter.Models;
 using Petsitter.Repositories;
 using Petsitter.ViewModels;
+using System.Drawing.Printing;
 using System.Globalization;
 
 namespace Petsitter.Controllers
@@ -23,17 +26,7 @@ namespace Petsitter.Controllers
             _webHostEnvironment = webHost;
         }
 
-        [Authorize]
-        public IActionResult ViewMyChats()
-        {
-            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
-
-            BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
-            List<BookingVM> myBookings = bookingRepo.GetUpcomingBookingVMsByUserId(userId);
-
-            return View(myBookings);
-        }
-
+        
         public IActionResult Chat(int sitterID)
         {
             ChatRepo chatRepo = new ChatRepo(_db);
@@ -49,7 +42,7 @@ namespace Petsitter.Controllers
                 return RedirectToPage("./Register");
 
             }
-            //
+            
 
 
             CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);
@@ -72,5 +65,31 @@ namespace Petsitter.Controllers
 
             return View(myMessages);
         }
+        
+        [Authorize]
+        public IActionResult ViewMyChats()
+        {
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            ChatRepo chatRepo = new ChatRepo(_db);
+
+            List<MessageVM> myMessages = chatRepo.GetMessageVMByUserId(userId);
+            var lastMessage = myMessages.LastOrDefault();
+
+          
+
+
+            //List<ChatVM> myChats = chatRepo.GetChatVMByUserId(userId);
+            ViewData["ChatLists"] = chatRepo.GetChatLists(userId);
+            ViewData["CurrUser"] = userId;
+
+
+
+            //ViewData["lastMessage"] = lastMessage;
+            //ViewData["UserName"] = userName;
+            //ViewData["ProfileImage"] = ProfileImage;
+
+            return View();
+        }
+
     }
 }
