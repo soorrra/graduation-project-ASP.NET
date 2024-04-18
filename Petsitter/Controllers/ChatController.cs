@@ -44,7 +44,6 @@ namespace Petsitter.Controllers
             }
             
 
-
             CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);
             SitterVM sitter = sitterRepo.GetSitterVM(sitterID);
             int toUserId = sitterRepo.getUserIdBySitterId(sitterID);
@@ -112,7 +111,7 @@ namespace Petsitter.Controllers
             //ViewData["UserName"] = userName;
             //ViewData["ProfileImage"] = ProfileImage;
 
-            return View();
+            return View("ViewMyChats");
         }
 
 

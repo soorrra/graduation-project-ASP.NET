@@ -3,6 +3,7 @@
 
     IEnumerable<Chat> chats = ViewData["ChatLists"] as IEnumerable<Chat>;
     var currUser = ViewData["CurrUser"];
+    int currUserId = (currUser as int?) ?? 0;
 }
 <table class="table">
     @if (chats.Count() == 0)
@@ -16,10 +17,12 @@
         </tr>
         @foreach (Chat chat in chats)
         {
+
             <tr class="pet-lists">
                 <td class="d-flex justify-content-between lead">
                     <div>
-                        @if (currUser == chat.User1)
+
+                        @if (currUserId == chat.User1.UserId)
                         {
                             <p class="lead">@chat.User2.FirstName</p>
                             @if (chat.User2.ProfileImage != null)
@@ -29,7 +32,7 @@
                                 </a>
                             }
                         }
-                        else
+                        else if (currUserId == chat.User2.UserId)
                         {
                             <p class="lead">@chat.User1.FirstName</p>
                             @if (chat.User1.ProfileImage != null)
@@ -43,5 +46,7 @@
                 </td>
             </tr>
         }
+
+
     }
 </table>
