@@ -39,44 +39,28 @@ namespace Petsitter.Repositories
 
 
         }
-
-        public void DeleteUserAndRelatedRecords(int userId)
+        public Tuple<string, int> DeleteUserRecord(int userID)
         {
-            // Retrieve the user entity
-            var user = _db.Users.Include(u => u.Sitters).FirstOrDefault(u => u.UserId == userId);
+            string deleteMessage;
 
-            if (user != null)
+            var user = _db.Users.Where(p => p.UserId == userID).FirstOrDefault();
+
+            try
             {
-                // Delete related records from BookingPet table
-                var bookingPets = _db.BookingPets.Where(bp => bp.Pet.UserId == userId);
-                _db.BookingPets.RemoveRange(bookingPets);
-
-                // Delete related records from Booking table
-                var bookings = _db.Bookings.Where(b => b.Sitter.UserId == userId || b.UserId == userId);
-                _db.Bookings.RemoveRange(bookings);
-
-                //// Delete related records from SitterAvailability table
-                //var sitterAvailabilities = _db.Availabilities.Where(sa => sa.Sitters.UserId == userId);
-                //_db.Availabilities.RemoveRange(sitterAvailabilities);
-
-                //// Delete related records from SitterPetType table
-                //var sitterPetTypes = _db.PetTypes.Where(spt => spt.Sitters.UserId == userId);
-                //_db.PetTypes.RemoveRange(sitterPetTypes);
-
-                // Delete Sitter record if the user is a sitter
-                var sitter = _db.Sitters.FirstOrDefault(s => s.UserId == userId);
-                if (sitter != null)
-                {
-                    _db.Sitters.Remove(sitter);
-                }
-
-                // Delete the user
-                _db.Users.Remove(user);
-
-                // Save changes
+                _db.Remove(user);
                 _db.SaveChanges();
+
+                deleteMessage = $"Success deleting {user.FirstName} on your pet lists";
             }
+
+            catch (Exception ex)
+            {
+
+                deleteMessage = ex.Message;
+            }
+            return Tuple.Create(deleteMessage, user.UserId);
         }
+
     }
 }
 
