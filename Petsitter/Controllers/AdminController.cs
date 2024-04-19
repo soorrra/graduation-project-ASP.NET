@@ -46,12 +46,10 @@ namespace Petsitter.Controllers
         }
         public IActionResult DeleteUser(int id)
         {
-            AdminRepo adminRep = new AdminRepo(_db, webHostEnvironment);
-            Tuple<string, int>  deleteUserRecord = adminRep.DeleteUserRecord(id);
-            var deleteMessage = deleteUserRecord.Item1;
+            // Call a method in AdminRepo to delete the user and related records
+            adminRepo.DeleteUserAndRelatedRecords(id);
 
-            return RedirectToAction("AdminDashboard","Admin", 
-            new { message = deleteMessage });
+            return RedirectToAction("AdminDashboard", "Admin");
         }
     }
 }

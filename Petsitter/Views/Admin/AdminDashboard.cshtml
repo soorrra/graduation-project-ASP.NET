@@ -35,11 +35,10 @@
                     <td>@user.LastName</td>
 
                     <td>
-                        <span class="table-remove">
-                            <a class="btn-delete" data-id="@user.UserID" data-controller="Admin" data-action="DeleteUser" data-body-message="Are you sure to delete @user.UserID on your pet list?">
-                                <span class="material-symbols-outlined delete">delete</span>
-                            </a>
-                        </span>
+                        <a asp-controller="Admin" asp-action="DeleteUser" asp-route-userID="@user.UserID">
+                        <button type="submit" class="btn btn-info" id="btnDelete">Delete</button>
+                        </a>
+               
                     </td>
                 </tr>
             }
