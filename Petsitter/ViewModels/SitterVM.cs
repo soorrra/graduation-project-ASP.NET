@@ -24,6 +24,7 @@ namespace Petsitter.ViewModels
 
         public string? City { get; set; }
         public List<ReviewVM>? Reviews { get; set; }
+        public List<string>? serviceTypes { get; set; }
         public List<string>? petTypes { get; set; }
         public List<DateTime>? availableDates { get; set; }
         public List<Availability>? availabilities  { get; set; }

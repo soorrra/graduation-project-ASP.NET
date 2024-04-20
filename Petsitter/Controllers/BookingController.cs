@@ -191,11 +191,13 @@ namespace Petsitter.Controllers
            
         }
 
-        public IActionResult FindASitter(int? page, List<string> petTypes, string selectedDates)
+        public IActionResult FindASitter(int? page, List<string> petTypes, List<string> serviceTypes, string selectedDates)
         {
             // Assign ViewBag values for customer's filter options.
             ViewBag.SelectedDates = selectedDates;
             ViewBag.SelectedPetTypes = petTypes;
+            ViewBag.SelectedServiceTypes = serviceTypes;
+
 
             List<DateTime> dates = new List<DateTime>();
             if (selectedDates != null)
@@ -217,6 +219,10 @@ namespace Petsitter.Controllers
             SitterRepos sitterRepos = new SitterRepos(_db, _webHostEnvironment);
             var allPetTypes = sitterRepos.getPetTypes();
             ViewBag.PetTypes = allPetTypes;
+
+            // Get all service types.
+            var allServiceTypes = sitterRepos.getServiceTypes();
+            ViewBag.ServiceTypes = allServiceTypes;
 
             // Get an IQueryable of all sitters.
             CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);

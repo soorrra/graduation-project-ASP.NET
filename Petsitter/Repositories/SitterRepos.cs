@@ -28,6 +28,10 @@ namespace Petsitter.Repositories
         {
             return _db.PetTypes.Select(p => p.PetType1).ToList();
         }
+        public List<string> getServiceTypes()
+        {
+            return _db.ServiceTypes.Select(p => p.ServiceType1).ToList();
+        }
         public List<PetType> getPetTypeSitter(int sitterId)
         {
             var petTypeSitter = (from s in _db.Sitters

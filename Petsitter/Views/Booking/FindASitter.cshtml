@@ -19,6 +19,17 @@
                 </label>
             }
         </div>
+        <label class="fw-bold">Filter By Service Type</label>
+        <div class="d-flex gap-4 pet-types">
+            @foreach (var serviceType in ViewBag.ServiceTypes)
+            {
+                <label>
+                    <input type="checkbox" name="serviceTypes" value="@serviceType" onclick="submitFilterForm()"
+                    @(ViewBag.SelectedServiceTypes != null && ViewBag.SelectedServiceTypes.Contains(serviceType) ? "checked" : "") />
+                    @serviceType
+                </label>
+            }
+        </div>
     </div>
     <div>
         <label for="selectedDates" class="fw-bold">Filter By Available Dates</label>

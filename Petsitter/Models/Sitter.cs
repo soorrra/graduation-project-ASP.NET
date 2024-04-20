@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NuGet.Protocol;
+using System;
 using System.Collections.Generic;
 
 namespace Petsitter.Models
@@ -10,6 +11,8 @@ namespace Petsitter.Models
             Bookings = new HashSet<Booking>();
             Availabilities = new HashSet<Availability>();
             PetTypes = new HashSet<PetType>();
+            ServiceTypes = new HashSet<ServiceType>();
+
         }
 
         public int SitterId { get; set; }
@@ -22,5 +25,7 @@ namespace Petsitter.Models
 
         public virtual ICollection<Availability> Availabilities { get; set; }
         public virtual ICollection<PetType> PetTypes { get; set; }
+        public virtual ICollection<ServiceType> ServiceTypes { get; set; }
+
     }
 }

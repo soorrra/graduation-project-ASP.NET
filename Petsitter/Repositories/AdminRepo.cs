@@ -43,23 +43,32 @@ namespace Petsitter.Repositories
         {
             string deleteMessage;
 
-            var user = _db.Users.Where(p => p.UserId == userID).FirstOrDefault();
+            var user = _db.Users.Include(u => u.Sitters).FirstOrDefault(p => p.UserId == userID);
 
-            try
+            if (user != null)
             {
-                _db.Remove(user);
-                _db.SaveChanges();
+                try
+                {
+                    // Удаляем пользователя и все связанные с ним записи в таблице Sitter
+                    _db.Users.Remove(user);
+                    _db.SaveChanges();
 
-                deleteMessage = $"Success deleting {user.FirstName} on your pet lists";
+                    deleteMessage = $"Success deleting {user.FirstName} on your pet lists";
+                }
+                catch (Exception ex)
+                {
+                    deleteMessage = ex.Message;
+                }
+            }
+            else
+            {
+                deleteMessage = $"User with ID {userID} not found";
             }
 
-            catch (Exception ex)
-            {
-
-                deleteMessage = ex.Message;
-            }
-            return Tuple.Create(deleteMessage, user.UserId);
+            return Tuple.Create(deleteMessage, userID);
         }
+
+
 
     }
 }

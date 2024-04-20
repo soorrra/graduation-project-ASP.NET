@@ -21,6 +21,7 @@ namespace Petsitter.Models
         public virtual DbSet<BookingPet> BookingPets { get; set; } = null!;
         public virtual DbSet<Pet> Pets { get; set; } = null!;
         public virtual DbSet<PetType> PetTypes { get; set; } = null!;
+        public virtual DbSet<ServiceType> ServiceTypes { get; set; } = null!;
         public virtual DbSet<Sitter> Sitters { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserType> UserTypes { get; set; } = null!;
@@ -185,6 +186,21 @@ namespace Petsitter.Models
                     .IsUnicode(false)
                     .HasColumnName("petType");
             });
+
+            modelBuilder.Entity<ServiceType>(entity =>
+            {
+                entity.HasKey(e => e.ServiceType1)
+                    .HasName("PK_ServiceType");
+
+                entity.ToTable("ServiceType");
+
+
+                entity.Property(e => e.ServiceType1)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("serviceName");
+            });
+
 
             modelBuilder.Entity<Sitter>(entity =>
             {
