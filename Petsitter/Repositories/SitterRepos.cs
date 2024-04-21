@@ -28,6 +28,7 @@ namespace Petsitter.Repositories
         {
             return _db.PetTypes.Select(p => p.PetType1).ToList();
         }
+
         public List<string> getServiceTypes()
         {
             return _db.ServiceTypes.Select(p => p.ServiceType1).ToList();
@@ -41,7 +42,17 @@ namespace Petsitter.Repositories
             return petTypeSitter;
 
         }
-    
+
+        public List<ServiceType> getServiceTypeSitter(int sitterId)
+        {
+            var serviceTypeSitter = (from s in _db.Sitters
+                                 from p in s.ServiceTypes
+                                 where s.SitterId == sitterId
+                                 select p).ToList();
+            return serviceTypeSitter;
+
+        }
+
 
         //Add new sitter
         public void AddSiter(Sitter sitter)
@@ -92,6 +103,7 @@ namespace Petsitter.Repositories
                           }).FirstOrDefault();
 
             List<PetType> petTypeSitter = getPetTypeSitter(sitter.SitterId);
+            List<ServiceType> serviceTypeSitter = getServiceTypeSitter(sitter.SitterId);
 
             SitterProfileVM sitterProfileVM = new SitterProfileVM
             {
@@ -109,7 +121,9 @@ namespace Petsitter.Repositories
                 UserType = sitter.UserType,
                 PetTypesAvailable = getPetTypes(),
                 SelectedPetTypes = petTypeSitter.Select(p => p.PetType1).ToList(),
-                AvgRating=sitter.AvgRating
+                ServiceTypesAvailable = getServiceTypes(),
+                SelectedServiceTypes = serviceTypeSitter.Select(p => p.ServiceType1).ToList(),
+                AvgRating =sitter.AvgRating
 
             };
 
@@ -123,7 +137,11 @@ namespace Petsitter.Repositories
             //string stringFileName = UploadCustomerFile(sitterProfileVM);
 
             List<string> petTypeSitter = getPetTypeSitter(sitterProfileVM.SitterId).Select(p => p.PetType1).ToList();
+            List<string> serviceTypeSitter = getServiceTypeSitter(sitterProfileVM.SitterId).Select(p => p.ServiceType1).ToList();
+
             PetType petTypeObj = null;
+            ServiceType serviceTypeObj = null;
+
 
             string message = String.Empty;
 
@@ -153,13 +171,17 @@ namespace Petsitter.Repositories
             var petTypesToInsert = sitterProfileVM.SelectedPetTypes.Except(petTypeSitter).ToList();
             var petTypesToDelete = petTypeSitter.Except(sitterProfileVM.SelectedPetTypes).ToList();
 
+            var serviceTypesToInsert = sitterProfileVM.SelectedServiceTypes.Except(serviceTypeSitter).ToList();
+            var serviceTypesToDelete = serviceTypeSitter.Except(sitterProfileVM.SelectedServiceTypes).ToList();
+
 
             //Sitter sitterObj = (from s in _db.Sitters
             //                 where s.SitterId == sitterProfileVM.SitterId
             //                 select s).FirstOrDefault();
 
             Sitter sitterObj = _db.Sitters.Include(s => s.PetTypes)
-                .FirstOrDefault(s => s.SitterId == sitterProfileVM.SitterId);
+                 .Include(s => s.ServiceTypes)
+                   .FirstOrDefault(s => s.SitterId == sitterProfileVM.SitterId);
 
 
             sitterObj.ProfileBio = sitterProfileVM.ProfileBio;
@@ -182,6 +204,26 @@ namespace Petsitter.Repositories
                                   where p.PetType1 == petType
                                   select p).FirstOrDefault();
                     sitterObj.PetTypes.Remove(petTypeObj);
+                    _db.SaveChanges();
+
+                }
+
+                foreach (var serviceType in serviceTypesToInsert)
+                {
+                    serviceTypeObj = (from p in _db.ServiceTypes
+                                      where p.ServiceType1 == serviceType
+                                      select p).FirstOrDefault();
+                    sitterObj.ServiceTypes.Add(serviceTypeObj);
+                    _db.SaveChanges();
+
+                }
+
+                foreach (var serviceType in serviceTypesToDelete)
+                {
+                    serviceTypeObj = (from p in _db.ServiceTypes
+                                  where p.ServiceType1 == serviceType
+                                      select p).FirstOrDefault();
+                    sitterObj.ServiceTypes.Remove(serviceTypeObj);
                     _db.SaveChanges();
 
                 }

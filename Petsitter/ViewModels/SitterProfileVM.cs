@@ -27,6 +27,8 @@ namespace Petsitter.ViewModels
         public IFormFile? ProfileImage { get; set; }
         public List<string>? PetTypesAvailable { get; set; }
         public List<string>? SelectedPetTypes { get; set; }
+        public List<string>? ServiceTypesAvailable { get; set; }
+        public List<string>? SelectedServiceTypes { get; set; }
         public string? Message { get; set; }
         public double? AvgRating { get; set; }
 

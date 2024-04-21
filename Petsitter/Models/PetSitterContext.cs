@@ -196,9 +196,9 @@ namespace Petsitter.Models
 
 
                 entity.Property(e => e.ServiceType1)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("serviceName");
+                     .HasMaxLength(255)
+                     .IsUnicode(false)
+                     .HasColumnName("serviceName");
             });
 
 
@@ -257,6 +257,22 @@ namespace Petsitter.Models
 
                             j.IndexerProperty<string>("PetType").HasMaxLength(25).IsUnicode(false).HasColumnName("petType");
                         });
+
+                entity.HasMany(s => s.ServiceTypes)
+                        .WithMany(st => st.Sitters)
+                        .UsingEntity<SitterServiceType>(
+                            j => j
+                                .HasOne(ss => ss.ServiceType)
+                                .WithMany()
+                                .HasForeignKey("ServiceType")
+                                .HasConstraintName("FK_SitterServiceType_ServiceType"),
+                            j => j
+                                .HasOne(ss => ss.Sitter)
+                                .WithMany()
+                                .HasForeignKey("SitterId")
+                                .HasConstraintName("FK_SitterServiceType_Sitter")
+                        );
+
             });
 
             modelBuilder.Entity<User>(entity =>
