@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using NuGet.Protocol.Plugins;
 using Petsitter.Data;
+using Petsitter.ViewModels;
 
 namespace Petsitter.Models
 {
@@ -258,20 +259,22 @@ namespace Petsitter.Models
                             j.IndexerProperty<string>("PetType").HasMaxLength(25).IsUnicode(false).HasColumnName("petType");
                         });
 
-                entity.HasMany(s => s.ServiceTypes)
-                        .WithMany(st => st.Sitters)
-                        .UsingEntity<SitterServiceType>(
-                            j => j
-                                .HasOne(ss => ss.ServiceType)
-                                .WithMany()
-                                .HasForeignKey("ServiceType")
-                                .HasConstraintName("FK_SitterServiceType_ServiceType"),
-                            j => j
-                                .HasOne(ss => ss.Sitter)
-                                .WithMany()
-                                .HasForeignKey("SitterId")
-                                .HasConstraintName("FK_SitterServiceType_Sitter")
-                        );
+                entity.HasMany(d => d.ServiceTypes)
+                     .WithMany(p => p.Sitters)
+                     .UsingEntity<Dictionary<string, object>>(
+                             "SitterServiceType",
+                             l => l.HasOne<ServiceType>().WithMany().HasForeignKey("ServiceName").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKSitterSerservic30F848ED"),
+                             r => r.HasOne<Sitter>().WithMany().HasForeignKey("SitterId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKSitterSersitte2FF462B4"),
+                             j =>
+                             {
+                                 j.HasKey("SitterId", "ServiceName").HasName("PKSitterSe095FA3AD9E661664");
+
+                                 j.ToTable("SitterServiceType");
+
+                                 j.IndexerProperty<int>("SitterId").HasColumnName("sitterID");
+
+                                 j.IndexerProperty<string>("ServiceName").HasMaxLength(255).IsUnicode(false).HasColumnName("serviceName");
+                             });
 
             });
 
