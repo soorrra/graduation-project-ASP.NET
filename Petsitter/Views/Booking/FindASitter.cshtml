@@ -30,6 +30,19 @@
                 </label>
             }
         </div>
+        <label class="fw-bold">Find sitter for</label>
+        <div class="d-flex gap-4 pet-types">
+            @foreach (var pet in ViewBag.Pets)
+            {
+                <label>
+                    <input type="checkbox" name="petNames" value="@pet.Name" onclick="submitFilterForm()"
+                    @(ViewBag.SelectedPetNames != null && ViewBag.SelectedPetNames.Contains(pet.Name) ? "checked" : "") />
+                    @pet.Name
+                </label>
+            }
+
+
+        </div>
     </div>
     <div>
         <label for="selectedDates" class="fw-bold">Filter By Available Dates</label>

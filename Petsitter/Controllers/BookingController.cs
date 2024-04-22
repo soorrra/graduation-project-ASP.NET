@@ -191,12 +191,15 @@ namespace Petsitter.Controllers
            
         }
 
-        public IActionResult FindASitter(int? page, List<string> petTypes, List<string> serviceTypes, string selectedDates)
+        public IActionResult FindASitter(int? page, List<string> petTypes, List<string> serviceTypes, List<string> petNames, string selectedDates)
         {
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+
             // Assign ViewBag values for customer's filter options.
             ViewBag.SelectedDates = selectedDates;
             ViewBag.SelectedPetTypes = petTypes;
             ViewBag.SelectedServiceTypes = serviceTypes;
+            ViewBag.SelectedPetNames = petNames;
 
 
             List<DateTime> dates = new List<DateTime>();
@@ -227,6 +230,11 @@ namespace Petsitter.Controllers
             // Get an IQueryable of all sitters.
             CsFacingSitterRepo sitterRepo = new CsFacingSitterRepo(_db);
 
+            // Get a list of all pets for the current user.
+            PetRepo petRepo = new PetRepo(_db, _webHostEnvironment);
+            var pets = petRepo.GetPetLists(userId);
+            ViewBag.Pets = pets;
+
             var allSitters = sitterRepo.GetAllSitterVMs().ToList();
 
             // Filter sitters.
@@ -241,6 +249,21 @@ namespace Petsitter.Controllers
             else if (petTypes != null && petTypes.Count > 0)
             {
                 allSitters = allSitters.Where(s => s.petTypes.Any(pt => petTypes.Contains(pt))).ToList();
+            }
+
+            // Filter sitters for selected pet.
+
+            if (petNames != null && petNames.Count > 0)
+            {
+                // Получить типы питомцев для выбранных имен питомцев.
+                var petTypesForSelectedPets = _db.Pets
+                    .Where(p => petNames.Contains(p.Name))
+                    .Select(p => p.PetType)
+                    .Distinct()
+                    .ToList();
+
+                // Отфильтровать ситтеров по типам питомцев.
+                allSitters = allSitters.Where(s => s.petTypes.Any(pt => petTypesForSelectedPets.Contains(pt))).ToList();
             }
 
             // Display 10 sitters per page.
