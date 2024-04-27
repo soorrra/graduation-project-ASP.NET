@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Services\Interfaces\" />
+    <Folder Include="wwwroot\fonts\" />
   </ItemGroup>
 
 	

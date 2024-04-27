@@ -3,6 +3,7 @@
 @inject UserManager<IdentityUser> UserManager
 @inject IHttpContextAccessor HttpContextAccessor
 
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
@@ -23,10 +24,15 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
+                <a class="register-button" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
+                <a class="login-button" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
+            </li>
+            <li class="nav-item">
+                <a class="" asp-area="menuPic" asp-controller="Home" asp-action="Index">
+                    <img class="img" src="/Images/menu.png" alt="menu">
+                </a>
             </li>
         }
         else
@@ -49,10 +55,26 @@
                     <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
                 </form>
             </li>
+            <li class="nav-item">
+                <a class="" asp-area="menuPic" asp-controller="Home" asp-action="Index">
+                    <img class="img" src="/Images/menu.png" alt="menu">
+                </a>
+            </li>
+
         }
 }
 else
-{
+    {
+        <li class="nav-item">
+            <label class="switch">
+
+                <input type="checkbox" id="langCheck">
+
+                <span class="slider round">EN RU</span>
+
+            </label>
+        </li>
+
         <li class="nav-item">
             <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
@@ -64,10 +86,31 @@ else
             </form>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
+            <a class="register-button" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
+            <a class="login-button" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
         </li>
-}
+        <li class="nav-item">
+            <a class="" asp-area="menuPic" asp-controller="Home" asp-action="Index">
+                <img class="img" src="/Images/menu.png" alt="menu">
+            </a>
+        </li>
+    }
 </ul>
+
+<script>
+    var langCheckbox = document.getElementById('langCheck');
+
+    langCheckbox.addEventListener('change', function () {
+        if (langCheckbox.checked) {
+            console.log('Чекбокс ru');
+
+           
+        } else {
+            console.log('Чекбокс en');
+            
+
+        }
+    });
+</script>

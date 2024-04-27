@@ -27,14 +27,12 @@
 </head>
 <body>
     <header>
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img class="petsitterLogo" src="~/Images/Pet Sitter logo cropped.png" alt="petsitterLogo">
-                    <h4 class="logo"><strong>Pet S</strong>itter </h4>
-
-                </a>
-
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="petsitterLogo" src="~/Images/Pet Sitter logo cropped.png" alt="petsitterlogo">
+            </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -43,15 +41,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     @if (!User.Identity.IsAuthenticated || HttpContextAccessor.HttpContext.Session.GetString("UserID") == null)
                     {
-                        <ul class="navbar-nav flex-grow-1">
+                       @*  <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Find A Sitter"]</a>
                             </li>
-                            
-                        </ul>
+
+                        </ul> *@
                     }
                     else
                     {
@@ -65,7 +63,7 @@
 
                             @*This two nav item should be accessed only by admin*@
                             @*I didn't set this two nav as same as below in order to allow everyone create a admin account in development mode*@
-                           
+
                             @*--------------------------------------------------------------------------------------------------------*@
 
                             @if (User.IsInRole("Customer"))
@@ -86,6 +84,7 @@
                                 {
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="GetProfile">My Profile</a>
+
                                     </li>
                                 }
                             }
@@ -128,7 +127,7 @@
 
                         </ul>
                     }
-                        <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
