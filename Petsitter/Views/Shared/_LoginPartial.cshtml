@@ -75,7 +75,7 @@ else
             </label>
         </li>
 
-        <li class="nav-item">
+      @*   <li class="nav-item">
             <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
             </form>
@@ -84,7 +84,7 @@ else
             <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
             </form>
-        </li>
+        </li> *@
         <li class="nav-item">
             <a class="register-button" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
         </li>
@@ -92,9 +92,9 @@ else
             <a class="login-button" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
         </li>
         <li class="nav-item">
-            <a class="" asp-area="menuPic" asp-controller="Home" asp-action="Index">
+            <button class="header__button nav-btn-js" type="button">
                 <img class="img" src="/Images/menu.png" alt="menu">
-            </a>
+            </button>
         </li>
     }
 </ul>
@@ -113,4 +113,6 @@ else
 
         }
     });
+
+
 </script>

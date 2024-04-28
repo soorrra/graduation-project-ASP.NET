@@ -16,27 +16,23 @@
 
 *@
 
-
-
 <div class="wrapper">
-    <div class="container storeTitle">
-        <div class="row flex-column-reverse flex-lg-row webBriefDescription">
-            <div class="col-lg-4 text-center">
-                <h1 class="display-4" id="h1-pet">@Localizer["Welcome"]</h1>
-                <p>@Localizer["Join the quickly growing community of PetSitters!"]</p>
-                <a class="green-button" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Find a pet sitter"]</a>
-
+    <div class="storeTitle">
+            <div class="text-start">
+                <h1 class="h1-pet">
+                    My pet<br />
+                    is a
+                    ...
+                </h1>
+                <div class="btn-wrapper">
+                    <button type="submit" class="btnPetMainPage">cat</button>
+                </div>
             </div>
-            <div class="col-lg-8 ">
-
-                <img class="petsitterBrief" src="/Images/petsitter-image.png" alt="petsitter">
-            </div>
-        </div>
+           
     </div>
 
-    @*   <img class="adv" src="~/images/HUFFPOST.svg" alt="HUFFPOST"> *@
 
-    <hr class="mt-4">
+
 
 
     <div class="howItWorks">
@@ -184,3 +180,15 @@
     </div>
 
 </div>
+<script>
+
+    const btnPetMainPage = document.querySelector('.btnPetMainPage');
+    const petNames = ['cat', 'dog', 'friend'];
+    let currentPetIndex = 0;
+
+    btnPetMainPage.addEventListener('click', () => {
+        currentPetIndex = (currentPetIndex + 1) % petNames.length;
+        btnPetMainPage.textContent = petNames[currentPetIndex];
+    });
+
+</script>
