@@ -30,18 +30,21 @@
             </div>
            
     </div>
+    <img class="PetSittersPic" src="~/Images/PetSittersPic.png" alt="location picture">
 
-
-
-
-
+    <div class="backHowItWorks">
     <div class="howItWorks">
-        <h1>@Localizer["How it works"]</h1>
-        <div class="PicHowItWorks">
-            <img class="PicHowItWorksimg" src="~/Images/WashingandGrooming_puppybathtime.jpg" alt="petsitter">
+        <h1 class="howItWorksText">@Localizer["How it works"]</h1>
+        <div class="p-wrapper">
+        <p class="howItWorksP">PetSitters was created with the goal
+            of bringing together and forming a
+            community around pets, where users
+            can provide mutual assistance and
+            grow together.
+                </p>
         </div>
 
-        <ol class="wayOfHowItWorks">
+       @*  <ol class="wayOfHowItWorks">
             <li>
                 <legend>@Localizer["Register for an account"]</legend>
                 <p>@Localizer["FirstCap"]</p>
@@ -56,11 +59,10 @@
                 <p>@Localizer["TherdCap"]</p>
             </li>
 
-        </ol>
-        <a class="btn getStartedbtn" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Get Started"]</a>
+        </ol> *@
 
     </div>
-
+    </div>
     <hr class="mt-4">
 
 

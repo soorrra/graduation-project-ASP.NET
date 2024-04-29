@@ -6,23 +6,31 @@
 @using Microsoft.AspNetCore.Mvc.ViewFeatures
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
-
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
         @if (HttpContextAccessor.HttpContext.Session.GetString("UserID") == null)
         {
-
             <li class="nav-item">
-                <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
-                </form>
+                <label class="switch">
+
+                    <input type="checkbox" id="langCheck">
+
+                    <span class="slider round">EN RU</span>
+
+                </label>
             </li>
-                <li class="nav-item">
-                <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
-                </form>
-            </li>
+
+            @*   <li class="nav-item">
+    <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
+    </form>
+    </li>
+    <li class="nav-item">
+    <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
+    </form>
+    </li> *@
             <li class="nav-item">
                 <a class="register-button" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
             </li>
@@ -30,23 +38,41 @@
                 <a class="login-button" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
             </li>
             <li class="nav-item">
-                <a class="" asp-area="menuPic" asp-controller="Home" asp-action="Index">
-                    <img class="img" src="/Images/menu.png" alt="menu">
-                </a>
+                <input type="checkbox" id="active" style="display:none;">
+                <label for="active" class="menu-btn"><img class="img" src="/Images/menu.png" alt="menu"></label>
+                <div class="wrapper-menu-test">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
             </li>
         }
         else
         {
             <li class="nav-item">
-                <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
-                </form>
+                <label class="switch">
+
+                    <input type="checkbox" id="langCheck">
+
+                    <span class="slider round">EN RU</span>
+
+                </label>
             </li>
-            <li class="nav-item">
-                <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
-                </form>
-            </li>
+
+            @*   <li class="nav-item">
+    <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
+    </form>
+    </li>
+    <li class="nav-item">
+    <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
+    </form>
+    </li> *@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @HttpContextAccessor.HttpContext.Session.GetString("UserName")!</a>
             </li>
