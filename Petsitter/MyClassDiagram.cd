@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Petsitter.Controllers.AdminController">
+    <Position X="2" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAApAAAAAAABAAEAAAAAAIAIAAAAAIAAgEAIAAAAAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.BookingController">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAgACAABAAAABAAAAABABYAAAAAAACgAACQAKgCAA=</HashCode>
+      <FileName>Controllers\BookingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.ChatController">
+    <Position X="5.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAgAAAAAAAAAAAQAAAAAAQAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ChatController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.CustomerController">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAAIAAAAgAAAAIIAAAAQAAAggAAAAAAAA=</HashCode>
+      <FileName>Controllers\CustomerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.EmailDataController">
+    <Position X="2" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAABgCAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\EmailDataController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.HomeController">
+    <Position X="3.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgAAAAAQAAAAACAAAAIAAEAQAAAAEAEAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.ReviewController">
+    <Position X="5.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ReviewController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.RoleController">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\RoleController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.SitterController">
+    <Position X="2" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAgAAAAgABEAAABAABAAAQIAAAAAAAABAAAgAACAA=</HashCode>
+      <FileName>Controllers\SitterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Controllers.UserRoleController">
+    <Position X="5.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAABAAAAAAAAAAAAAAAAEAAAAEAAAABCAA=</HashCode>
+      <FileName>Controllers\UserRoleController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Hubs.ChatHub">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAACAAIAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hubs\ChatHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.AspNetRole">
+    <Position X="9" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAQAAAAAAAAQAAAAAAAAACAAABAAAAAA=</HashCode>
+      <FileName>Models\AspNetRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.AspNetRoleClaim">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\AspNetRoleClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.AspNetUser">
+    <Position X="12.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAABCAAoEAIAABAQAABQgAAQAAIAQQABAAAAQA=</HashCode>
+      <FileName>Models\AspNetUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.AspNetUserClaim">
+    <Position X="14.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\AspNetUserClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.AspNetUserLogin">
+    <Position X="5.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\AspNetUserLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.AspNetUserToken">
+    <Position X="9" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAAAAAEAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\AspNetUserToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.Availability">
+    <Position X="10.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAgAAAAAAAAAAAAAEAgAAA=</HashCode>
+      <FileName>Models\Availability.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.Booking">
+    <Position X="16" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABADAAAAAQAIAAAAAAAAAAggAAIAABEAQACAAEAAAAA=</HashCode>
+      <FileName>Models\Booking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.BookingNew">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABADAAAAAQAIAAAAAAAAAAggAAIAABEAQACAAEAAAAA=</HashCode>
+      <FileName>Models\BookingNew.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.BookingPet">
+    <Position X="16" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAICAAAAAABAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BookingPet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.Chat">
+    <Position X="7.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAEIAAAAAACAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\Chat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.ComposeEmailModel">
+    <Position X="9" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAIABAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\ComposeEmailModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.EmailData">
+    <Position X="3.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAIABAAAAAAAIAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EmailData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.ErrorViewModel">
+    <Position X="9" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.IPN">
+    <Position X="16" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACAAAABAIAAABAAoAAAAUAAEwAIgAAAgAAAAAQA=</HashCode>
+      <FileName>Models\IPN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.Message">
+    <Position X="9" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgAAAAAAAAAAAAAAAAAgAAAAgAAAAABCQIAAA=</HashCode>
+      <FileName>Models\Message.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.Pet">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAABAAAAAABgAwAAAAIAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Models\Pet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.PetsitterContext">
+    <Position X="14.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIACAAAQAwAACFBAAAAAAAUAAACAAAAAEAAQAAAAA=</HashCode>
+      <FileName>Models\PetSitterContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.PetsittersUser">
+    <Position X="7.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAIIAAAQAgAAAAAAAAAAAAAAAAAABg=</HashCode>
+      <FileName>Models\PetSittersUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.PetType">
+    <Position X="2" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Models\PetType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.ServiceType">
+    <Position X="5.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ServiceType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.Sitter">
+    <Position X="10.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAJAAAAAgAgAAABAAAAAAgAQAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Sitter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.User">
+    <Position X="12.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAgAAAOJAAAQAgAAAAACAAAAAAAAAAAABk=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.Models.UserType">
+    <Position X="12.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.AdminDashboardVM">
+    <Position X="17.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\AdminDashboardVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.BookingFormVM">
+    <Position X="19.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAIAAAEAAAAAACgAAAAAAAAQAAAIEAAAAA=</HashCode>
+      <FileName>ViewModels\BookingFormVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.BookingPetVM">
+    <Position X="10.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BookingPetVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.BookingVM">
+    <Position X="21.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAQAIAAAEAAAAAAigAAAAABAAQAAAAEAAAAA=</HashCode>
+      <FileName>ViewModels\BookingVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.ChatVM">
+    <Position X="21.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ViewModels\ChatVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.CreateBookingFormVM">
+    <Position X="17.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAEAAAAAAAgAAAAAAAAQAAAIEAAAAA=</HashCode>
+      <FileName>ViewModels\CreateBookingFormVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.CreateReviewVM">
+    <Position X="19.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgCAAAAAAAIAAAAAAAAAAAgAAAAAAEAAACAAEAAAAA=</HashCode>
+      <FileName>ViewModels\CreateReviewVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.CustomerVM">
+    <Position X="19.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAKIAAAQAAAAABACBAAAAAAgAAAABg=</HashCode>
+      <FileName>ViewModels\CustomerVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.MessageVM">
+    <Position X="3.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAABAQIAAA=</HashCode>
+      <FileName>ViewModels\MessageVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.PetVM">
+    <Position X="21.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAABAAAAAABgEwAAAAIAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ViewModels\PetVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.RatingCountVM">
+    <Position X="17.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAEQAAAAAgAAAgAAIA=</HashCode>
+      <FileName>ViewModels\RatingCountVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.ReviewVM">
+    <Position X="14.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAIAAAAAACAAAAAAAQAACAAAAAAAAAAAggA=</HashCode>
+      <FileName>ViewModels\ReviewVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.RoleVM">
+    <Position X="12.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>ViewModels\RoleVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.SitterAvailabilityVM">
+    <Position X="9" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAIEAAAAA=</HashCode>
+      <FileName>ViewModels\SitterAvailabilityVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.SitterDashboardVM">
+    <Position X="21.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAIEAAAAEgACCAAAAAAAAAACAAAAAAAgACAgwA=</HashCode>
+      <FileName>ViewModels\SitterDashboardVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.SitterProfileVM">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAEAAAiAAAAAKIAAAQAgAgAgACAAAAAAAKQAAIDg=</HashCode>
+      <FileName>ViewModels\SitterProfileVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.SitterServiceTypeVM">
+    <Position X="16" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SitterServiceTypeVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.SitterVM">
+    <Position X="19.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBAAAEAAQAEAAAAKACAAAAAAAAgAAAAAAAAAAAAAKAA=</HashCode>
+      <FileName>ViewModels\SitterVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.UserRoleVM">
+    <Position X="16" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\UserRoleVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petsitter.ViewModels.UserVM">
+    <Position X="17.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\UserVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
