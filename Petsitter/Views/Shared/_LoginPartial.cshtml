@@ -6,6 +6,7 @@
 @using Microsoft.AspNetCore.Mvc.ViewFeatures
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
@@ -37,19 +38,18 @@
             <li class="nav-item">
                 <a class="login-button" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
             </li>
-        @*     <li class="nav-item">
-                <input type="checkbox" id="active" style="display:none;">
-                <label for="active" class="menu-btn"><img class="img" src="/Images/menu.png" alt="menu"></label>
-                <div class="wrapper-menu-test">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Feedback</a></li>
-                    </ul>
+            <li class="nav-item">
+                <div class="header-wrapper">
+
+                    <div class="nav-but-wrap">
+                        <div class="menu-icon hover-target">
+                            <span class="menu-icon__line menu-icon__line--light menu-icon__line-left"></span>
+                            <span class="menu-icon__line menu-icon__line--light"></span>
+                            <span class="menu-icon__line menu-icon__line--light menu-icon__line-right"></span>
+                        </div>
+                    </div>
                 </div>
-            </li> *@
+            </li>
         }
         else
         {
@@ -81,10 +81,19 @@
                     <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
                 </form>
             </li>
+          
             <li class="nav-item">
-                <a class="" asp-area="menuPic" asp-controller="Home" asp-action="Index">
-                    <img class="img" src="/Images/menu.png" alt="menu">
-                </a>
+                <div class="header-wrapper">
+
+                    <div class="nav-but-wrap">
+                        <div class="menu-icon hover-target">
+                            <span class="menu-icon__line menu-icon__line--light menu-icon__line-left"></span>
+                            <span class="menu-icon__line menu-icon__line--light"></span>
+                            <span class="menu-icon__line menu-icon__line--light menu-icon__line-right"></span>
+                        </div>
+                    </div>
+                </div>
+              
             </li>
 
         }
@@ -118,13 +127,101 @@ else
             <a class="login-button" asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
         </li>
         <li class="nav-item">
-            <button class="header__button nav-btn-js" type="button">
-                <img class="img" src="/Images/menu.png" alt="menu">
-            </button>
+            <div class="header-wrapper">
+
+                <div class="nav-but-wrap">
+                    <div class="menu-icon hover-target">
+                        <span class="menu-icon__line menu-icon__line--light menu-icon__line-left"></span>
+                        <span class="menu-icon__line menu-icon__line--light"></span>
+                        <span class="menu-icon__line menu-icon__line--light menu-icon__line-right"></span>
+                    </div>
+                </div>
+            </div>
         </li>
     }
 </ul>
 
+
+<div class='cursor' id="cursor"></div>
+<div class='cursor2' id="cursor2"></div>
+<div class='cursor3' id="cursor3"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+
+    /* Please ❤ this if you like it! */
+
+
+    (function ($) {
+        "use strict";
+
+        //Page cursors
+
+        document.getElementsByTagName("body")[0].addEventListener("mousemove", function (n) {
+            t.style.left = n.clientX + "px",
+                t.style.top = n.clientY + "px",
+                e.style.left = n.clientX + "px",
+                e.style.top = n.clientY + "px",
+                i.style.left = n.clientX + "px",
+                i.style.top = n.clientY + "px"
+        });
+        var t = document.getElementById("cursor"),
+            e = document.getElementById("cursor2"),
+            i = document.getElementById("cursor3");
+        function n(t) {
+            e.classList.add("hover"), i.classList.add("hover")
+        }
+        function s(t) {
+            e.classList.remove("hover"), i.classList.remove("hover")
+        }
+        s();
+        for (var r = document.querySelectorAll(".hover-target"), a = r.length - 1; a >= 0; a--) {
+            o(r[a])
+        }
+        function o(t) {
+            t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
+        }
+
+        //Navigation
+
+        var app = function () {
+            var body = undefined;
+            var menu = undefined;
+            var menuItems = undefined;
+            var init = function init() {
+                body = document.querySelector('body');
+                menu = document.querySelector('.menu-icon');
+                menuItems = document.querySelectorAll('.nav__list-item');
+                applyListeners();
+            };
+            var applyListeners = function applyListeners() {
+                menu.addEventListener('click', function () {
+                    return toggleClass(body, 'nav-active');
+                });
+            };
+            var toggleClass = function toggleClass(element, stringClass) {
+                if (element.classList.contains(stringClass)) element.classList.remove(stringClass); else element.classList.add(stringClass);
+            };
+            init();
+        }();
+
+
+        //Switch light/dark
+
+        $("#switch").on('click', function () {
+            if ($("body").hasClass("light")) {
+                $("body").removeClass("light");
+                $("#switch").removeClass("switched");
+            }
+            else {
+                $("body").addClass("light");
+                $("#switch").addClass("switched");
+            }
+        });
+
+    })(jQuery);
+</script>
 <script>
     var langCheckbox = document.getElementById('langCheck');
 
