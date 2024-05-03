@@ -220,6 +220,11 @@ html {
     }
 
 .backHowItWorks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50vh;
     background: linear-gradient(180deg, #95b08f 0%, #a7c0a4 100%);
 }
 
@@ -227,8 +232,6 @@ html {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    padding: 160px 20px 160px 20px;
-    margin: auto auto 0 auto;
     width: 60%;
 }
 .howItWorksText {
@@ -1070,5 +1073,116 @@ body.light {
         opacity: 0;
     }
 
-/* #Link to page
+/* #Slider
 ================================================== */
+.slider__wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+.vertical-slider.slick-dotted {
+    margin-bottom: 0;
+}
+
+.vertical-slider {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    float: right;
+    width: 50%;
+}
+
+    .vertical-slider > .slick-dots {
+        bottom: auto;
+        left: 0.5em;
+        padding: 0;
+        right: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+    }
+
+        .vertical-slider > .slick-dots li {
+            display: block;
+            margin: 0 0.125em;
+        }
+
+            .vertical-slider > .slick-dots li button {
+                padding: 0.125em;
+            }
+
+    .vertical-slider .slide {
+        height: 100vh;
+    }
+
+.slide {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-slide:nth-child(1n) {
+    background-color: #D0C4AA;
+}
+
+.vertical-slide:nth-child(2n) {
+    background-color: #D0C4AA;
+}
+
+.vertical-slide:nth-child(3n) {
+    background-color: #D0C4AA;
+}
+
+.vertical-slide:nth-child(4n) {
+    background-color: #D0C4AA;
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.slide__num {
+    float: right;
+    font-weight: 600;
+    font-size: 280px;
+    line-height: 100%;
+    color: #e1e1e0;
+}
+.slide__text {
+    font-weight: 400;
+    font-size: calc(35px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
+    color: #2D2213;
+    float: right;
+    max-width: 500px;
+}
+.slick-dots {
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: auto;
+}
+
+    .slick-dots li button::before {
+        color: #fff;
+    }
+
+    .slick-dots li.slick-active button::before {
+        color: #fff;
+    }
+
+.slick-prev,
+.slick-next {
+    z-index: 10;
+}
+
+.slick-next {
+    right: 35px;
+}
+
+.slick-prev {
+    left: 35px;
+}

@@ -34,16 +34,16 @@
     <img class="PetSittersPic" src="~/Images/PetSittersPic.png" alt="location picture">
 
     <div class="backHowItWorks">
-    <div class="howItWorks">
-        <h1 class="howItWorksText">@Localizer["How it works"]</h1>
-        <div class="p-wrapper">
-        <p class="howItWorksP">PetSitters was created with the goal
-            of bringing together and forming a
-            community around pets, where users
-            can provide mutual assistance and
-            grow together.
-                </p>
-        </div>
+         <div class="howItWorks">
+            <h1 class="howItWorksText">@Localizer["How it works"]</h1>
+            <div class="p-wrapper">
+            <p class="howItWorksP">PetSitters was created with the goal
+                of bringing together and forming a
+                community around pets, where users
+                can provide mutual assistance and
+                grow together.
+                    </p>
+            </div>
 
        @*  <ol class="wayOfHowItWorks">
             <li>
@@ -62,44 +62,57 @@
 
         </ol> *@
 
-    </div>
-    </div>
-    <hr class="mt-4">
-
-
-    <div class="wayToHireacceptProfessionalCleaner">
-
-        <h1>@Localizer["A new way to care for your pets"]</h1>
-        <div class="hireAProfessionalCleaner">
-            <div class="medialocation">
-
-                <img class="locationpic item-a" src="~/images/location.svg" alt="location picture">
-                <div>
-                    <h2 class="item-b">@Localizer["Local pet sitters near you"]</h2>
-                    <p class="item-c">@Localizer["With a quickly growing community, you'll find what you need"]</p>
-                </div>
-            </div>
-            <div class="mediaHireYouTerm">
-
-                <img class="HireYouTerm item-d" src="~/images/HireYouterm.svg" alt="Hire you term">
-                <div>
-
-                    <h2 class="item-e">@Localizer["Hire on your own terms"]</h2>
-                    <p class="item-f">@Localizer["Choose a pet sitter who fits your schedule and pay them directly"]</p>
-                </div>
-            </div>
-
-            <div class="mediaPersonalized">
-                <img class="Personalized item-g" src="~/images/PersonalizedPetSitting.png" alt="Personalize Pet Sitting">
-                <div>
-                    <h2 class="item-h">@Localizer["Personalized pet sittting"]</h2>
-                    <p class="item-i">@Localizer["Contact your chosen pet sitter and personalize your pet's experience"]</p>
-                </div>
-            </div>
-
-
         </div>
     </div>
+    <div class="slider__wrapper">
+        <div class="vertical-slider">
+            <div class="slide vertical-slide">
+                <div class="slide-content">
+                        <p class="slide__num">
+                            01
+                        </p>
+                        <p class="slide__text">
+                             @Localizer["Register for an account"]</br></br>
+                             @Localizer["Pet sitter or pet parent, you first need an account! Sign up mow!"]
+                        </p>
+                </div>
+            </div>
+            <div class="slide vertical-slide">
+                <div class="slide-content">
+                    <p class="slide__num">
+                        02
+                    </p>
+                    <p class="slide__text">
+                        @Localizer["Local pet sitters near you"]</br></br>
+                        @Localizer["With a quickly growing community, you'll find what you need"]
+                    </p>
+                </div>
+            </div>
+            <div class="slide vertical-slide">
+                <div class="slide-content">
+                    <p class="slide__num">
+                        03
+                    </p>
+                    <p class="slide__text">
+                        @Localizer["Hire on your own terms"]</br></br>
+                        @Localizer["Choose a pet sitter who fits your schedule and pay them directly"]
+                    </p>
+                </div>
+            </div>
+            <div class="slide vertical-slide">
+                <div class="slide-content">
+                    <p class="slide__num">
+                        04
+                    </p>
+                    <p class="slide__text">
+                        @Localizer["Personalized pet sittting"]</br></br>
+                        @Localizer["Contact your chosen pet sitter and personalize your pet's experience"]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <hr class="mt-4">
 
@@ -194,4 +207,41 @@
         btnPetMainPage.textContent = petNames[currentPetIndex];
     });
 
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
+<script>
+    (function ($) {
+        $(function () {
+            $('.vertical-slider').slick({
+                arrows: false,
+                dots: false,
+                edgeFriction: .5,
+                infinite: false,
+                vertical: true,
+                verticalSwiping: true,
+            });
+
+            $('.vertical-slider').mousewheel(function (e) {
+                if (e.deltaY < 0) {
+                    if ($(this).slick('slickCurrentSlide') == $(this).find('.slide').length - 1) {
+                        return
+                    }
+
+                    e.preventDefault()
+                    $(this).slick('slickNext')
+                } else {
+                    if ($(this).slick('slickCurrentSlide') == 0) {
+                        return
+                    }
+
+                    e.preventDefault()
+                    $(this).slick('slickPrev')
+                }
+            });
+        });
+    }(jQuery));
 </script>
