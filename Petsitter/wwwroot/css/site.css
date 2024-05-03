@@ -1076,6 +1076,7 @@ body.light {
 /* #Slider
 ================================================== */
 .slider__wrapper {
+    background-color: #D0C4AA;
     position: relative;
     height: 100vh;
     width: 100%;
@@ -1120,22 +1121,6 @@ body.light {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.vertical-slide:nth-child(1n) {
-    background-color: #D0C4AA;
-}
-
-.vertical-slide:nth-child(2n) {
-    background-color: #D0C4AA;
-}
-
-.vertical-slide:nth-child(3n) {
-    background-color: #D0C4AA;
-}
-
-.vertical-slide:nth-child(4n) {
-    background-color: #D0C4AA;
 }
 
 .slide-content {
