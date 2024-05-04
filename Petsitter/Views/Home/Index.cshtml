@@ -1,20 +1,20 @@
-﻿@*@model IEnumerable<Petsitter.Models.User>
-*@
-@model IEnumerable<Petsitter.ViewModels.SitterVM>
+﻿@model IEnumerable<Petsitter.ViewModels.SitterVM>
 
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 
 
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@*<div class="text-center">
-
-*@
 
 <div class="wrapper">
     <div class="storeTitle">
@@ -44,23 +44,6 @@
                 grow together.
                     </p>
             </div>
-
-       @*  <ol class="wayOfHowItWorks">
-            <li>
-                <legend>@Localizer["Register for an account"]</legend>
-                <p>@Localizer["FirstCap"]</p>
-            </li>
-
-            <li>
-                <legend>@Localizer["Browse sitters in your area"]</legend>
-                <p>@Localizer["SecCap"]</p>
-            </li>
-            <li>
-                <legend>@Localizer["Hire the best pet sitter"]</legend>
-                <p>@Localizer["TherdCap"]</p>
-            </li>
-
-        </ol> *@
 
         </div>
     </div>
@@ -113,78 +96,70 @@
         </div>
     </div>
 
+    <div class="service__wrapper">
+        <div class="service__content">
+            <p class="service__text">
+                What type of service do you need?
+            </p>
+                <button class="btnServiceType">Care</button>
+        </div>
+    </div>
 
-    <hr class="mt-4">
-
-    <div class="container mx-auto">
-        <h1 class="text-center">@Localizer["Top pet sitters"]</h1>
-
-        <div class="row">
-
+    <div class="found__wrapper">
+        <div class="found__content">
+            <p class="service__text">We have found a sitter for your pet!</p>
+        </div>
+        <div class="found__sitters__wrapper">
+            <div id="column-1"></div>
+            <div id="column-2"></div>
+            <div id="column-3"></div>
             @if (Model.Any())
             {
-
-                @foreach (var item in Model.Where(s => s.SitterId != 1))
+                @foreach (var item in Model)
                 {
-                    <div class="col-md-4">
-                        <div class="card mb-4 h-100">
-                            <div class="card-body">
-                                <div style="display: flex; align-items: center;">
-                                    @if (item.ProfileImage == null)
+                    <div class="card">
+                        <div class="card__body">
+                            @if (item.ProfileImage != null)
+                            {
+                                <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" />
+                            }
+                            <div>
+                                <h5 class="card__title">@Html.DisplayFor(modelItem => item.FirstName)</h5>
+                                <small class="text-muted">
+                                    @for (int i = 1; i <= 5; i++)
                                     {
-                                        <div style="width: 50px; height: 50px; border: 2px solid black; border-radius: 50%; margin-right: 10px;"></div>
+                                        if (i <= item.AvgRating)
+                                        {
+                                            <i class="fas fa-star text-warning"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="far fa-star"></i>
+                                        }
                                     }
-                                    else
-                                    {
-                                        <img style="width: 50px; height: 50px; border: 2px solid black; border-radius: 50%; margin-right: 10px;" src="data:image/png;base64,@Convert.ToBase64String(item.ProfileImage)" alt="User Profile Image" />
-                                    }
-                                    <div class="d-flex flex-column justify-content-start align-items-start">
-                                        <h5 class="card-title" style="margin: 0; text-align: center;">@Html.DisplayFor(modelItem => item.FirstName)</h5>
-                                        <small class="text-muted">
-                                            @for (int i = 1; i <= 5; i++)
-                                            {
-                                                if (i <= item.AvgRating)
-                                                {
-                                                    <i class="fas fa-star text-warning"></i>
-                                                }
-                                                else
-                                                {
-                                                    <i class="far fa-star"></i>
-                                                }
-                                            }
-
-                                        </small>
-                                    </div>
-                                </div>
-
-
-
-
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.ProfileBio)</p>
-                                @*                                <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.startDate) - @Html.DisplayFor(modelItem => item.endDate)</small></p>
-                        *@
-
+                                </small>
                             </div>
-                            <div class="card-footer d-flex justify-content-between flex-wrap">
-                                <span><span class="price" style="color:red">$@Html.DisplayFor(modelItem => item.Rate)</span> @Localizer["per day"]</span>
-
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.ProfileBio)</p>
+                            <div class="card__footer">
+                                <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> @Localizer["per day"]</span>
                                 <div class="more-info-link">
-                                    <a asp-controller="Booking" asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="link-light"><button class="mx-auto">@Localizer["View profile"]</button></a>
+                                    <a asp-controller="Booking" asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="link-light">
+                                        <button>@Localizer["View profile"]</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
-            }
 
+            }
             else
             {
                 <p>@Localizer["No sitters found"]</p>
             }
         </div>
-
-
     </div>
+
 
     <hr class="mt-4">
 
@@ -197,6 +172,22 @@
 
 </div>
 <script>
+    $(function () {
+        var cards = $(".found__sitters__wrapper .card");
+        var column1 = $("#column-1");
+        var column2 = $("#column-2");
+        var column3 = $("#column-3");
+
+        for (var i = 0; i < cards.length; i++) {
+            if (i % 3 == 0) {
+                column1.append(cards[i]);
+            } else if (i % 3 == 1) {
+                column2.append(cards[i]);
+            } else {
+                column3.append(cards[i]);
+            }
+        }
+    });
 
     const btnPetMainPage = document.querySelector('.btnPetMainPage');
     const petNames = ['cat', 'dog', 'friend'];
@@ -207,11 +198,16 @@
         btnPetMainPage.textContent = petNames[currentPetIndex];
     });
 
-</script>
+    const btnServiceType = document.querySelector('.btnServiceType');
+    const serviceNames = ['Care', 'Walking', 'Trainig', 'Grooming'];
+    let currentServiceIndex = 0;
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    btnServiceType.addEventListener('click', () => {
+        currentServiceIndex = (currentServiceIndex + 1) % serviceNames.length;
+        btnServiceType.textContent = serviceNames[currentServiceIndex];
+    });
+
+</script>
 
 <script>
     (function ($) {
