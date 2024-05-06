@@ -1324,3 +1324,42 @@ body.light {
 #column-3 {
     
 }
+
+/* #Lets start section
+================================================== */
+.back__pre_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 40vh;
+    margin-top: 100px;
+}
+
+.pre_footer {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 60%;
+}
+.find__sitter__btn {
+    border: hidden;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: large;
+    font-family: "Montserrat";
+    padding: 10px 17px;
+    border-radius: 139px;
+    width: auto;
+    height: 70px;
+    background: #90ad90;
+    color: white;
+}
+
+/* #Footer
+================================================== */
+.main__footer {
+    height: 20vh;
+    background: #90ad90;
+}
