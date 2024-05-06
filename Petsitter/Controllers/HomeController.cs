@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
+using Org.BouncyCastle.Cms;
 using Petsitter.Data;
 using Petsitter.Models;
 using Petsitter.Repositories;
@@ -18,10 +20,13 @@ namespace Petsitter.Controllers
         private readonly PetsitterContext _db;
         private readonly IConfiguration _configuration;
         private readonly IStringLocalizer<HomeController> _localizer;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, PetsitterContext context, IConfiguration configuration, IStringLocalizer<HomeController> localizer)
+
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHost, PetsitterContext context, IConfiguration configuration, IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
+            _webHostEnvironment = webHost;
             _db = context;
             _configuration = configuration;
             _localizer = localizer;

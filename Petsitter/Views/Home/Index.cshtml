@@ -124,7 +124,7 @@
                                 {
                                     <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" class="card__image" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" />
                                 }
-                            <div>
+                            <div class="card__head">
                                 <h5 class="card__title">@Html.DisplayFor(modelItem => item.FirstName)</h5>
                                 <small class="text-muted">
                                     @for (int i = 1; i <= 5; i++)
@@ -142,10 +142,29 @@
                             </div>
                             @* <p class="card-text">@Html.DisplayFor(modelItem => item.ProfileBio)</p> *@
                             <div class="card__footer">
-                                <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> @Localizer["per day"]</span>
+                                @* <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> @Localizer["per day"]</span> *@
+                                <div class="card__tags">
+                                    @foreach (var petType in item.petTypes)
+                                    {
+                                        if (petType != null)
+                                        {
+                                            <span class="card__tag">@petType</span>
+                                        }
+                                    }
+                                    @if (item.serviceTypes != null)
+                                    {
+                                        foreach (var serviceType in item.serviceTypes)
+                                        {
+                                            if (serviceType != null)
+                                            {
+                                                <span class="card__tag">@serviceType</span>
+                                            }
+                                        }
+                                    }
+                                </div>
                                 <div class="more-info-link">
-                                    <a asp-controller="Booking" asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="link-light">
-                                        <button>@Localizer["View profile"]</button>
+                                    <a asp-controller="Booking" asp-action="SitterDetails" asp-route-sitterID="@item.SitterId">
+                                        <button class="card__btn">@Localizer["View profile"]</button>
                                     </a>
                                 </div>
                             </div>

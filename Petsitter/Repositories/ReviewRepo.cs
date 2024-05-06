@@ -62,6 +62,7 @@ namespace Petsitter.Repositories
                                    ProfileImage = u.ProfileImage,
                                    AvgRating = (double)_db.Bookings.Where(b => b.SitterId == s.SitterId).Average(b => b.Rating),
                                    petTypes = _db.Sitters.Where(b => b.SitterId == s.SitterId).SelectMany(s => s.PetTypes).Select(p => p.PetType1).ToList(),
+                                   serviceTypes = _db.Sitters.Where(b => b.SitterId == s.SitterId).SelectMany(s => s.ServiceTypes).Select(p => p.ServiceType1).ToList(),
                                    availabilities = s.Availabilities.ToList(),
                                }).OrderByDescending(s => s.AvgRating)
                                  .ToList();
