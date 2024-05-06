@@ -119,10 +119,11 @@
                 {
                     <div class="card">
                         <div class="card__body">
-                            @if (item.ProfileImage != null)
-                            {
-                                <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" />
-                            }
+                          
+                                @if (item.ProfileImage != null)
+                                {
+                                    <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" class="card__image" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" />
+                                }
                             <div>
                                 <h5 class="card__title">@Html.DisplayFor(modelItem => item.FirstName)</h5>
                                 <small class="text-muted">
@@ -139,7 +140,7 @@
                                     }
                                 </small>
                             </div>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.ProfileBio)</p>
+                            @* <p class="card-text">@Html.DisplayFor(modelItem => item.ProfileBio)</p> *@
                             <div class="card__footer">
                                 <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> @Localizer["per day"]</span>
                                 <div class="more-info-link">

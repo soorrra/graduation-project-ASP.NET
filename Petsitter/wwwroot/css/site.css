@@ -1231,17 +1231,35 @@ body.light {
     height: 100vh;
 }
 .card {
+   
     margin: auto 10px auto 10px;
     border-radius: 21px;
     width: 320px;
-    height: 272px;
+    height: 400px;
     box-shadow: 0 0 50px -10px rgba(29, 52, 23, 0.25);
     background: #fff;
 }
-.card__image {
-    height: 70%;
+.card__body {
     display: flex;
+    flex-direction: column;
     align-content: center;
+    border-radius: 21px;
+}
+.card__image__wrapper {
+    border-radius: 21px 21px 0px 0px;
+    float: left;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card__image {
+    object-fit: cover;
+    border-radius: 21px 21px 0px 0px;
+    float: left;
+    height: 260px;
+    width: 100%;
 }
 
 
