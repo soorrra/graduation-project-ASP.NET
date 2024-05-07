@@ -103,13 +103,11 @@ namespace Petsitter.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             /// 
-            [Required(ErrorMessage = "First Name is required.")]
-            [RegularExpression(@"^[a-zA-Z]+[ a-zA-Z-_]*$", ErrorMessage = "Alphabetical only please.")]
+          
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
-            [Required(ErrorMessage = "Last Name is required.")]
-            [RegularExpression(@"^[a-zA-Z]+[ a-zA-Z-_]*$", ErrorMessage = "Alphabetical only please.")]
+           
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
