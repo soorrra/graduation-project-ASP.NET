@@ -18,6 +18,14 @@ IF OBJECT_ID('User')
 	IS NOT NULL DROP TABLE [User];
 IF OBJECT_ID('UserType')
 	IS NOT NULL DROP TABLE UserType;
+IF OBJECT_ID('Chats') 
+	IS NOT NULL DROP TABLE Chats;
+IF OBJECT_ID('Messages') 
+	IS NOT NULL DROP TABLE Messages;
+IF OBJECT_ID('ServiceTypes') 
+	IS NOT NULL DROP TABLE ServiceType;
+IF OBJECT_ID('SitterServiceType') 
+	IS NOT NULL DROP TABLE SitterServiceType;
 	GO
 
 CREATE TABLE UserType (
@@ -42,9 +50,9 @@ CREATE TABLE [User] (
 	FOREIGN KEY(userType) REFERENCES UserType(userType)
 );
 
-INSERT INTO [User](firstName, lastName, phoneNumber, email, streetAddress, city, postalCode, userType) VALUES ('Admin', 'Admin', '6045551234', 'admin@petsitting.com', '11 Main St', 'Vancouver', 'V6A0A1', 'Admin');
-INSERT INTO [User](firstName, lastName, phoneNumber, email, streetAddress, city, postalCode, userType) VALUES ('Doug', 'Sitter', '6046661234', 'doug@gmail.com', '200 Victoria Drive', 'Vancouver', 'V6A1A2', 'Sitter');
-INSERT INTO [User](firstName, lastName, phoneNumber, email, streetAddress, city, postalCode, userType) VALUES ('Jane', 'Customer', '6047771234', 'jane@gmail.com', '555 Broadway Ave', 'Vancouver', 'V6A2A3', 'Customer');
+--INSERT INTO [User](firstName, lastName, phoneNumber, email, streetAddress, city, postalCode, userType) VALUES ('Admin', 'Admin', '6045551234', 'admin@petsitting.com', '11 Main St', 'Vancouver', 'V6A0A1', 'Admin');
+--INSERT INTO [User](firstName, lastName, phoneNumber, email, streetAddress, city, postalCode, userType) VALUES ('Doug', 'Sitter', '6046661234', 'doug@gmail.com', '200 Victoria Drive', 'Vancouver', 'V6A1A2', 'Sitter');
+--INSERT INTO [User](firstName, lastName, phoneNumber, email, streetAddress, city, postalCode, userType) VALUES ('Jane', 'Customer', '6047771234', 'jane@gmail.com', '555 Broadway Ave', 'Vancouver', 'V6A2A3', 'Customer');
 
 CREATE TABLE Sitter (
 	sitterID				INT PRIMARY KEY IDENTITY (1,1),
@@ -54,7 +62,7 @@ CREATE TABLE Sitter (
 	FOREIGN KEY(userID) REFERENCES [User](userID)
 );
 
-INSERT INTO Sitter(ratePerPetPerDay, profileBio, userID) VALUES ($200, 'I love taking dogs for walks and caring for cats!', 2);
+--INSERT INTO Sitter(ratePerPetPerDay, profileBio, userID) VALUES ($200, 'I love taking dogs for walks and caring for cats!', 2);
 
 CREATE TABLE PetType (
 	petType					VARCHAR(25) PRIMARY KEY,
@@ -88,7 +96,7 @@ CREATE TABLE Pet (
 	FOREIGN KEY(petType) REFERENCES PetType(petType)
 );
 
-INSERT INTO Pet([name], birthYear, sex, petSize, instructions, userID, petType) VALUES ('Bella', 2015, 'F', '20-50 lbs', 'Two scoops of kibble morning and night and three walks per day', 3, 'Dog');
+--INSERT INTO Pet([name], birthYear, sex, petSize, instructions, userID, petType) VALUES ('Bella', 2015, 'F', '20-50 lbs', 'Two scoops of kibble morning and night and three walks per day', 3, 'Dog');
 
 CREATE TABLE [Availability] (
 	availabilityID			INT PRIMARY KEY IDENTITY (1,1),
@@ -96,7 +104,7 @@ CREATE TABLE [Availability] (
 	endDate					DATE NOT NULL
 );
 
-INSERT INTO [Availability](startDate, endDate) VALUES ('2022-12-10', '2022-12-15');
+--INSERT INTO [Availability](startDate, endDate) VALUES ('2022-12-10', '2022-12-15');
 
 CREATE TABLE SitterAvailability (
 	sitterID				INT,
@@ -106,7 +114,7 @@ CREATE TABLE SitterAvailability (
 	FOREIGN KEY(availabilityID) REFERENCES [Availability]
 );
 
-INSERT INTO SitterAvailability VALUES (1, 1);
+--INSERT INTO SitterAvailability VALUES (1, 1);
 
 CREATE TABLE Booking (
 	bookingID				INT PRIMARY KEY IDENTITY (1,1),
@@ -124,7 +132,7 @@ CREATE TABLE Booking (
 	FOREIGN KEY(userID) REFERENCES [User](userID)
 );
 
-INSERT INTO Booking(price, startDate, endDate, specialRequests, sitterID, userID) VALUES ($200, '2022-12-10', '2022-12-12', 'Please give my dog a treat after going for a walk', 1, 3)
+--INSERT INTO Booking(price, startDate, endDate, specialRequests, sitterID, userID) VALUES ($200, '2022-12-10', '2022-12-12', 'Please give my dog a treat after going for a walk', 1, 3)
 
 CREATE TABLE BookingPet (
 	bookingID				INT,
@@ -133,7 +141,39 @@ CREATE TABLE BookingPet (
 	FOREIGN KEY(petID) REFERENCES Pet(petID)
 );
 
-INSERT INTO BookingPet VALUES (1, 1)
+--INSERT INTO BookingPet VALUES (1, 1)
+
+CREATE TABLE Chats (
+    chatID					INT PRIMARY KEY IDENTITY,
+    user1ID					INT,
+    user2ID					INT,
+    FOREIGN KEY (user1ID) REFERENCES [User](userID),
+    FOREIGN KEY (user2ID) REFERENCES [User](userID)
+);
+
+CREATE TABLE Messages (
+    messageID				INT PRIMARY KEY IDENTITY,
+    chatID					INT,
+    fromUserID				INT,
+    toUserID				INT,
+    messageText				VARCHAR(255),
+    timestamp				DATETIME,
+    FOREIGN KEY (chatID) REFERENCES Chats(chatID),
+    FOREIGN KEY (fromUserID) REFERENCES [User](userID),
+    FOREIGN KEY (toUserID) REFERENCES [User](userID)
+);
+
+CREATE TABLE ServiceType (
+  serviceName				VARCHAR(255) NOT NULL
+);
+
+--CREATE TABLE SitterServiceType (
+--	sitterID				INT,
+--	serviceName				VARCHAR(255),
+--	PRIMARY KEY(sitterID, petType),
+--	FOREIGN KEY(sitterID) REFERENCES Sitter(sitterID),
+--	FOREIGN KEY(serviceName) REFERENCES ServiceTypes(serviceName)
+--);
 
 SELECT * FROM UserType
 SELECT * FROM [User]
@@ -145,5 +185,9 @@ SELECT * FROM Availability
 SELECT * FROM SitterAvailability
 SELECT * FROM Booking
 SELECT * FROM BookingPet
+SELECT * FROM Chats
+SELECT * FROM Messages
+SELECT * FROM ServiceType
+SELECT * FROM SitterServiceType
 
 
