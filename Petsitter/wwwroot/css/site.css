@@ -11,6 +11,11 @@ body {
 /*    cursor: url("/Images/paw.png"),auto;*/    
 }
 
+.chats {
+    display: flex;
+    align-items: center;
+}
+
 header {
     padding: 20px 20px;
 }
