@@ -5,8 +5,8 @@
     var currUser = ViewData["CurrUser"];
     int currUserId = (currUser as int?) ?? 0;
 }
-<div class="chats">
-<table class="table" style="width:60%; text-align:center;">
+<div class="container">
+<table class="table">
     @if (chats.Count() == 0)
     {
         <p class="lead">You have no chats</p>

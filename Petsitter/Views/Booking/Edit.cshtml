@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Book";
 }
+<div class="container">
 
 <h1 class="text-center">Edit Booking with @Model.SitterName</h1>
 
@@ -44,7 +45,7 @@
         <input type="submit" value="Book Now" class="btn btn-primary col col-12" />
     </div>
 </form>
-
+</div>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

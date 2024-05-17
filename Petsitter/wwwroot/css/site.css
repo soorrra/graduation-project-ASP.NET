@@ -9,11 +9,12 @@ p, span, a {
 body {
     background-color: #E1E1E0;
 /*    cursor: url("/Images/paw.png"),auto;*/    
+    
 }
 
-.chats {
-    display: flex;
-    align-items: center;
+.container {
+    width: 60%;
+    margin: 0 auto;
 }
 
 header {

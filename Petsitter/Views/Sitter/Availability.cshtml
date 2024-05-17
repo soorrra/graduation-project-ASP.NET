@@ -3,6 +3,8 @@
     ViewData["Title"] = "Availability";
     string message = Model != null ? Model.Message : String.Empty;
 }
+<div class="container">
+
 <h1>Add Availability</h1>
 @if (message != null)
 {
@@ -28,7 +30,8 @@
 </form>
 <div id="calendar"></div>
 </div>
- 
+</div>
+
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print"/>
  

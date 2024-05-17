@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Announcement";
 }
-
+<div class="container">
 @if (Model.Count() == 0)
 {
     <p class="mt-4">You haven't posted any ads yet! You can leave a request <a asp-action="ViewCreateBooking">here</a> .</p>
@@ -26,3 +26,4 @@ else
         }
     </div>
 }
+</div>

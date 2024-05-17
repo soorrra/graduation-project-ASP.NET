@@ -4,6 +4,7 @@
     ViewData["Title"] = "Manage your external logins";
     ViewData["ActivePage"] = ManageNavPages.ExternalLogins;
 }
+<div class="container">
 
 <partial name="_StatusMessage" for="StatusMessage" />
 @if (Model.CurrentLogins?.Count > 0)
@@ -51,3 +52,4 @@
         </div>
     </form>
 }
+</div>
