@@ -5,16 +5,16 @@
 }
 <div class="container">
 
-<h1 class="text-center">Find a Sitter</h1>
+    <h1 class="h1-find">Find a Sitter</h1>
 
-<form method="get" action="@Url.Action("FindASitter")" id="filterForm" class="bg-light p-4 mb-4 border border-secondary rounded mx-auto find-a-sitter-filter-form">
+    <form method="get" action="@Url.Action("FindASitter")" id="filterForm" class="filterForm__body">
     <div>
-        <label class="fw-bold">Filter By Pet</label>
+        <label >Filter By Pet</label>
         <div class="d-flex gap-4 pet-types">
             @foreach (var petType in ViewBag.PetTypes)
             {
                 <label>
-                    <input type="checkbox" name="petTypes" value="@petType" onclick="submitFilterForm()"
+                        <input type="checkbox" class="my-checkbox" id="my-checkbox" name="petTypes" value="@petType" onclick="submitFilterForm()"
                        @(ViewBag.SelectedPetTypes != null && ViewBag.SelectedPetTypes.Contains(petType) ? "checked" : "") />
                     @petType
                 </label>
@@ -25,7 +25,7 @@
             @foreach (var serviceType in ViewBag.ServiceTypes)
             {
                 <label>
-                    <input type="checkbox" name="serviceTypes" value="@serviceType" onclick="submitFilterForm()"
+                        <input type="checkbox" class="my-checkbox"  name="serviceTypes" value="@serviceType" onclick="submitFilterForm()"
                     @(ViewBag.SelectedServiceTypes != null && ViewBag.SelectedServiceTypes.Contains(serviceType) ? "checked" : "") />
                     @serviceType
                 </label>
@@ -36,7 +36,7 @@
             @foreach (var pet in ViewBag.Pets)
             {
                 <label>
-                    <input type="checkbox" name="petNames" value="@pet.Name" onclick="submitFilterForm()"
+                        <input type="checkbox" class="my-checkbox" name="petNames" value="@pet.Name" onclick="submitFilterForm()"
                     @(ViewBag.SelectedPetNames != null && ViewBag.SelectedPetNames.Contains(pet.Name) ? "checked" : "") />
                     @pet.Name
                 </label>
@@ -60,30 +60,34 @@
     {
         @foreach (var item in Model.Where(s => s.SitterId != 1))
         {
-            <section class="find-a-sitter-section">
-                @if (item.ProfileImage != null)
-                {
-                    <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" class="img-fluid mx-auto my-3 d-block img-thumbnail sitter-image" />
-                }
-                <div>
-                    <div class="name-rate">
-                        <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
-                        <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> per day</span>
-                    </div>
-                    <div class="text-uppercase" style="font-weight:bold;">
-                        @Html.DisplayFor(modelItem => item.City)
-                    </div>
-                    <div class="rating">
-                        <span class="@IsStarSelected(1, @item.AvgRating)">&#9733;</span>
-                        <span class="@IsStarSelected(2, @item.AvgRating)">&#9733;</span>
-                        <span class="@IsStarSelected(3, @item.AvgRating)">&#9733;</span>
-                        <span class="@IsStarSelected(4, @item.AvgRating)">&#9733;</span>
-                        <span class="@IsStarSelected(5, @item.AvgRating)">&#9733;</span>
-                    </div>
-                    <div>@Html.DisplayFor(modelItem => item.ProfileBio)</div>
-                    <div class="more-info-link">
-                        <a asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1;
-                            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @Html.DisplayFor(modelItem => item.FirstName)</a>
+                <section class="card__find">
+                    <div class="card__body__find">
+                    @if (item.ProfileImage != null)
+                        {
+                            <div class="find__img__wrapper">
+                                <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" class="card__image__find" />
+                            </div>
+                        }
+                    <div>
+                        <div class="name-rate">
+                            <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
+                            <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> per day</span>
+                        </div>
+                        <div class="text-uppercase" style="font-weight:bold;">
+                            @Html.DisplayFor(modelItem => item.City)
+                        </div>
+                        <div class="rating">
+                            <span class="@IsStarSelected(1, @item.AvgRating)">&#9733;</span>
+                            <span class="@IsStarSelected(2, @item.AvgRating)">&#9733;</span>
+                            <span class="@IsStarSelected(3, @item.AvgRating)">&#9733;</span>
+                            <span class="@IsStarSelected(4, @item.AvgRating)">&#9733;</span>
+                            <span class="@IsStarSelected(5, @item.AvgRating)">&#9733;</span>
+                        </div>
+                        <div>@Html.DisplayFor(modelItem => item.ProfileBio)</div>
+                        <div class="more-info-link">
+                            <a asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1;
+                                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @Html.DisplayFor(modelItem => item.FirstName)</a>
+                        </div>
                     </div>
                 </div>
             </section>

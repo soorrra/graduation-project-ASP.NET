@@ -1,5 +1,128 @@
-﻿/* Find A Sitter Page */
+﻿
+/* Find A Sitter Page
+================================================== */
+.h1-find {
+    font-weight: 530;
+    font-size: calc(75px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
+    line-height: 100%;
+    color: #90ad90;
+}
 
+.filterForm__body {
+    border-radius: 21px;
+    padding: 20px 20px;
+    height: auto;
+    box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
+    background: #fff;
+}
+
+#my-checkbox {
+    appearance: none; 
+    width: 18px;
+    height: 18px;
+    border: none;
+    background-image: url(/Images/unchecked_checkbox.png);
+    background-size: contain;
+}
+
+    #my-checkbox:checked {
+        background-image: url(/Images/checked__checkbox.png);
+    }
+
+/* #Found sitter cards
+================================================== */
+
+.card__find {
+    margin: 25px 10px 25px 10px;
+    border-radius: 21px;
+    width: auto;
+    box-shadow: 0 0 50px -10px rgba(29, 52, 23, 0.25);
+    background: #fff;
+}
+
+.card__body__find {
+    margin: 25px 0px 25px 0px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    border-radius: 21px;
+}
+
+.find__img__wrapper {
+    width: 20%;
+}
+
+.card__image__find {
+    object-fit: cover;
+    border-radius: 21px 0px 0px 21px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.card__head__find {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 18px;
+}
+
+.card__title__find {
+    font-weight: 580;
+    font-size: 35px;
+    line-height: 100%;
+    text-align: center;
+    color: #1d3417;
+}
+
+.text-muted__find {
+    margin-left: auto;
+}
+
+.card__footer__find {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 18px;
+}
+
+.card__tags__find {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-right: 5px;
+}
+
+.more-info-link__find {
+    width: auto;
+    float: none;
+    margin-left: auto;
+    margin-bottom: 0px;
+}
+
+.card__tag__find {
+    display: flex;
+    align-items: center;
+    border-radius: 22px;
+    padding: 7px 7px;
+    width: auto;
+    height: 24px;
+    color: white;
+    background: #c07357;
+}
+
+.card__btn__find {
+    border: none;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 40px;
+    padding: 12px 10px;
+    width: 97px;
+    height: 30px;
+    background: #90ad90;
+    color: white;
+}
 .find-a-sitter-section .name-rate {
     display: flex;
     justify-content: space-between;
