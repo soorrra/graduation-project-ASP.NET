@@ -7,54 +7,58 @@
 
     <h1 class="h1-find">Find a Sitter</h1>
 
-    <form method="get" action="@Url.Action("FindASitter")" id="filterForm" class="filterForm__body">
-    <div>
-        <label >Filter By Pet</label>
-        <div class="d-flex gap-4 pet-types">
-            @foreach (var petType in ViewBag.PetTypes)
-            {
-                <label>
+<form method="get" action="@Url.Action("FindASitter")" id="filterForm" class="filterForm__body">
+        <a asp-action="FindASitter"><button type="button" class="btn__reset__filters"></button></a>
+
+        <div>
+                <label class="text__filter">By pet type:</label>
+            <div class="checkbox__container">
+                @foreach (var petType in ViewBag.PetTypes)
+                {
+                    <label class="lbl__checkbox">
                         <input type="checkbox" class="my-checkbox" id="my-checkbox" name="petTypes" value="@petType" onclick="submitFilterForm()"
-                       @(ViewBag.SelectedPetTypes != null && ViewBag.SelectedPetTypes.Contains(petType) ? "checked" : "") />
-                    @petType
-                </label>
-            }
-        </div>
-        <label class="fw-bold">Filter By Service Type</label>
-        <div class="d-flex gap-4 pet-types">
-            @foreach (var serviceType in ViewBag.ServiceTypes)
-            {
-                <label>
-                        <input type="checkbox" class="my-checkbox"  name="serviceTypes" value="@serviceType" onclick="submitFilterForm()"
-                    @(ViewBag.SelectedServiceTypes != null && ViewBag.SelectedServiceTypes.Contains(serviceType) ? "checked" : "") />
-                    @serviceType
-                </label>
-            }
-        </div>
-        <label class="fw-bold">Find sitter for</label>
-        <div class="d-flex gap-4 pet-types">
-            @foreach (var pet in ViewBag.Pets)
-            {
-                <label>
-                        <input type="checkbox" class="my-checkbox" name="petNames" value="@pet.Name" onclick="submitFilterForm()"
-                    @(ViewBag.SelectedPetNames != null && ViewBag.SelectedPetNames.Contains(pet.Name) ? "checked" : "") />
-                    @pet.Name
-                </label>
-            }
+                        @(ViewBag.SelectedPetTypes != null && ViewBag.SelectedPetTypes.Contains(petType) ? "checked" : "") />
+                        <span class="my-checkbox-text">@petType</span>
+                    </label>
 
 
-        </div>
-    </div>
+                }
+            </div>
+                <label class="text__filter">By service type:</label>
+            <div class="checkbox__container">
+                @foreach (var serviceType in ViewBag.ServiceTypes)
+                {
+                    <label class="lbl__checkbox">
+                            <input type="checkbox" class="my-checkbox"  name="serviceTypes" value="@serviceType" onclick="submitFilterForm()"
+                        @(ViewBag.SelectedServiceTypes != null && ViewBag.SelectedServiceTypes.Contains(serviceType) ? "checked" : "") />
+                        <span class="my-checkbox-text">@serviceType</span>
+                    </label>
+                }
+            </div>
+                <label class="text__filter">Find sitter for:</label>
+            <div class="checkbox__container">
+                @foreach (var pet in ViewBag.Pets)
+                {
+                    <label class="lbl__checkbox">
+                            <input type="checkbox" class="my-checkbox" name="petNames" value="@pet.Name" onclick="submitFilterForm()"
+                        @(ViewBag.SelectedPetNames != null && ViewBag.SelectedPetNames.Contains(pet.Name) ? "checked" : "") />
+                        <span class="my-checkbox-text">@pet.Name</span>
+                    </label>
+                }
+
+                    
+             </div>
+         </div>
     <div>
-        <label for="selectedDates" class="fw-bold">Filter By Available Dates</label>
+            <label for="selectedDates" class="text__filter">Filter by available dates:</label>
         <div class="d-flex gap-2">
             <input type="text" class="form-control date" placeholder="Select all dates service is needed"
                    id="selectedDates" name="selectedDates" value="@ViewBag.SelectedDates" />
             <button type="submit" class="btn btn-dark">Filter</button>
         </div>
     </div>
-    <a asp-action="FindASitter" class="link-light clear-button"><button type="button" class="btn btn-secondary mt-2 w-100">Reset Filters</button></a>
 </form>
+
 <div class="list-of-sitters">
     @if (Model.Any())
     {

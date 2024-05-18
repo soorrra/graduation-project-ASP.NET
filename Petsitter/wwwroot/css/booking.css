@@ -15,20 +15,67 @@
     box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
     background: #fff;
 }
-
-#my-checkbox {
-    appearance: none; 
-    width: 18px;
-    height: 18px;
-    border: none;
-    background-image: url(/Images/unchecked_checkbox.png);
+.btn__reset__filters {
+    background-image: url('/Images/trashh.png');
+    background-repeat: no-repeat;
     background-size: contain;
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    float: right;
 }
 
-    #my-checkbox:checked {
-        background-image: url(/Images/checked__checkbox.png);
+    .btn__reset__filters::after {
+        content: "Clear all";
+        margin-left: 5px;
     }
 
+.checkbox__container {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+}
+
+.lbl__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 85px;
+}
+
+.my-checkbox-text {
+    display: inline-block;
+    position: absolute;
+    margin-top: 5px;
+}
+
+.my-checkbox {
+    display: flex;
+    align-items: center;
+    border-radius: 22px;
+    border: 3px solid #E1E1E0;
+    padding: 7px 7px;
+    width: 100%;
+    height: 24px;
+    appearance: none;
+    position: relative;
+}
+
+    .my-checkbox:checked {
+        border: 3px solid #90ad90;
+    }
+        .lbl__checkbox .my-checkbox:checked + .my-checkbox-text {
+            color: #90ad90;
+        }
+
+
+.text__filter {
+    font-weight: 400;
+    font-size: medium;
+    line-height: 100%;
+}
 /* #Found sitter cards
 ================================================== */
 
