@@ -72,7 +72,7 @@
                                 <img src="data:image/png;base64, @Convert.ToBase64String(item.ProfileImage)" alt="@Html.DisplayFor(modelItem => item.FirstName) Profile Image" class="card__image__find" />
                             </div>
                         }
-                    <div>
+                    <div class="text__content__card">
                         <div class="name-rate">
                             <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
                             <span><span class="price">$@Html.DisplayFor(modelItem => item.Rate)</span> per day</span>
@@ -87,7 +87,7 @@
                             <span class="@IsStarSelected(4, @item.AvgRating)">&#9733;</span>
                             <span class="@IsStarSelected(5, @item.AvgRating)">&#9733;</span>
                         </div>
-                        <div>@Html.DisplayFor(modelItem => item.ProfileBio)</div>
+                        <div class="sitter__bio">@Html.DisplayFor(modelItem => item.ProfileBio)</div>
                         <div class="more-info-link">
                             <a asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1;
                                 box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @Html.DisplayFor(modelItem => item.FirstName)</a>

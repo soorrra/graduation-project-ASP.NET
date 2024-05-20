@@ -10,6 +10,7 @@
 
 .filterForm__body {
     border-radius: 21px;
+    margin: auto 20px auto 20px;
     padding: 20px 20px;
     height: auto;
     box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
@@ -80,9 +81,10 @@
 ================================================== */
 
 .card__find {
-    margin: 25px 10px 25px 10px;
+    margin: 35px 20px 35px 20px;
     border-radius: 21px;
     width: auto;
+    height: 35vh;
     box-shadow: 0 0 50px -10px rgba(29, 52, 23, 0.25);
     background: #fff;
 }
@@ -90,22 +92,25 @@
 .card__body__find {
     margin: 25px 0px 25px 0px;
     display: flex;
+    height: 100%;
     flex-direction: row;
     align-content: center;
     border-radius: 21px;
 }
 
 .find__img__wrapper {
-    width: 20%;
+    height: 100%;
+    width: 30%; 
+    flex-shrink: 0; /* Предотвращает сжатие изображения */
+    overflow: hidden; /* Обрезает изображение, если оно не помещается в рамку */
 }
 
 .card__image__find {
     object-fit: cover;
     border-radius: 21px 0px 0px 21px;
     height: 100%;
-    width: 100%;
+    width: 100%; /* Заполнит всю доступную область */
 }
-
 
 .card__head__find {
     display: flex;
@@ -170,6 +175,21 @@
     background: #90ad90;
     color: white;
 }
+/* #Card text contect*/
+.text__content__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 50px 20px 20px;
+}
+.sitter__bio {
+    width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: white white;
+}
+/*---------------------------------------------------------------------*/
 .find-a-sitter-section .name-rate {
     display: flex;
     justify-content: space-between;
