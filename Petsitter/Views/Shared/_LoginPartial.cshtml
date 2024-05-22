@@ -12,7 +12,7 @@
 {
         @if (HttpContextAccessor.HttpContext.Session.GetString("UserID") == null)
         {
-            <li class="nav-item">
+            @* <li class="nav-item">
                 <label class="switch">
 
                     <input type="checkbox" id="langCheck">
@@ -20,18 +20,20 @@
                     <span class="slider round">EN RU</span>
 
                 </label>
-            </li>
+            </li> *@
 
-            @*   <li class="nav-item">
-    <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
-    <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
-    </form>
-    </li>
-    <li class="nav-item">
-    <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
-    <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
-    </form>
-    </li> *@
+              <li class="nav-item">
+                <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
+                                <button class="btn__language">Ру</button>
+                            </form>
+                </li>
+                <li class="nav-item">
+                <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
+                                <button class="btn__language">En</button>
+                            </form>
+                </li>
+
+
             <li class="nav-item">
                 <a class="register-button" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
             </li>
@@ -53,7 +55,7 @@
         }
         else
         {
-            <li class="nav-item">
+          @*   <li class="nav-item">
                 <label class="switch">
 
                     <input type="checkbox" id="langCheck">
@@ -61,24 +63,24 @@
                     <span class="slider round">EN RU</span>
 
                 </label>
-            </li>
+            </li> *@
 
-            @*   <li class="nav-item">
+              <li class="nav-item">
     <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
-    <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
-    </form>
+                    <button class="btn__language">Ру</button>
+                </form>
     </li>
     <li class="nav-item">
     <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
-    <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
-    </form>
-    </li> *@
+                    <button class="btn__language">En</button>
+                </form>
+    </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @HttpContextAccessor.HttpContext.Session.GetString("UserName")!</a>
             </li>
             <li class="nav-item">
                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    <button type="submit" class="nav-link btn btn-link text-dark">@Localizer["Logout"]</button>
                 </form>
             </li>
           
@@ -100,7 +102,7 @@
 }
 else
     {
-        <li class="nav-item">
+       @*  <li class="nav-item">
             <label class="switch">
 
                 <input type="checkbox" id="langCheck">
@@ -108,18 +110,18 @@ else
                 <span class="slider round">EN RU</span>
 
             </label>
-        </li>
+        </li> *@
 
-      @*   <li class="nav-item">
+        <li class="nav-item">
             <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru-RU" asp-route-returnUrl="@Context.Request.Path" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">RU</button>
+                <button class="btn__language">Ру</button>
             </form>
         </li>
         <li class="nav-item">
             <form asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@Context.Request.Path" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">EN</button>
+                <button class="btn__language">En</button>
             </form>
-        </li> *@
+        </li>
         <li class="nav-item">
             <a class="register-button" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
         </li>
@@ -148,10 +150,36 @@ else
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    // Функция для сохранения выбранного языка в localStorage
+    function saveLanguageSelection(language) {
+        localStorage.setItem('selectedLanguage', language);
+    }
+
+    // Проверяем, был ли выбран язык при предыдущем посещении страницы
+    var selectedLanguage = localStorage.getItem('selectedLanguage');
+    if (selectedLanguage) {
+        // Если язык был выбран, добавляем класс "selected" к соответствующей кнопке
+        $('.btn__language').removeClass('selected');
+        $('.btn__language').each(function () {
+            if ($(this).text() === selectedLanguage) {
+                $(this).addClass('selected');
+            }
+        });
+    }
+
+    // При выборе языка, сохраняем выбор и добавляем класс "selected" к кнопке
+    $('.btn__language').click(function () {
+        $('.btn__language').removeClass('selected');
+        $(this).addClass('selected');
+        var selectedLanguage = $(this).text();
+        saveLanguageSelection(selectedLanguage);
+    });
+</script>
+
+<script>
 
 
-    /* Please ❤ this if you like it! */
-
+    
 
     (function ($) {
         "use strict";

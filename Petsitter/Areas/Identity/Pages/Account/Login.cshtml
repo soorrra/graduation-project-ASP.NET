@@ -1,4 +1,8 @@
 ﻿@page
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @model LoginModel
 
 @{
@@ -10,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form id="account" method="post">
-                <h1 class="mb-3 mt-5">@ViewData["Title"]</h1>
+                    <h1 class="mb-3 mt-5"> @Localizer["Sign In"]</h1>
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -30,20 +34,20 @@
                         </div>
                         <button id="login-submit" type="submit" class="w-100 btn mb-3 text-white"
                                 style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
-                            Sign In
+                                @Localizer["Sign In"]
                         </button>
                         <hr />
                         <div class="text-center">
                             <p class="mb-1">
-                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                                    <a id="forgot-password" asp-page="./ForgotPassword">@Localizer["Forgot your password?"]</a>
                             </p>
                             <p class="mb-1">
-                                Not signed up on Petsitter yet?
+                                    @Localizer["Not signed up on Petsitter yet?"]
                             </p>
                             <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" 
                             class="text-white w-50 btn mb-3 mt-3" style="background:#6366F1; 
                             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
-                                Sign Up
+                                    @Localizer["Sign Up"]
                             </a>                            
                             @*<p class="mb-0">
                                 <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>

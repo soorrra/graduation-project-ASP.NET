@@ -156,8 +156,14 @@
   <data name="Join the quickly growing community of PetSitters!" xml:space="preserve">
     <value>Присоединяйтесь к быстро растущему сообществу петситтеров!</value>
   </data>
+  <data name="Let's start!" xml:space="preserve">
+    <value>Давайте начнём!</value>
+  </data>
   <data name="Local pet sitters near you" xml:space="preserve">
     <value>Петситтеры рядом с вами</value>
+  </data>
+  <data name="My pet is a ..." xml:space="preserve">
+    <value>Мой питомец это...</value>
   </data>
   <data name="No sitters found" xml:space="preserve">
     <value>Не найдено петситтеров</value>
@@ -167,6 +173,12 @@
   </data>
   <data name="Personalized pet sittting" xml:space="preserve">
     <value>Персональный присмотр за животными</value>
+  </data>
+  <data name="Pet sitter or pet parent, you first need an account! Sign up mow!" xml:space="preserve">
+    <value>Петситтер или холяин питомца, сначала вам нужен аккаунт! Регистрируйтесь прямо сейчас!</value>
+  </data>
+  <data name="PetSitters was created" xml:space="preserve">
+    <value>Приложение PetSitters создано с целью объединить и сформировать вокруг домашних питомцев сообщество, в котором пользователи смогут оказывать друг другу помощь и развиваться вместе.</value>
   </data>
   <data name="Ready to find a pet sitter ?" xml:space="preserve">
     <value>Готовы найти петситтера?</value>
@@ -186,8 +198,14 @@
   <data name="View profile" xml:space="preserve">
     <value>Посмотреть профиль</value>
   </data>
+  <data name="We have found a sitter for your pet!" xml:space="preserve">
+    <value>Мы нашли петситтера для вашего питомца!</value>
+  </data>
   <data name="Welcome" xml:space="preserve">
     <value>Найдите своему лучшему другу нового лучшего друга</value>
+  </data>
+  <data name="What type of service do you need?" xml:space="preserve">
+    <value>Какой тип услуги вам нужен?</value>
   </data>
   <data name="With a quickly growing community, you'll find what you need" xml:space="preserve">
     <value>Благодаря быстро растущему сообществу вы найдете то, что вам нужно, рядом с вами</value>

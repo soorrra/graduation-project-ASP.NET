@@ -117,10 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Admin Dashboard" xml:space="preserve">
+    <value>Панель мониторинга</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>График работы</value>
+  </data>
+  <data name="Chats" xml:space="preserve">
+    <value>Сообщения</value>
+  </data>
+  <data name="Create New Booking" xml:space="preserve">
+    <value>Создать объявление</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Панель мониторинга</value>
+  </data>
   <data name="Find A Sitter" xml:space="preserve">
     <value>Найти петситтера</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Главная</value>
+  </data>
+  <data name="My Profile" xml:space="preserve">
+    <value>Мой профиль</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="View Announcement" xml:space="preserve">
+    <value>Просмотр объявлений</value>
+  </data>
+  <data name="View My Bookings" xml:space="preserve">
+    <value>Мои брони</value>
   </data>
 </root>

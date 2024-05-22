@@ -120,6 +120,9 @@
   <data name="Login" xml:space="preserve">
     <value>Вход</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>

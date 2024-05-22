@@ -117,37 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Admin Dashboard" xml:space="preserve">
-    <value>Admin Dashboard</value>
+  <data name="Forgot your password?" xml:space="preserve">
+    <value>Забыли пароль?</value>
   </data>
-  <data name="Availability" xml:space="preserve">
-    <value>Availability</value>
+  <data name="Not signed up on Petsitter yet?" xml:space="preserve">
+    <value>Еще не зарегистрированны?</value>
   </data>
-  <data name="Chats" xml:space="preserve">
-    <value>Chats</value>
+  <data name="Sign In" xml:space="preserve">
+    <value>Войти</value>
   </data>
-  <data name="Create New Booking" xml:space="preserve">
-    <value>Create New Booking</value>
-  </data>
-  <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
-  </data>
-  <data name="Find A Sitter" xml:space="preserve">
-    <value>Find A Sitter</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="My Profile" xml:space="preserve">
-    <value>My Profile</value>
-  </data>
-  <data name="Review" xml:space="preserve">
-    <value>Review</value>
-  </data>
-  <data name="View Announcement" xml:space="preserve">
-    <value>View Announcement</value>
-  </data>
-  <data name="View My Bookings" xml:space="preserve">
-    <value>View My Bookings</value>
+  <data name="Sign Up" xml:space="preserve">
+    <value>Зарегистрироваться </value>
   </data>
 </root>

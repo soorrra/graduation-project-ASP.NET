@@ -20,9 +20,7 @@
     <div class="storeTitle">
             <div class="text-start">
                 <h1 class="h1-pet">
-                    My pet<br />
-                    is a
-                    ...
+                @Localizer["My pet is a ..."]
                 </h1>
                 <div class="btn-wrapper">
                     <button type="submit" class="btnPetMainPage">cat</button>
@@ -37,11 +35,8 @@
          <div class="howItWorks">
             <h1 class="howItWorksText">@Localizer["How it works"]</h1>
             <div class="p-wrapper">
-            <p class="howItWorksP">PetSitters was created with the goal
-                of bringing together and forming a
-                community around pets, where users
-                can provide mutual assistance and
-                grow together.
+                <p class="howItWorksP">
+                    @Localizer["PetSitters was created"]
                     </p>
             </div>
 
@@ -99,7 +94,7 @@
     <div class="service__wrapper">
         <div class="service__content">
             <p class="service__text">
-                What type of service do you need?
+                @Localizer["What type of service do you need?"]
             </p>
                 <button class="btnServiceType">Care</button>
         </div>
@@ -107,7 +102,7 @@
 
     <div class="found__wrapper">
         <div class="found__content">
-            <p class="service__text">We have found a sitter for your pet!</p>
+            <p class="service__text">@Localizer["We have found a sitter for your pet!"]</p>
         </div>
         <div class="found__sitters__wrapper">
             <div id="column-1"></div>
@@ -182,10 +177,10 @@
 
     <div class="back__pre_footer">
         <div class="pre_footer">
-                <h1 class="howItWorksText">Let's start!</h1>
+            <h1 class="howItWorksText">@Localizer["Let's start!"]</h1>
                 <div class="p-wrapper">
                     <div class="btn-wrapper">
-                    <a class="find__sitter__btn" asp-area="" asp-controller="Booking" asp-action="FindASitter">Find a pet sitter</a>
+                    <a class="find__sitter__btn" asp-area="" asp-controller="Booking" asp-action="FindASitter">@Localizer["Find a pet sitter"]</a>
                     </div>
                 </div>
         </div>

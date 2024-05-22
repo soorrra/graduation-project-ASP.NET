@@ -156,8 +156,14 @@
   <data name="Join the quickly growing community of PetSitters!" xml:space="preserve">
     <value>Join the quickly growing community of PetSitters!</value>
   </data>
+  <data name="Let's start!" xml:space="preserve">
+    <value>Let's start!</value>
+  </data>
   <data name="Local pet sitters near you" xml:space="preserve">
     <value>Local pet sitters near you</value>
+  </data>
+  <data name="My pet is a ..." xml:space="preserve">
+    <value>My pet is a ...</value>
   </data>
   <data name="No sitters found" xml:space="preserve">
     <value>No sitters found</value>
@@ -167,6 +173,13 @@
   </data>
   <data name="Personalized pet sittting" xml:space="preserve">
     <value>Personalized pet sittting</value>
+  </data>
+  <data name="PetSitters was created" xml:space="preserve">
+    <value>PetSitters was created with the goal
+                of bringing together and forming a
+                community around pets, where users
+                can provide mutual assistance and
+                grow together.</value>
   </data>
   <data name="Ready to find a pet sitter ?" xml:space="preserve">
     <value>Ready to find a pet sitter ?</value>
@@ -186,8 +199,14 @@
   <data name="View profile" xml:space="preserve">
     <value>View profile</value>
   </data>
+  <data name="We have found a sitter for your pet!" xml:space="preserve">
+    <value>We have found a sitter for your pet!</value>
+  </data>
   <data name="Welcome" xml:space="preserve">
     <value>Find your best friend's new best friend</value>
+  </data>
+  <data name="What type of service do you need?" xml:space="preserve">
+    <value>What type of service do you need?</value>
   </data>
   <data name="With a quickly growing community, you'll find what you need" xml:space="preserve">
     <value>With a quickly growing community, you'll find what you need</value>
