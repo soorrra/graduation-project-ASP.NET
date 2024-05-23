@@ -33,6 +33,8 @@ namespace Petsitter.Controllers
             adminRepo = new AdminRepo(_db, webHostEnvironment);
             
         }
+        
+        /// same bro same
 
         public IActionResult AdminDashboard()
         {
