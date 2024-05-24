@@ -29,9 +29,10 @@ img{
 .getprofile-container {
     max-width: 800px;
     margin: 0 auto;
-/*    padding: 0 15px;
-*/    border: 1px solid #ccc;
-    box-shadow: 0 0 5px #ccc;
+    /*    padding: 0 15px;
+*/  border-radius: 21px;
+    box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
+    background: #fff;
     padding: 20px;
 }
 
