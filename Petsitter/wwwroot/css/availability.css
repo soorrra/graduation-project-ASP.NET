@@ -4,8 +4,10 @@
     display: flex;
     justify-content: space-around;
     margin: 40px auto;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px #ccc;
+    border-radius: 21px;
+    margin: auto 20px auto 20px;
+    box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
+    background: #fff;
     padding: 20px;
 }
     .availability form {
