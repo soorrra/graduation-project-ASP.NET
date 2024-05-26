@@ -1450,3 +1450,17 @@ body.light {
     border-radius: 50%;
     border: 15px solid #333;
 }
+
+
+main {
+    height: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+    font-size: 3em;
+    background-image: url('https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80');
+    background-position: 0px -100px;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}

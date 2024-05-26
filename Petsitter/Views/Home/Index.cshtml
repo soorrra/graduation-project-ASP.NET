@@ -18,10 +18,6 @@
 
 <div class="wrapper">
 
-  
-
-    
-
     <div class="big__pet">
         <img class="img__huge__animal" src="/Images/big__kitty.png" alt="location picture">
     </div>
@@ -38,7 +34,8 @@
            
 
     </div>
-    <div class="eyes">
+
+  @*   <div class="eyes">
         <div class="eye">
             <div class="ball"></div>
         </div>
@@ -46,7 +43,10 @@
         <div class="eye">
             <div class="ball"></div>
         </div>
-    </div>
+    </div> *@
+
+    <main>
+    </main>
 
     <img class="PetSittersPic" src="~/Images/PetSittersPic.png" alt="location picture">
 
@@ -208,6 +208,12 @@
 </div>
 
 <script>
+    window.addEventListener("scroll", function () {
+        let pageY = window.pageYOffset;
+        let main = document.querySelector('main');
+        main.style.backgroundPosition = `-${pageY * .25}px -100px`
+    })
+
     var balls = document.getElementsByClassName("ball");
     document.onmousemove = function () {
         var x = event.clientX * 100 / window.innerWidth + "%";
