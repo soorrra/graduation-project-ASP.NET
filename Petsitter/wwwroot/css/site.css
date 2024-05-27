@@ -1420,7 +1420,6 @@ body.light {
 }
 
 .eyes {
-    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
@@ -1451,16 +1450,35 @@ body.light {
     border: 15px solid #333;
 }
 
+.box {
+    visibility: hidden;
+    margin-bottom: 40px;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
-main {
-    height: 33%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Montserrat';
-    font-size: 3em;
-    background-image: url('https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80');
-    background-position: 0px -100px;
-    color: white;
-    text-shadow: 1px 1px 5px black;
+    .box.animate {
+        visibility: visible;
+        animation: example 1.5s ease 1s 1 alternate both;
+    }
+
+.box1 {
+}
+
+.box2 {
+}
+
+.box3 {
+}
+
+@keyframes example {
+    from {
+        transform: translate(-200px, -100px) rotate(0);
+    }
+
+    to {
+        transform: translate(200px, 100px) rotate(100deg);
+    }
 }
