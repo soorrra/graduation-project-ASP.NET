@@ -1463,22 +1463,14 @@ body.light {
         visibility: visible;
         animation: example 1.5s ease 1s 1 alternate both;
     }
-
-.box1 {
-}
-
-.box2 {
-}
-
-.box3 {
-}
+ 
 
 @keyframes example {
     from {
-        transform: translate(-200px, -100px) rotate(0);
+        transform: translate(100vw) rotate(0);
     }
 
     to {
-        transform: translate(200px, 100px) rotate(100deg);
+        transform: translate(80vw, 100px) rotate(100deg);
     }
 }
