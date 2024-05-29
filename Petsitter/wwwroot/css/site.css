@@ -1255,6 +1255,8 @@ body.light {
     margin: auto auto 30px auto;
 }
 .btnServiceType {
+    z-index: 3;
+    pointer-events: auto;
     border: hidden;
     border-radius: 139px;
     height: 70px;
@@ -1268,7 +1270,6 @@ body.light {
 
 .found__wrapper {
     height: 100vh;
-    width: 100vw;
     background-image: url("/Images/back__found__sitter.png");
     background-size: 100% 100%;
     display: flex;
@@ -1450,6 +1451,22 @@ body.light {
     border: 15px solid #333;
 }
 
+.box__container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.boxes__left {
+    width: 50%;
+    float: left;
+}
+.boxes__right {
+    width: 50%;
+    float: right;
+}
 .box {
     visibility: hidden;
     margin-bottom: 40px;
@@ -1459,18 +1476,53 @@ body.light {
     background-repeat: no-repeat;
 }
 
-    .box.animate {
-        visibility: visible;
-        animation: example 1.5s ease 1s 1 alternate both;
-    }
+.box1.animate,
+.box2.animate,
+.box3.animate,
+.box4.animate {
+    visibility: visible;
+    animation: example_1_left 1.5s ease 1s 1 alternate both;
+}
+
+.box4.animate,
+.box5.animate,
+.box6.animate,
+.box7.animate {
+    visibility: visible;
+    animation: example_1_right 1.5s ease 1s 1 alternate both;
+}
+
  
 
-@keyframes example {
+  /*  ______ LEFT BOXES ________*/
+
+@keyframes example_1_left {
+    from {
+        transform: translate(-100px) rotate(0);
+    }
+
+    to {
+        transform: translate(0vw) rotate(180deg);
+    }
+}
+
+
+/*  ______ RIGHT BOXES ________*/
+
+@keyframes example_1_right {
     from {
         transform: translate(100vw) rotate(0);
     }
 
     to {
-        transform: translate(80vw, 100px) rotate(100deg);
+        transform: translate(40vw) rotate(180deg);
     }
+}
+
+.box1 {
+    margin: 0 200px 0 0;
+    left:0;
+}
+.box2 {
+    padding: 0 200px 0 0;
 }
