@@ -1231,7 +1231,7 @@ body.light {
 
 .service__wrapper {
     position: relative;
-    height: 50vh;
+    height: 95vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1269,6 +1269,7 @@ body.light {
 ================================================== */
 
 .found__wrapper {
+    margin-top: 100px;
     height: 100vh;
     background-image: url("/Images/back__found__sitter.png");
     background-size: 100% 100%;
@@ -1451,6 +1452,11 @@ body.light {
     border: 15px solid #333;
 }
 
+
+
+/* #Boxes service type
+================================================== */
+
 .box__container {
     display: flex;
     flex-direction: row;
@@ -1468,44 +1474,89 @@ body.light {
     float: right;
 }
 .box {
+    position: relative;
     visibility: hidden;
     margin-bottom: 40px;
-    width: 100px;
-    height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.box1.animate,
-.box2.animate,
-.box3.animate,
-.box4.animate {
+.box1.animate {
     visibility: visible;
     animation: example_1_left 1.5s ease 1s 1 alternate both;
 }
+.box2.animate {
+    visibility: visible;
+    animation: example_2_left 1.5s ease 1s 1 alternate both;
+}
+.box3.animate {
+    visibility: visible;
+    animation: example_3_left 1.5s ease 1s 1 alternate both;
+}
+.box4.animate {
+    visibility: visible;
+    animation: example_4_left 1.5s ease 1s 1 alternate both;
+}
 
-.box4.animate,
-.box5.animate,
-.box6.animate,
-.box7.animate {
+
+.box5.animate {
     visibility: visible;
     animation: example_1_right 1.5s ease 1s 1 alternate both;
 }
-
- 
+.box6.animate {
+    visibility: visible;
+    animation: example_2_right 1.5s ease 1s 1 alternate both;
+}
+.box7.animate {
+    visibility: visible;
+    animation: example_3_right 1.5s ease 1s 1 alternate both;
+}
+.box8.animate {
+    visibility: visible;
+    animation: example_4_right 1.5s ease 1s 1 alternate both;
+}
 
   /*  ______ LEFT BOXES ________*/
 
 @keyframes example_1_left {
     from {
-        transform: translate(-100px) rotate(0);
+        transform: translate(-200px) rotate(0);
     }
 
     to {
-        transform: translate(0vw) rotate(180deg);
+        transform: translate(-5vw) rotate(180deg);
     }
 }
 
+@keyframes example_2_left {
+    from {
+        transform: translate(-200px) rotate(0);
+    }
+
+    to {
+        transform: translate(35vw) rotate(180deg);
+    }
+}
+
+@keyframes example_3_left {
+    from {
+        transform: translate(-200px) rotate(0);
+    }
+
+    to {
+        transform: translate(25vw) rotate(180deg);
+    }
+}
+
+@keyframes example_4_left {
+    from {
+        transform: translate(-200px) rotate(0);
+    }
+
+    to {
+        transform: translate(30vw) rotate(180deg);
+    }
+}
 
 /*  ______ RIGHT BOXES ________*/
 
@@ -1519,10 +1570,69 @@ body.light {
     }
 }
 
+@keyframes example_2_right {
+    from {
+        transform: translate(100vw) rotate(0);
+    }
+
+    to {
+        transform: translate(35vw) rotate(180deg);
+    }
+}
+
+@keyframes example_3_right {
+    from {
+        transform: translate(100vw) rotate(0);
+    }
+
+    to {
+        transform: translate(20vw) rotate(360deg);
+    }
+}
+
+@keyframes example_4_right {
+    from {
+        transform: translate(100vw) rotate(0);
+    }
+
+    to {
+        transform: translate(40vw) rotate(180deg);
+    }
+}
+
+/*  ______ BOXES SIZE________*/
+
 .box1 {
-    margin: 0 200px 0 0;
-    left:0;
+    width: 100px;
+    height: 100px;
 }
 .box2 {
-    padding: 0 200px 0 0;
+    width: 190px;
+    height: 190px;
+}
+.box3 {
+    width: 70px;
+    height: 70px;
+}
+.box4 {
+    width: 100px;
+    height: 100px;
+}
+
+
+.box5 {
+    width: 70px;
+    height: 70px;
+}
+.box6 {
+    width: 100px;
+    height: 100px;
+}
+.box7 {
+    width: 190px;
+    height: 190px;
+}
+.box8 {
+    width: 70px;
+    height: 70px;
 }
