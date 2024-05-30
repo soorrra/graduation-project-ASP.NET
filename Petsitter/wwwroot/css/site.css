@@ -1474,7 +1474,7 @@ body.light {
     float: right;
 }
 .box {
-    position: relative;
+    position: absolute;
     visibility: hidden;
     margin-bottom: 40px;
     background-size: contain;
@@ -1483,78 +1483,78 @@ body.light {
 
 .box1.animate {
     visibility: visible;
-    animation: example_1_left 1.5s ease 1s 1 alternate both;
+    animation: example_1_left 2s ease 0.3s 1 alternate both;
 }
 .box2.animate {
     visibility: visible;
-    animation: example_2_left 1.5s ease 1s 1 alternate both;
+    animation: example_2_left 2s ease 0.3s 1 alternate both;
 }
 .box3.animate {
     visibility: visible;
-    animation: example_3_left 1.5s ease 1s 1 alternate both;
+    animation: example_3_left 2s ease 0.3s 1 alternate both;
 }
 .box4.animate {
     visibility: visible;
-    animation: example_4_left 1.5s ease 1s 1 alternate both;
+    animation: example_4_left 2s ease 0.3s 1 alternate both;
 }
 
 
 .box5.animate {
     visibility: visible;
-    animation: example_1_right 1.5s ease 1s 1 alternate both;
+    animation: example_1_right 2s ease 0.3s 1 alternate both;
 }
 .box6.animate {
     visibility: visible;
-    animation: example_2_right 1.5s ease 1s 1 alternate both;
+    animation: example_2_right 2s ease 0.3s 1 alternate both;
 }
 .box7.animate {
     visibility: visible;
-    animation: example_3_right 1.5s ease 1s 1 alternate both;
+    animation: example_3_right 2s ease 0.3s 1 alternate both;
 }
 .box8.animate {
     visibility: visible;
-    animation: example_4_right 1.5s ease 1s 1 alternate both;
+    animation: example_4_right 2s ease 0.3s 1 alternate both;
 }
 
   /*  ______ LEFT BOXES ________*/
 
 @keyframes example_1_left {
     from {
-        transform: translate(-200px) rotate(0);
+        transform: translate(-400px) rotate(0);
     }
 
     to {
-        transform: translate(-5vw) rotate(180deg);
+        transform: translate(-1vw) rotate(180deg);
     }
 }
 
 @keyframes example_2_left {
     from {
-        transform: translate(-200px) rotate(0);
+        transform: translate(-400px) rotate(0);
     }
 
     to {
-        transform: translate(35vw) rotate(180deg);
+        transform: translate(20vw) rotate(180deg);
     }
 }
 
 @keyframes example_3_left {
     from {
-        transform: translate(-200px) rotate(0);
+        transform: translate(-400px) rotate(0);
     }
 
     to {
-        transform: translate(25vw) rotate(180deg);
+        transform: translate(5vw) rotate(360deg);
     }
 }
 
 @keyframes example_4_left {
     from {
-        transform: translate(-200px) rotate(0);
+        transform: translate(-400px) rotate(0);
     }
 
     to {
-        transform: translate(30vw) rotate(180deg);
+        transform: translate(12vw) rotate(180deg);
     }
 }
 
@@ -1566,7 +1566,7 @@ body.light {
     }
 
     to {
-        transform: translate(40vw) rotate(180deg);
+        transform: translate(15vw) rotate(180deg);
     }
 }
 
@@ -1576,7 +1576,7 @@ body.light {
     }
 
     to {
-        transform: translate(35vw) rotate(180deg);
+        transform: translate(30vw) rotate(360deg);
     }
 }
 
@@ -1586,7 +1586,7 @@ body.light {
     }
 
     to {
-        transform: translate(20vw) rotate(360deg);
+        transform: translate(10vw) rotate(330deg);
     }
 }
 
@@ -1596,43 +1596,64 @@ body.light {
     }
 
     to {
-        transform: translate(40vw) rotate(180deg);
+        transform: translate(35vw) rotate(180deg);
     }
 }
 
 /*  ______ BOXES SIZE________*/
 
 .box1 {
-    width: 100px;
-    height: 100px;
-}
-.box2 {
-    width: 190px;
-    height: 190px;
-}
-.box3 {
-    width: 70px;
-    height: 70px;
-}
-.box4 {
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
+    z-index: 0;
+    margin-top: 40px;
 }
 
+.box2 {
+    width: 210px;
+    height: 210px;
+    z-index: 1;
+    margin-top: 140px;
+}
+
+.box3 {
+    width: 180px;
+    height: 180px;
+    z-index: -1;
+    margin-top: 290px;
+}
+
+.box4 {
+    width: 190px;
+    height: 190px;
+    z-index: 2;
+    margin-top: 450px;
+}
 
 .box5 {
-    width: 70px;
-    height: 70px;
+    width: 180px;
+    height: 180px;
+    z-index: 2;
+    margin-top: 10px;
 }
+
 .box6 {
-    width: 100px;
-    height: 100px;
+    width: 170px;
+    height: 170px;
+    z-index: 1;
+    margin-top: 150px;
 }
+
 .box7 {
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+    margin-top: 310px;
 }
+
 .box8 {
-    width: 70px;
-    height: 70px;
+    width: 200px;
+    height: 200px;
+    z-index: 0;
+    margin-top: 410px;
 }
