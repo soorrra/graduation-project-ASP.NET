@@ -100,8 +100,8 @@ CREATE TABLE Pet (
 
 CREATE TABLE [Availability] (
 	availabilityID			INT PRIMARY KEY IDENTITY (1,1),
-	startDate				DATE NOT NULL,
-	endDate					DATE NOT NULL
+	startDate				DATETIME NOT NULL,
+	endDate					DATETIME NOT NULL
 );
 
 --INSERT INTO [Availability](startDate, endDate) VALUES ('2022-12-10', '2022-12-15');
@@ -120,8 +120,8 @@ CREATE TABLE Booking (
 	bookingID				INT PRIMARY KEY IDENTITY (1,1),
 	price					MONEY NOT NULL,
 	paymentID				VARCHAR(255),
-	startDate				DATE NOT NULL,
-	endDate					DATE NOT NULL,
+	startDate				DATETIME NOT NULL,
+	endDate					DATETIME NOT NULL,
 	specialRequests			VARCHAR(2000),
 	rating					INT,
 	review					VARCHAR(2000),

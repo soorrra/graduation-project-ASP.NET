@@ -15,10 +15,10 @@ namespace Petsitter.ViewModels
         public int UserId { get; set; }
         public List<BookingPetVM> Pets { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:D}")]
+        [DisplayFormat(DataFormatString = "{0:g}")]
         [DisplayName("Start Date")]
         public DateTime StartDate { get; set; }
-        [DisplayFormat(DataFormatString = "{0:D}")]
+        [DisplayFormat(DataFormatString = "{0:g}")]
         [DisplayName("End Date")]
         public DateTime EndDate { get; set; }
         [DisplayName("Special Requests")]

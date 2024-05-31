@@ -49,11 +49,11 @@ namespace Petsitter.Models
                 entity.Property(e => e.AvailabilityId).HasColumnName("availabilityID");
 
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("endDate");
 
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("startDate");
             });
 
@@ -69,7 +69,7 @@ namespace Petsitter.Models
                     .HasColumnName("complaint");
 
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("endDate");
 
                 entity.Property(e => e.Price)
@@ -91,7 +91,7 @@ namespace Petsitter.Models
                     .HasColumnName("specialRequests");
 
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("startDate");
 
                 entity.Property(e => e.UserId).HasColumnName("userID");
