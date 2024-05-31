@@ -14,7 +14,7 @@ body {
 
 .container {
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 210px auto;
 }
 
 header {
@@ -1391,6 +1391,7 @@ body.light {
     text-align: center;
     height: 40vh;
     margin-top: 100px;
+    margin-bottom: 210px;
 }
 
 .pre_footer {
@@ -1417,8 +1418,8 @@ body.light {
 /* #Footer
 ================================================== */
 .main__footer {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     height: 20vh;
     position: absolute;
     bottom: 0;
@@ -1431,9 +1432,9 @@ body.light {
 }
 .footer__pic {
 }
-/*
+
 .eyes {
-    top: 50%;
+    top: 20%;
     transform: translateY(-50%);
     width: 100%;
     text-align: center;
@@ -1441,27 +1442,58 @@ body.light {
 }
 
 .eye {
-    width: 240px;
+    width: 122px;
     height: 120px;
-    background: #fff;
+    background-image: url("/Images/eye.png");
+    background-size: 100% 100%;
     display: inline-block;
-    margin: 40px;
+    margin: 30px;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
 }
 
-.ball {
-    width: 40px;
-    height: 40px;
-    background: #000;
+.ball__light {
+    width: 50px;
+    height: 50px;
+    background-image: url("/Images/ball_light.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    border-radius: 50%;
+    border: 15px;
+    z-index: 2;
+}
+
+.ball__out {
+    width: 90px;
+    height: 105px;
+    background-image: url("/Images/ball_out.png");
+    background-size: 100% 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 50%;
-    border: 15px solid #333;
-}*/
+    border: 15px;
+}
+
+.ball__inner {
+    width: 50px;
+    height: 65px;
+    background-image: url("/Images//ball_inner.png");
+    background-size: 100% 100%;
+    margin-right: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    border: 5px;
+    z-index: 1;
+
+}
 /* #Boxes service type
 ================================================== */
 .box__container {
@@ -1627,14 +1659,14 @@ body.light {
     width: 180px;
     height: 180px;
     z-index: -1;
-    margin-top: 290px;
+    margin-top: 300px;
 }
 
 .box4 {
     width: 190px;
     height: 190px;
     z-index: 2;
-    margin-top: 450px;
+    margin-top: 520px;
 }
 
 .box5 {

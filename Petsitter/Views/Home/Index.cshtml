@@ -32,16 +32,24 @@
                 </div>
             </div>
            
-
     </div>
 
     <div class="eyes">
         <div class="eye">
-            <div class="ball"></div>
+            <div class="ball__light"></div>
+            <div class="ball__inner"></div>
+            <div class="ball__out">
+                <div class="ball__light"></div>
+
+            </div>
+            
         </div>
 
         <div class="eye">
-            <div class="ball"></div>
+            <div class="ball__out">
+                <div class="ball__light"></div>
+                <div class="ball__inner"></div>
+            </div>
         </div>
     </div>
 
@@ -250,23 +258,33 @@
 
 
 
+    var ballss = document.getElementsByClassName("ball__inner");
+    var balls = document.getElementsByClassName("ball__out");
+    var light = document.getElementsByClassName("ball__light");
 
-
-    var balls = document.getElementsByClassName("ball");
     document.onmousemove = function () {
         var x = event.clientX * 100 / window.innerWidth + "%";
         var y = event.clientY * 100 / window.innerHeight + "%";
+
         //event.clientX => get the horizontal coordinate of the mouse
         //event.clientY => get the Vertical coordinate of the mouse
         //window.innerWidth => get the browser width
         //window.innerHeight => get the browser height
 
         for (var i = 0; i < 2; i++) {
+            ballss[i].style.left = x;
+            ballss[i].style.top = y;
+            ballss[i].style.transform = "translate(-" + x + ",-" + y + ")";
             balls[i].style.left = x;
             balls[i].style.top = y;
             balls[i].style.transform = "translate(-" + x + ",-" + y + ")";
+            // light[i].style.left = x;
+            // light[i].style.top = y;
+            // light[i].style.transform = "translate(-" + x + ",-" + y + ")";
         }
     }
+
+   
 </script>
 
 <script>
