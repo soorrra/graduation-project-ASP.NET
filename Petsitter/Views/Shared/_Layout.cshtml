@@ -113,6 +113,9 @@
                         <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AdminDashboard">@Localizer["Admin Dashboard"]</a>
                         </li>
+                        <li class="nav__list-item">
+                            <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AddPetType">@Localizer["Add pet type"]</a>
+                        </li>
                     }
                 </ul>
             }
@@ -122,11 +125,12 @@
             @RenderBody()
         </main>
 
-    <img class="PetSittersPic" src="/Images/footer__grass.png" alt="location picture">
+   
 
     <footer class="main__footer">
-        <div class="container">
-            &copy; 2023 - Petsitter
+        <img class="footer__pic" src="/Images/footer__grass.png" alt="location picture">
+        <div class="footer__container">
+            &copy; 2024 - Petsitters
         </div>
     </footer>
    

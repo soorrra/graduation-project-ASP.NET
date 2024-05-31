@@ -1417,10 +1417,21 @@ body.light {
 /* #Footer
 ================================================== */
 .main__footer {
+    display:flex;
+    flex-direction:column;
     height: 20vh;
-    background: #90ad90;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
-
+.footer__container {
+    background: #90ad90;
+    width: 100%;
+    height: 100%;
+}
+.footer__pic {
+}
+/*
 .eyes {
     top: 50%;
     transform: translateY(-50%);
@@ -1450,13 +1461,9 @@ body.light {
     transform: translate(-50%,-50%);
     border-radius: 50%;
     border: 15px solid #333;
-}
-
-
-
+}*/
 /* #Boxes service type
 ================================================== */
-
 .box__container {
     display: flex;
     flex-direction: row;

@@ -55,5 +55,25 @@ namespace Petsitter.Controllers
             return RedirectToAction("AdminDashboard","Admin", 
             new { message = deleteMessage });
         }
+
+        public IActionResult AddPetType()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPetType(PetType petType)
+        {
+            AdminRepo adminRep = new AdminRepo(_db, webHostEnvironment);
+
+            if (!ModelState.IsValid)
+            {
+                return View(petType);
+            }
+
+            adminRep.AddPetType(petType);
+
+            return RedirectToAction("AddPetType");
+        }
     }
 }

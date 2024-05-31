@@ -280,11 +280,13 @@ namespace Petsitter.Repositories
             if (unfulfilledDates.Count == 0)
             {
                 return true;
-            } else // If not all booking dates are open, return false.
+            }
+            else // If not all booking dates are open, return false.
             {
                 return false;
             }
         }
+
 
         // SECTION: Create and Update Methods
 

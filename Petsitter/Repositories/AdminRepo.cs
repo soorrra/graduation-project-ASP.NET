@@ -68,6 +68,11 @@ namespace Petsitter.Repositories
             return Tuple.Create(deleteMessage, userID);
         }
 
+        public void AddPetType(PetType petType)
+        {
+            _db.PetTypes.Add(petType);
+            _db.SaveChanges();
+        }
 
 
     }
