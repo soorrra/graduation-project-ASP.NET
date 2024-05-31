@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Petsitter.Data.Services;
 using Petsitter.Models;
 using Petsitter.Repositories;
+using Petsitter.Services;
 using Petsitter.ViewModels;
 using System.Globalization;
 
@@ -15,6 +16,7 @@ namespace Petsitter.Controllers
         private readonly PetsitterContext _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailService _emailService;
+        private readonly BookingReminderService _bookingReminderService;
 
         public BookingController(PetsitterContext db, IEmailService emailService, IWebHostEnvironment webHost)
         {
@@ -30,6 +32,7 @@ namespace Petsitter.Controllers
 
             BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
             List<BookingVM> myBookings = bookingRepo.GetUpcomingBookingVMsByUserId(userId);
+            
 
             return View(myBookings);
         }

@@ -12,6 +12,7 @@ using Petsitter;
 using Microsoft.CodeAnalysis.Options;
 using System.Globalization;
 using Petsitter.Hubs;
+using Petsitter.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -19,9 +20,18 @@ var configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddScoped<IEmailService, EmailService>();
+
+builder.Services.AddScoped<BookingRepo>();
+builder.Services.AddScoped<CustomerRepo>();
+
+builder.Services.AddScoped<BookingReminderService>();
+
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
+
 builder.Services.AddControllersWithViews()
     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+//builder.Services.AddHostedService<BookingReminderService>();
 builder.Services.AddSignalR();
 
 
@@ -74,6 +84,14 @@ builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var scopedServices = scope.ServiceProvider;
+    var bookingReminderService = scopedServices.GetRequiredService<BookingReminderService>();
+    await bookingReminderService.StartAsync(CancellationToken.None);
+}
+
 
 app.UseRequestLocalization();
 

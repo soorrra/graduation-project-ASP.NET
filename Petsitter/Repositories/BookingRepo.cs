@@ -135,6 +135,57 @@ namespace Petsitter.Repositories
             return upcomingBookings;
         }
 
+        public List<BookingVM> GetBookingsStartingTomorrow()
+        {
+            DateTime tomorrow = DateTime.Today.AddDays(1);
+            IQueryable<BookingVM> bookings = from b in _db.Bookings
+                                             where b.StartDate == tomorrow
+                                             select new BookingVM
+                                             {
+                                                 BookingId = b.BookingId,
+                                                 SitterId = (int)b.SitterId,
+                                                 UserId = (int)b.UserId,
+                                                 StartDate = (DateTime)b.StartDate,
+                                                 EndDate = (DateTime)b.EndDate,
+                                                 SpecialRequests = b.SpecialRequests,
+                                                 Price = (decimal)b.Price,
+                                                 PaymentId = b.PaymentId
+                                             };
+
+
+            // Convert to list so that it can be looped through to add pets.
+            List<BookingVM> bookingsTomarrowList = bookings.ToList();
+
+            // Get all BookingPetVMs.
+            IQueryable<BookingPetVM> bookingPetVMs = from p in _db.Pets
+                                                     select new BookingPetVM
+                                                     {
+                                                         PetId = p.PetId,
+                                                         Name = p.Name
+                                                     };
+
+            // Assign the appropriate BookingPetVM to each BookingVM, along with Sitter names.
+            foreach (var booking in bookingsTomarrowList)
+            {
+                List<int> petIds = _db.BookingPets.Where(bp => bp.BookingId == booking.BookingId).Where(bp => bp.PetId.HasValue).Select(bp => bp.PetId.GetValueOrDefault()).ToList();
+
+                List<BookingPetVM> pets = new List<BookingPetVM>();
+                foreach (var petId in petIds)
+                {
+                    pets.Add(bookingPetVMs.Where(pv => pv.PetId == petId).FirstOrDefault());
+                }
+
+                booking.Pets = pets;
+
+                // Add sitter name.
+                Sitter sitter = _db.Sitters.Where(s => s.SitterId == booking.SitterId).FirstOrDefault();
+                User user = _db.Users.Where(u => u.UserId == sitter.UserId).FirstOrDefault();
+                booking.SitterName = user.FirstName;
+            }
+
+            return bookingsTomarrowList;
+        }
+
         public List<BookingVM> GetPastBookingVMsByUserId(int userID)
         {
             List<BookingVM> myBookings = GetBookingVMsByUserId(userID);
