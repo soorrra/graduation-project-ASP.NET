@@ -250,7 +250,7 @@ namespace Petsitter.Repositories
             {
                 for (DateTime date = (DateTime)booking.StartDate; date <= (DateTime)booking.EndDate; date = date.AddDays(1))
                 {
-                    bookedDates.Add(date);
+                    bookedDates.Add(date.Date);
                 }
             }
             return bookedDates;
@@ -270,7 +270,7 @@ namespace Petsitter.Repositories
             var bookingDates = new List<DateTime>();
             for (DateTime date = booking.StartDate; date <= booking.EndDate; date = date.AddDays(1))
             {
-                bookingDates.Add(date);
+                bookingDates.Add(date.Date);
             }
 
             // Check if any booking dates are dates that the sitter does not have open.
