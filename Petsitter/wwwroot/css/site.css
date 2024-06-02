@@ -1464,7 +1464,7 @@ body.light {
 
 .eyes {
     position: absolute;
-    margin-top: 330px;
+    margin-top: 400px;
     max-height: 95%;
     transform: translateY(-50%);
     width: 100%;
@@ -1473,15 +1473,13 @@ body.light {
 }
 
 .eye {
-    width: 132px;
-    height: 130px;
-    background-image: url("/Images/eye.png");
+    align-items: center;
+    width: 650px;
+    height: 180px;
+    background-image: url("/Images/");
     background-size: 100% 100%;
     display: inline-block;
-    border-radius: 50%;
     position: relative;
-    overflow: hidden;
-    margin-right: 93px;
 }
 
 .ball__light {
@@ -1502,31 +1500,34 @@ body.light {
 
 .ball__out {
     position: absolute;
-    width: 100px;
-    height: 115px;
-    background-image: url("/Images/ball_out.png");
+    width: 600px;
+    height: 150px;
+    background-image: url("/Images/img__nose__cat.png");
     background-size: 100% 100%;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    border-radius: 50%;
-    border: 15px;
+}
+
+.ball__inner__wrapper {
+    position: absolute;
+    width: 300px;
+    height: 115px;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .ball__inner {
     position: absolute;
-    width: 60px;
+    width: 260px;
     height: 67px;
-    background-image: url("/Images//ball_inner.png");
+    background-image: url("/Images/img__eye__cat.png");
     background-size: 100% 100%;
-    margin-right: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    border-radius: 50%;
-    border: 5px;
     z-index: 1;
 }
 
