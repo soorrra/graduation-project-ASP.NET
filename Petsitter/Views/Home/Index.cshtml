@@ -19,7 +19,29 @@
 <div class="wrapper">
 
     <div class="big__pet">
+        <div class="eyes">
+            <div class="eye">
+                <div class="ball__out">
+                    <div class="ball__light"></div>
+                    <div class="ball__inner"></div>
+                </div>
+
+            </div>
+
+            <div class="eye__2">
+                <div class="ball__out__2">
+                    <div class="ball__light"></div>
+                    <div class="ball__inner__2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ushki">
+            <img class="img__ear" src="/Images/ear__cat.png" alt="location picture">
+            <img class="img__ear__2" src="/Images/ear__cat__2.png" alt="location picture">
+        </div>
+
         <img class="img__huge__animal" src="/Images/big__kitty.png" alt="location picture">
+
     </div>
 
     <div class="storeTitle">
@@ -34,24 +56,7 @@
            
     </div>
 
-    <div class="eyes">
-        <div class="eye">
-            <div class="ball__light"></div>
-            <div class="ball__inner"></div>
-            <div class="ball__out">
-                <div class="ball__light"></div>
-
-            </div>
-            
-        </div>
-
-        <div class="eye">
-            <div class="ball__out">
-                <div class="ball__light"></div>
-                <div class="ball__inner"></div>
-            </div>
-        </div>
-    </div>
+   
 
     <img class="PetSittersPic" src="~/Images/PetSittersPic.png" alt="location picture">
 
@@ -261,6 +266,9 @@
     var ballss = document.getElementsByClassName("ball__inner");
     var balls = document.getElementsByClassName("ball__out");
     var light = document.getElementsByClassName("ball__light");
+    var ballss2 = document.getElementsByClassName("ball__inner__2");
+    var balls2 = document.getElementsByClassName("ball__out__2");
+    var light2 = document.getElementsByClassName("ball__light__2");
 
     document.onmousemove = function () {
         var x = event.clientX * 100 / window.innerWidth + "%";
@@ -278,6 +286,13 @@
             balls[i].style.left = x;
             balls[i].style.top = y;
             balls[i].style.transform = "translate(-" + x + ",-" + y + ")";
+
+            ballss2[i].style.left = x;
+            ballss2[i].style.top = y;
+            ballss2[i].style.transform = "translate(-" + x + ",-" + y + ")";
+            balls2[i].style.left = x;
+            balls2[i].style.top = y;
+            balls2[i].style.transform = "translate(-" + x + ",-" + y + ")";
             // light[i].style.left = x;
             // light[i].style.top = y;
             // light[i].style.transform = "translate(-" + x + ",-" + y + ")";

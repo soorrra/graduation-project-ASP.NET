@@ -350,7 +350,7 @@ namespace Petsitter.Controllers
             // Show booking page again.
             return View(bookingForm);
         }
-        //get available dates of sitter as events for booking form 
+        //Get available dates of sitter as events for booking form 
         public JsonResult GetEvents(int sitterID)
         {
 
@@ -374,9 +374,9 @@ namespace Petsitter.Controllers
                     events.Add(new
                     {
                         title = "Available",
-                        start = date.ToString("yyyy-MM-dd"),
+                        start = date.ToString("yyyy-MM-ddTHH:mm:ss"),
+                        end = date.AddHours(1).ToString("yyyy-MM-ddTHH:mm:ss"),
                         display = "background",
-
                         color = "green"
                     });
                 }
@@ -387,6 +387,7 @@ namespace Petsitter.Controllers
 
 
         }
+
 
         [Authorize]
         public IActionResult ConfirmBooking(int bookingId)

@@ -143,23 +143,6 @@ html {
         max-width: 100%;
     }
 
-.big__pet {
-    position: absolute;
-    margin: 100px auto;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -5;
-    height: 138vh;
-    width: auto;
-}
-
-.img__huge__animal {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .text-start {
     width: 100%;
     display: flex;
@@ -1433,42 +1416,94 @@ body.light {
 .footer__pic {
 }
 
+
+/* #Animal
+================================================== */
+
+.big__pet {
+    position: absolute;
+    margin: 100px auto;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -5;
+    height: 138vh;
+    width: auto;
+    display: flex;
+    flex-direction: column; 
+}
+
+.img__huge__animal {
+    margin-top: 120px;
+    max-height: 90%;
+    min-height: 960px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.ushki {
+    width: 60%;
+}
+
+.img__ear {
+    position: absolute;
+    top: 0;
+    height: 340px;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.img__ear__2 {
+    position: absolute;
+    top: 0;
+    height: 340px;
+    object-fit: cover;
+    right: 0;
+    z-index: 0;
+}
+
 .eyes {
-    top: 20%;
+    position: absolute;
+    margin-top: 330px;
+    max-height: 95%;
     transform: translateY(-50%);
     width: 100%;
     text-align: center;
-    height: 100vh;
+    z-index: 2;
 }
 
 .eye {
-    width: 122px;
-    height: 120px;
+    width: 132px;
+    height: 130px;
     background-image: url("/Images/eye.png");
     background-size: 100% 100%;
     display: inline-block;
-    margin: 30px;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
+    margin-right: 93px;
 }
 
 .ball__light {
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    max-height: 10%;
+    min-height: 50px;
+    max-width: 10%;
+    min-width: 50px;
     background-image: url("/Images/ball_light.png");
     background-size: 100% 100%;
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 20%;
+    left: 45%;
     border-radius: 50%;
     border: 15px;
     z-index: 2;
 }
 
 .ball__out {
-    width: 90px;
-    height: 105px;
+    position: absolute;
+    width: 100px;
+    height: 115px;
     background-image: url("/Images/ball_out.png");
     background-size: 100% 100%;
     position: absolute;
@@ -1480,8 +1515,9 @@ body.light {
 }
 
 .ball__inner {
-    width: 50px;
-    height: 65px;
+    position: absolute;
+    width: 60px;
+    height: 67px;
     background-image: url("/Images//ball_inner.png");
     background-size: 100% 100%;
     margin-right: 10px;
@@ -1492,7 +1528,48 @@ body.light {
     border-radius: 50%;
     border: 5px;
     z-index: 1;
+}
 
+.eye__2 {
+    position: absolute;
+    width: 132px;
+    height: 130px;
+    background-image: url("/Images/eye__2.png");
+    background-size: 100% 100%;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.ball__out__2 {
+    position: absolute;
+    width: 100px;
+    height: 115px;
+    background-image: url("/Images/ball_out__2.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    border: 15px;
+}
+
+.ball__inner__2 {
+    position: absolute;
+    width: 60px;
+    height: 67px;
+    background-image: url("/Images//ball_inner__2.png");
+    background-size: 100% 100%;
+    margin-right: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    border: 5px;
+    z-index: 1;
 }
 /* #Boxes service type
 ================================================== */
