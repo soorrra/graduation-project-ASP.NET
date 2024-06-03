@@ -317,6 +317,15 @@
         }
     });
 
+    let currentImageIndex1 = 0;
+    const images11 = ['/Images/big__kitty__3.png', '/Images/img__nose__cat.png'];
+    const images22 = ['/Images/big__doggi__4.png', '/Images/img__nose__dog.png'];
+    const images33 = ['/Images/big__rabbit__2.png', '/Images/img__nose__rabbit.png'];
+
+    const img = document.querySelector('.img__huge__animal');
+    const nose = document.querySelector('.ball__out');
+    const ushki = document.querySelector('.ushki');
+
     const btnPetMainPage = document.querySelector('.btnPetMainPage');
     const petNames = ['cat', 'dog', 'friend'];
     let currentPetIndex = 0;
@@ -324,7 +333,23 @@
     btnPetMainPage.addEventListener('click', () => {
         currentPetIndex = (currentPetIndex + 1) % petNames.length;
         btnPetMainPage.textContent = petNames[currentPetIndex];
+
+        if (currentPetIndex === 0) {
+            img.setAttribute('src', images11[0]);
+            nose.style.backgroundImage = "url(" + images11[1] + ")";
+            ushki.style.display = "block";
+        } else if (currentPetIndex === 1) {
+            img.setAttribute('src', images22[0]);
+            nose.style.backgroundImage = "url(" + images22[1] + ")";
+            ushki.style.display = "none";
+        } else {
+            img.setAttribute('src', images33[0]);
+            nose.style.backgroundImage = "url(" + images33[1] + ")";
+            ushki.style.display = "none";
+        }
     });
+
+
 
 </script>
 
