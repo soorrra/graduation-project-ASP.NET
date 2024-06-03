@@ -1440,27 +1440,74 @@ body.light {
     object-fit: cover;
     z-index: 1;
 }
-
 .ushki {
-    width: 60%;
+    width: 500px; /* Adjust width as needed */
 }
 
-.img__ear {
-    position: absolute;
-    top: 0;
-    height: 340px;
-    object-fit: cover;
-    z-index: 0;
-}
-
+.img__ear,
 .img__ear__2 {
     position: absolute;
     top: 0;
     height: 340px;
     object-fit: cover;
-    right: 0;
     z-index: 0;
+    transition: transform 0.5s cubic-bezier(0.5, 1.0, 0.9, 0.6); /* Smooth transition for animation */
 }
+
+.img__ear {
+    left: 9px;
+}
+
+.img__ear__2 {
+    right: 0;
+}
+
+/* Animation styles */
+@keyframes earWiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    95% {
+        transform: rotate(0deg);
+    }
+
+    98% {
+        transform: rotate(-30deg); 
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes earWiggle2 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    95% {
+        transform: rotate(0deg);
+    }
+
+    98% {
+        transform: rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.img__ear {
+    animation: earWiggle 5s cubic-bezier(0.5, 1.0, 0.9, 0.6) infinite; /* Apply animation to left ear */
+}
+
+.img__ear__2 {
+    animation: earWiggle2 5s cubic-bezier(0.5, 1.0, 0.9, 0.6) infinite; /* Apply animation to right ear */
+}
+ 
 
 .eyes {
     position: absolute;
