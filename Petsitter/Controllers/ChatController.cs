@@ -30,7 +30,6 @@ namespace Petsitter.Controllers
         public IActionResult Chat(int sitterID)
         {
             ChatRepo chatRepo = new ChatRepo(_db);
-            //сомнительная хрень, все х переделывай 
             string userName = HttpContext.Session.GetString("UserName");
             int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
             int fromUserID = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
