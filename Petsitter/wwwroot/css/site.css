@@ -1464,12 +1464,14 @@ body.light {
 
 .eyes {
     position: absolute;
-    margin-top: 400px;
+    margin-top: 320px;
     max-height: 95%;
     transform: translateY(-50%);
     width: 100%;
     text-align: center;
     z-index: 2;
+    display: flex;
+    justify-content: center;
 }
 
 .eye {
@@ -1479,7 +1481,8 @@ body.light {
     background-image: url("/Images/");
     background-size: 100% 100%;
     display: inline-block;
-    position: relative;
+    position: absolute;
+    margin: 0 auto;
 }
 
 .ball__light {
@@ -1531,47 +1534,6 @@ body.light {
     z-index: 1;
 }
 
-.eye__2 {
-    position: absolute;
-    width: 132px;
-    height: 130px;
-    background-image: url("/Images/eye__2.png");
-    background-size: 100% 100%;
-    display: inline-block;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-}
-
-.ball__out__2 {
-    position: absolute;
-    width: 100px;
-    height: 115px;
-    background-image: url("/Images/ball_out__2.png");
-    background-size: 100% 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 50%;
-    border: 15px;
-}
-
-.ball__inner__2 {
-    position: absolute;
-    width: 60px;
-    height: 67px;
-    background-image: url("/Images//ball_inner__2.png");
-    background-size: 100% 100%;
-    margin-right: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 50%;
-    border: 5px;
-    z-index: 1;
-}
 /* #Boxes service type
 ================================================== */
 .box__container {
