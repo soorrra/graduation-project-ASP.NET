@@ -162,7 +162,7 @@ html {
 .btnPetMainPage {
     border: hidden;
     border-radius: 139px;
-    width: 160px;
+    width: 180px;
     height: 70px;
     background: #90ad90;
     font-size: calc(50px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
@@ -1412,6 +1412,7 @@ body.light {
     background: #90ad90;
     width: 100%;
     height: 100%;
+    color: #C4ECBC;
 }
 .footer__pic {
 }

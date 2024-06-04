@@ -47,7 +47,7 @@
                 @Localizer["My pet is a ..."]
                 </h1>
                 <div class="btn-wrapper">
-                    <button type="submit" class="btnPetMainPage">cat</button>
+                    <button type="submit" class="btnPetMainPage">Кот</button>
                 </div>
             </div>
            
@@ -136,7 +136,7 @@
             <p class="service__text">
                 @Localizer["What type of service do you need?"]
             </p>
-            <button class="btnServiceType" onclick="startAnimation()">Care</button>
+            <button class="btnServiceType" onclick="startAnimation()">Выгул</button>
 
         </div>
     </div>
@@ -230,33 +230,52 @@
 <script>
     let currentImageIndex = 0;
     const images1 = ['/Images/img_walking_1.png', '/Images/img_walking_2.png', '/Images/img_walking_7.png', '/Images/img_walking_4.png', '/Images/img_walking_4.png', '/Images/img_walking_6.png', '/Images/img_walking_5.png', '/Images/img_walking_2.png'];
-    const images2 = ['/Images/lapka1.png', '/Images/lapka2.png', '/Images/lapka3.png'];
+    const images2 = ['/Images/lapka__1.png', '/Images/lapka__2.png', '/Images/lapka__3.png', '/Images/lapka__4.png', '/Images/lapka__5.png', '/Images/lapka__6.png', '/Images/lapka__7.png'];
+    const images3 = ['/Images/img_walking_1.png', '/Images/training__1.png', '/Images/img_walking_7.png', '/Images/training__2.png', '/Images/training__3.png', '/Images/img_walking_6.png', '/Images/img_walking_5.png', '/Images/img_walking_2.png'];
+    const images4 = ['/Images/grum__1.png', '/Images/grum__5.png', '/Images/grum__3.png', '/Images/grum__4.png', '/Images/grum__2.png', '/Images/lapka__7.png'];
 
     function startAnimation() {
         const boxes = document.querySelectorAll(".box");
 
         boxes.forEach(function (box) {
             box.classList.remove("animate");
-            if (currentImageIndex === 0) {
-                box.style.backgroundImage = "url(" + images1[parseInt(box.classList.item(1).slice(-1)) - 1] + ")";
-            } else {
-                box.style.backgroundImage = "url(" + images2[parseInt(box.classList.item(1).slice(-1)) - 1] + ")";
+
+            // Choose the image set based on currentImageIndex
+            let imageSet;
+            switch (currentImageIndex) {
+                case 0:
+                    imageSet = images2;
+                    break;
+                case 1:
+                    imageSet = images3;
+                    break;
+                case 2:
+                    imageSet = images4;
+                    break;
+                case 3:
+                    imageSet = images1;
+                    break;
+                default:
+                    imageSet = images1; // Default to images1 if index is out of range
             }
+
+            box.style.backgroundImage = "url(" + imageSet[parseInt(box.classList.item(1).slice(-1)) - 1] + ")";
             box.offsetWidth;
             box.classList.add("animate");
         });
 
-        currentImageIndex = (currentImageIndex + 1) % 2;
+        currentImageIndex = (currentImageIndex + 1) % 4; // Cycle through 4 image sets
     }
 
     const btnServiceType = document.querySelector('.btnServiceType');
-    const serviceNames = ['Care', 'Walking', 'Training', 'Grooming'];
+    const serviceNames = ['Выгул', 'Передержка', 'Дрессировка', 'Груминг'];
     let currentServiceIndex = 0;
 
     btnServiceType.addEventListener('click', () => {
         currentServiceIndex = (currentServiceIndex + 1) % serviceNames.length;
         btnServiceType.textContent = serviceNames[currentServiceIndex];
     });
+
 
 
 
@@ -327,7 +346,7 @@
     const ushki = document.querySelector('.ushki');
 
     const btnPetMainPage = document.querySelector('.btnPetMainPage');
-    const petNames = ['cat', 'dog', 'friend'];
+    const petNames = ['Кот', 'Собака', 'Друг'];
     let currentPetIndex = 0;
 
     btnPetMainPage.addEventListener('click', () => {
