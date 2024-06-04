@@ -4,50 +4,48 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h1 class="text-center">Chat with @ViewData["FirstName"]</h1>
 
-          
-            <span>Message: </span>
-            <textarea rows="10" cols="50" id="txtMsg"></textarea><br />
-            <button type="submit" class="btn btn-info" id="btnSendMsg">Send</button>
-        </div>
-        <div class="col-md-6">
-            <h3>Messages: </h3>
-            <ul id="list" class="alert alert-info">
-                @foreach (var item in Model )
-                {
-                    int? fromUserID = ViewData["fromUserID"] as int?;
-                    int? toUserID = ViewData["toUserID"] as int?;
+            <h1 class="text-center">@ViewData["FirstName"]</h1>
+
+            <div class="chat__wrapper">
+                            <ul id="list" class="chat__list">
+                                @foreach (var item in Model )
+                                {
+                                    int? fromUserID = ViewData["fromUserID"] as int?;
+                                    int? toUserID = ViewData["toUserID"] as int?;
 
 
-                    if (item.fromUserID == fromUserID.Value && item.toUserID == toUserID.Value)
-                    {
-                        <li>
-                            <div style="font-weight: bold;">
-                                @ViewData["UserName"]
-                                @Html.DisplayFor(modelItem => item.fromUserID)
-                            </div>
-                            @Html.DisplayFor(modelItem => item.messageText)
-                        </li>
-                    }
-                    else if (item.toUserID == fromUserID.Value && item.fromUserID == toUserID.Value)
-                    {
-                        <li>
-                            <div style="font-weight: bold;">
-                                @ViewData["FirstName"]
-                                @Html.DisplayFor(modelItem => item.fromUserID)
-                            </div>
-                            @Html.DisplayFor(modelItem => item.messageText)
-                        </li>
-                    }
-                }
-            </ul>
+                                    if (item.fromUserID == fromUserID.Value && item.toUserID == toUserID.Value)
+                                    {
+                                        <li>
+                                            <div style="font-weight: bold;">
+                                                @ViewData["UserName"]
+                                                @* @Html.DisplayFor(modelItem => item.fromUserID) *@
+                                            </div>
+                                            @Html.DisplayFor(modelItem => item.messageText)
+                                        </li>
+                                    }
+                                    else if (item.toUserID == fromUserID.Value && item.fromUserID == toUserID.Value)
+                                    {
+                                        <li>
+                                            <div style="font-weight: bold;">
+                                                @ViewData["FirstName"]
+                                                @* @Html.DisplayFor(modelItem => item.fromUserID) *@
+                                            </div>
+                                            @Html.DisplayFor(modelItem => item.messageText)
+                                        </li>
+                                    }
+                                }
+                            </ul>
+        <div class="textarea__and__btn">
+                <textarea class="chat__textarea" id="txtMsg" ></textarea>
+                <button type="submit" class="btn btn-info" style="border:none;" id="btnSendMsg">Отправть</button>
         </div>
     </div>
-    <div >
 
+
+
+ 
     <input type="hidden" id="fromUserID" value="@ViewData["fromUserID"]" />
     <input type="hidden" id="toUserID" value="@ViewData["toUserID"]" />
 

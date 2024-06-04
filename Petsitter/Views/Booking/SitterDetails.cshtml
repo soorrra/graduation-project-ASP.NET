@@ -73,7 +73,7 @@
       </div>
 
        
-        <div>
+       @*  <div>
             <p>OverALL: @ViewBag.AvgRating OUT OF 5</p>
             <div class="starDetail" data-rating="5">
                 <span>5 Star</span>
@@ -110,26 +110,27 @@
                     </span>
                     <span>@ViewBag.Star1%</span>
                 </div>
-        </div>
-        <div>
-            <span class="price">$@ViewBag.Rate</span> per day
-        </div>
-        <div>
-                <a asp-action="Book" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @ViewBag.FirstName</a>
-        </div>
-            <div>
-                <a asp-controller ="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Write a message to @ViewBag.FirstName</a>
-            </div>
-        <div>
+        </div> *@
+                <div>
+                    <span class="price">@ViewBag.Rate</span> руб.
+                </div>
+        <div class="details__bio">
             @ViewBag.ProfileBio
         </div>
+              
+                <div>
+                    <a asp-controller="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); right:0;">Написать сообщение</a>
+                    <a asp-action="Book" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); left:0;">Забронировать услуги</a>
+                </div>
+                <div>
+                </div>
         </div>
     </div>
 
     <hr class="mt-4">
 
-    <div class="reviews">
-        <h2>Reviews</h2>
+        <div class="Reviews">
+            <h2>Отзывы</h2>
        <div class="row">
            @if (Model.Count == 0)
             {
