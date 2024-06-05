@@ -8,15 +8,15 @@
 
     <div class="getprofile-container">
     <div class="profile-wrapper">
-        <h2>Welcome @Html.DisplayFor(model => model.FirstName)!</h2>
+        <h2>Здравствуйте @Html.DisplayFor(model => model.FirstName)!</h2>
         <h4 class="text-break text-center">
-            To add your pet and update your account details, click the 
+            Чтобы добавить вашего питомца и обновить данные нажмите 
             <a asp-action="EditProfile" asp-route-id="@Model.CustomerId">
                 <span class="material-symbols-outlined">
                     account_box
                 </span>
             </a>
-            icon
+           
         </h4>
     </div>
 
@@ -114,7 +114,7 @@
                 <div class="alert alert-success">@ViewBag.Message</div>
             }*@
 
-        <h4 class="text-decoration-underline mt-4">Your Pets</h4>
+        <h4 class="text-decoration-underline mt-4">Ваши питомцы</h4>
             @if (Model.BookedPets != null && Model.BookedPets.Count() > 0)
             {
                 <p class="lead">

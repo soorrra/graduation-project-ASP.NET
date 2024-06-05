@@ -5,13 +5,13 @@
 }
 <div class="container">
 
-    <h1 class="h1-find">Find a Sitter</h1>
+    <h1 class="h1-find">Найти петситтера</h1>
 
 <form method="get" action="@Url.Action("FindASitter")" id="filterForm" class="filterForm__body">
         <a asp-action="FindASitter"><button type="button" class="btn__reset__filters"></button></a>
 
         <div>
-                <label class="text__filter">By pet type:</label>
+                <label class="text__filter">По виду:</label>
             <div class="checkbox__container">
                 @foreach (var petType in ViewBag.PetTypes)
                 {
@@ -24,7 +24,7 @@
 
                 }
             </div>
-                <label class="text__filter">By service type:</label>
+                <label class="text__filter">По типу услуги:</label>
             <div class="checkbox__container">
                 @foreach (var serviceType in ViewBag.ServiceTypes)
                 {
@@ -35,7 +35,7 @@
                     </label>
                 }
             </div>
-                <label class="text__filter">Find sitter for:</label>
+                <label class="text__filter">Найти петситтера для:</label>
             <div class="checkbox__container">
                 @foreach (var pet in ViewBag.Pets)
                 {
@@ -50,7 +50,7 @@
              </div>
          </div>
     <div>
-            <label for="selectedDates" class="text__filter">Filter by available dates:</label>
+            <label for="selectedDates" class="text__filter">По доступным датам:</label>
         <div class="d-flex gap-2">
             <input type="text" class="form-control date" placeholder="Select all dates service is needed"
                    id="selectedDates" name="selectedDates" value="@ViewBag.SelectedDates" />
@@ -90,7 +90,7 @@
                         <div class="sitter__bio">@Html.DisplayFor(modelItem => item.ProfileBio)</div>
                         <div class="more-info-link">
                                 <a asp-action="SitterDetails" asp-route-sitterID="@item.SitterId" class="text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E;
-                                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Book with @Html.DisplayFor(modelItem => item.FirstName)</a>
+                                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Забронировать услуги</a>
                         </div>
                     </div>
                 </div>
