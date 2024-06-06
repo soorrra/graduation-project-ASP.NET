@@ -1118,6 +1118,7 @@ body.light {
     height: 100vh;
     width: 100%;
 }
+
 .vertical-slider.slick-dotted {
     margin-bottom: 0;
 }
@@ -1127,7 +1128,7 @@ body.light {
     overflow: hidden;
     position: relative;
     float: right;
-    width: 50%;
+    width: 100%;
 }
 
     .vertical-slider > .slick-dots {
@@ -1160,7 +1161,13 @@ body.light {
     justify-content: center;
 }
 
+.slider__img {
+    width: 400px;
+    height: auto;
+}
+
 .slide-content {
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1173,10 +1180,11 @@ body.light {
     line-height: 100%;
     color: #e1e1e0;
 }
+
 .slide__text {
     font-weight: 400;
-    font-size: calc(35px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
-    color: #2D2213;
+    font-size: calc( 35px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)) );
+    color: #2d2213;
     float: right;
     max-width: 500px;
 }
