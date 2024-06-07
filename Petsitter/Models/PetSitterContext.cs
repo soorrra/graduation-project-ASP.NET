@@ -29,6 +29,8 @@ namespace Petsitter.Models
         public virtual DbSet<IPN> IPNs { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
         public virtual DbSet<Chat> Chats { get; set; } = null!;
+        public virtual DbSet<News> News { get; set; } = null!;
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -391,7 +393,36 @@ namespace Petsitter.Models
                     .HasConstraintName("FK_Chats_User2");
             });
 
+            modelBuilder.Entity<News>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("PK_News");
+
+                entity.ToTable("News");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Body)
+                    .IsRequired();
+
+                entity.Property(e => e.Date)
+                    .IsRequired();
+
+                entity.Property(e => e.Image)
+                    .HasColumnType("varbinary(MAX)");
+
+                entity.Property(e => e.Category)
+                    .HasMaxLength(255);
+            });
+
+
             OnModelCreatingPartial(modelBuilder);
+
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

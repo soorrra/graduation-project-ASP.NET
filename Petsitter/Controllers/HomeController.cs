@@ -84,7 +84,23 @@ namespace Petsitter.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult News()
+        {
+            var newsItems = _db.News.OrderByDescending(n => n.Date).ToList();
+            var newsVMs = newsItems.Select(n => new NewsVM
+            {
+                Id = n.Id,
+                Title = n.Title,
+                Body = n.Body,
+                Date = n.Date,
+                Image = n.Image, // Map the image property
+                Category = n.Category
+            }).ToList();
+
+            return View(newsVMs);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

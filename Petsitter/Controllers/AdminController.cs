@@ -75,5 +75,22 @@ namespace Petsitter.Controllers
 
             return RedirectToAction("AddPetType");
         }
+
+        public IActionResult AddNews()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddNews(NewsVM newsVM)
+        {
+            AdminRepo adminRep = new AdminRepo(_db, webHostEnvironment);
+            adminRep.AddNews(newsVM);
+
+            // After adding the news, redirect to a success page or display a success message
+            TempData["SuccessMessage"] = "News published successfully!";
+            return RedirectToAction("AddNews"); // or RedirectToAction("NewsList");
+        }
     }
+
 }

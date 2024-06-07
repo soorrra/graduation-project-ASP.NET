@@ -74,7 +74,20 @@ namespace Petsitter.Repositories
             _db.SaveChanges();
         }
 
+        public void AddNews(NewsVM newsVM)
+        {
+            News newsToAdd = new News
+            {
+                Title = newsVM.Title,
+                Body = newsVM.Body,
+                Date = newsVM.Date,
+                Image = newsVM.Image,
+                Category = newsVM.Category
+            };
 
+            _db.News.Add(newsToAdd);
+            _db.SaveChanges();
+        }
     }
 }
 

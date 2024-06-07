@@ -1831,16 +1831,16 @@ body.light {
 
 .cat__footer__hand {
     position: absolute;
-    bottom: 0;
-    right: 250px; 
+    bottom: 25px;
+    right: 280px; 
     z-index: -1;
-    width: 400px;
+    width: 300px;
     height: auto;
 }
 
 @keyframes handMove {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(-20deg);
     }
     25% {
        
@@ -1851,7 +1851,7 @@ body.light {
     }
 
     100% {
-        transform: rotate(0deg);
+        transform: rotate(-20deg);
     }
 }
 

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Petsitter.ViewModels.NewsVM>
+
+@{
+    ViewData["Title"] = "News";
+}
+
+<h1>News</h1>
+
+<ul>
+    @foreach (var newsItem in Model)
+    {
+        <li>
+            <h3>@newsItem.Title</h3>
+            <p>@newsItem.Body</p>
+            <p>Date: @newsItem.Date.ToString("dd.MM.yyyy")</p>
+            <!-- Image Display (Optional) -->
+           @*  @if (newsItem.Image != null)
+            {
+                // Encode image as base64 (or use a helper method)
+                var base64Image = Convert.ToBase64String(newsItem.Image);
+                <img src="data:image/jpeg;base64,@base64Image" alt="@newsItem.Title" />
+            } *@
+            <p>Category: @newsItem.Category</p>
+        </li>
+    }
+</ul>
