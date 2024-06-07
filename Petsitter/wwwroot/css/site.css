@@ -1117,6 +1117,8 @@ body.light {
     position: relative;
     height: 100vh;
     width: 100%;
+    display: flex;
+    align-items: center; /* Align items vertically */
 }
 
 .vertical-slider.slick-dotted {
@@ -1127,8 +1129,7 @@ body.light {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    float: right;
-    width: 100%;
+    width: 100%; /* Remove float: right; */
 }
 
     .vertical-slider > .slick-dots {
@@ -1158,12 +1159,36 @@ body.light {
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Space between images and content */
 }
 
 .slider__img {
-    width: 400px;
+    width: 600px;
     height: auto;
+    margin-left: 140px;
+}
+
+
+.slider__img {
+    animation: float 2.7s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.slider__img-wrapper {
+    display: flex; /* Align images horizontally */
 }
 
 .slide-content {
@@ -1171,7 +1196,9 @@ body.light {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-left: 50px;
 }
+ 
 
 .slide__num {
     float: right;
@@ -1659,7 +1686,7 @@ body.light {
     }
 
     to {
-        transform: translate(-1vw) rotate(180deg);
+        transform: translate(-1vw) rotate(360deg);
     }
 }
 
@@ -1669,7 +1696,7 @@ body.light {
     }
 
     to {
-        transform: translate(20vw) rotate(180deg);
+        transform: translate(20vw) rotate(360deg);
     }
 }
 
@@ -1689,7 +1716,7 @@ body.light {
     }
 
     to {
-        transform: translate(12vw) rotate(180deg);
+        transform: translate(12vw) rotate(360deg);
     }
 }
 
@@ -1701,7 +1728,7 @@ body.light {
     }
 
     to {
-        transform: translate(15vw) rotate(180deg);
+        transform: translate(15vw) rotate(360deg);
     }
 }
 
@@ -1731,7 +1758,7 @@ body.light {
     }
 
     to {
-        transform: translate(35vw) rotate(180deg);
+        transform: translate(35vw) rotate(360deg);
     }
 }
 
@@ -1791,4 +1818,43 @@ body.light {
     height: 200px;
     z-index: 0;
     margin-top: 410px;
+}
+
+.cat__footer {
+    position: absolute;
+    bottom: 30px;
+    left: 450px;
+    z-index: -1; 
+    width: 900px;
+    height: auto;
+}
+
+.cat__footer__hand {
+    position: absolute;
+    bottom: 0;
+    right: 250px; 
+    z-index: -1;
+    width: 400px;
+    height: auto;
+}
+
+@keyframes handMove {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+       
+        transform: translateY(-10px);
+    }
+    55% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.cat__footer__hand {
+    animation: handMove 2.7s ease-in-out infinite;
 }
