@@ -96,7 +96,7 @@ namespace Petsitter.Controllers
 
             PetVM vm = new PetVM()
             {
-                AvailableSizes = new List<string>() { "0-15lb", "15lb-40lb", "40lb-70lb", "70lb-100lb", "100lb-150lb", "150lb-" }
+                AvailableSizes = new List<string>() { "0-5 кг", "5-10 кг", "10-15 кг", "15-20 кг", "20-30 кг", "30+ кг " }
             };
 
             return View(vm);

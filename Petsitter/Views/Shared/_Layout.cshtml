@@ -71,7 +71,7 @@
                             <a class="hover-target" asp-area="" asp-controller="Chat" asp-action="ViewMyChats">@Localizer["Chats"]</a>
                         </li>
                         <li class="nav__list-item">
-                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["News"]</a>
+                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["Новости"]</a>
                         </li>
                         @if (!User.IsInRole("Admin"))
                         {
@@ -101,7 +101,7 @@
                             <a class="hover-target" asp-area="" asp-controller="Chat" asp-action="ViewMyChats">@Localizer["Chats"]</a>
                         </li>
                         <li class="nav__list-item">
-                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["News"]</a>
+                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["Новости"]</a>
                         </li>
                         @if (!User.IsInRole("Admin"))
                         {
@@ -120,13 +120,13 @@
                             <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AdminDashboard">@Localizer["Admin Dashboard"]</a>
                         </li>
                         <li class="nav__list-item">
-                            <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AddPetType">@Localizer["Add pet type"]</a>
+                            <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AddPetType">@Localizer["Добавить вид питомца"]</a>
                         </li>
                         <li class="nav__list-item">
-                            <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AddNews">@Localizer["Add pet type"]</a>
+                            <a class="hover-target" asp-area="" asp-controller="Admin" asp-action="AddNews">@Localizer["Опубликовать новость"]</a>
                         </li>
                         <li class="nav__list-item">
-                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["News"]</a>
+                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["Новости"]</a>
                         </li>
                     }
                 </ul>

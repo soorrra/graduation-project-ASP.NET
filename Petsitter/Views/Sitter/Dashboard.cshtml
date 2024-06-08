@@ -21,16 +21,16 @@
         <a asp-action="Dashboard" class="back-link">
                 <span class="arrow" style="color:#91AC8E;"></span>
                 <span class="text text-lg-start mt-1">
-                Back to Full List
+                Назад к полному списку
             </span>
         </a>
     </div>
     <form method="get" action="/Sitter/Dashboard">
         <label for="booking-status-filter">Filter by Status:</label>
         <select id="booking-status-filter" name="status" onchange="this.form.submit()">
-            <option value="">-- Select Status --</option>
-            <option value="UpComing">Upcoming</option>
-            <option value="Complete">Complete</option>
+            <option value="">-- Выберите статус --</option>
+            <option value="UpComing">Предстоящие</option>
+            <option value="Complete">Выполненные</option>
         </select>
     </form>
 
@@ -40,13 +40,13 @@
     <dl class="row">
 
         <dt class="col">
-            <h2>UpComing</h2>
-            <h3>Bookings upcoming</h3>
+                    <h2>Предстоящие</h2>
+                    <h3>Предстоящие бронирования</h3>
             <span> @ViewBag.UpComing</span>
         </dt>
         <dt class="col">
-            <h2>Complete</h2>
-            <h3>Bookings complete</h3>
+                    <h2>Выполненные</h2>
+                    <h3>Выполненные бронирования</h3>
             <span>
 
                 @ViewBag.Complete
@@ -54,8 +54,8 @@
         </dt>
 
         <dt class="col">
-            <h2>Reviews</h2>
-            <h3>Customers reviews</h3>
+            <h2>Отзывы</h2>
+            <h3>Отзывы клиентов</h3>
 
             <span>
                 @ViewBag.Reviews
@@ -69,10 +69,10 @@
         <a asp-action="Dashboard"
            asp-route-page="@(Model.PageIndex - 1)">
                 <i style="font-size:24px;    color: #91AC8E" class="fa">&#xf137;</i>
-        </a><span> Previous </span>
+                </a><span>Ппредыдущий </span>
     </div>
     <div class="btn btn-default @nextDisabled next">
-        <span> Next </span>
+        <span> Следующий </span>
         <a asp-action="Dashboard"
            asp-route-page="@(Model.PageIndex + 1)">
                 <i style="font-size:24px;    color: #91AC8E" class="fa">&#xf138;</i>

@@ -5,7 +5,7 @@
 }
 <div class="container">
 
-<h1>Add Availability</h1>
+<h1>Добавить расписание</h1>
 @if (message != null)
 {
     <div class="alert alert-danger">@message</div>
@@ -16,17 +16,17 @@
         <input asp-for="SitterId" class="form-control" value="@Model.SitterId" type="hidden" />
     </div>
             <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
+                <label asp-for="StartDate" class="control-label">Дата начала</label>
                 <input asp-for="StartDate" class="form-control" type="datetime-local" value="" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
+                <label asp-for="EndDate" class="control-label">Дата окончания</label>
                 <input asp-for="EndDate" class="form-control" type="datetime-local" value="" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
 
-    <button type="submit" class="btn">Save</button>
+    <button type="submit" class="btn">Сохранить</button>
 </form>
 <div id="calendar"></div>
 </div>

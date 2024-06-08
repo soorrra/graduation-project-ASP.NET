@@ -25,17 +25,17 @@ namespace Petsitter.Services
           
 
             byte[] fileBytes; 
-            if (System.IO.File.Exists("Attachment/dummy.pdf"))
-            {
-                FileStream file = new FileStream("Attachment/dummy.pdf", FileMode.Open, FileAccess.Read);
-                using(var ms=new MemoryStream())
-                {
-                    file.CopyTo(ms);
-                    fileBytes=ms.ToArray();
-                }
-                builder.Attachments.Add("attachment.pdf", fileBytes, ContentType.Parse("application/octet-stream"));
-                builder.Attachments.Add("attachment2.pdf", fileBytes, ContentType.Parse("application/octet-stream"));
-            }
+            //if (System.IO.File.Exists("Attachment/dummy.pdf"))
+            //{
+            //    FileStream file = new FileStream("Attachment/dummy.pdf", FileMode.Open, FileAccess.Read);
+            //    using(var ms=new MemoryStream())
+            //    {
+            //        file.CopyTo(ms);
+            //        fileBytes=ms.ToArray();
+            //    }
+            //    builder.Attachments.Add("attachment.pdf", fileBytes, ContentType.Parse("application/octet-stream"));
+            //    builder.Attachments.Add("attachment2.pdf", fileBytes, ContentType.Parse("application/octet-stream"));
+            //}
 
             builder.HtmlBody = mailrequest.Body;
             email.Body = builder.ToMessageBody();

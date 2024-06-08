@@ -16,7 +16,7 @@
     <div class="mt-3 back-to-profile lead" style="font-size:large;">
         <a asp-action="GetProfile" class="back-link">
             <span class="arrow"></span>
-            <span class="text text-lg-start mt-2">Back to Profile</span>
+            <span class="text text-lg-start mt-2">Назад</span>
         </a>
     </div>
     <div class="row justify-content-center">
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group text-center">
-                    <label class="control-label lead">What type of pet?</label>
+                    <label class="control-label lead">Какой вид питомца?</label>
                     <div class="d-flex justify-content-center">
                         <label for="dog" class="radio-label m-4">
                             <input asp-for="PetType" type="radio" value="Dog" id="dog" class="hidden-radio" />
@@ -74,12 +74,12 @@
 
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <label asp-for="Name" class="control-label">Name</label>
+                        <label asp-for="Name" class="control-label">Имя</label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="PetSize" class="control-label">Pet Size</label>
+                        <label asp-for="PetSize" class="control-label">Размер питомца</label>
                         <select asp-for="PetSize" asp-items="@(new SelectList(Model.AvailableSizes))" class="form-control"></select>
                     </div>
                 </div>

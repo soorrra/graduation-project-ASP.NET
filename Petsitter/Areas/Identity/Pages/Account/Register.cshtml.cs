@@ -281,7 +281,7 @@ namespace Petsitter.Areas.Identity.Pages.Account
                     Mailrequest mailrequest = new();
                     mailrequest.ToEmail = newUser.Email; // Получить email пользователя
                     mailrequest.Subject = "Добро пожаловать!";
-                    mailrequest.Body = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."; // Здесь ваше письмо приветствия
+                    mailrequest.Body = $"Пожалуйста, подтвердите почту <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>нажав здесь</a>."; // Здесь ваше письмо приветствия
 
                     await _emailService.SendEmailAsync(mailrequest);
 

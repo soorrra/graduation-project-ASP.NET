@@ -6,7 +6,7 @@
 <div class="container">
 
 <div class="text-center">
-    <h1>Past Bookings</h1>
+    <h1>Прошлые бронирования</h1>
     <a asp-action="ViewMyBookings" class="text-white mx-auto btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Upcoming Bookings</a>
 </div>
 
@@ -33,8 +33,8 @@
                 }
             </div>
                 <div class="d-flex justify-content-between pb-2">
-                <a asp-action="BookingDetails" asp-route-bookingID="@item.BookingId" class="text-white mx-auto btn" style="background:#a1a3f6; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">See Booking Details</a>
-                <a asp-action="CreateReview" asp-route-bookingID="@item.BookingId" class="text-black mx-auto btn" style="background:#F2F063; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Review This Booking</a>
+                <a asp-action="BookingDetails" asp-route-bookingID="@item.BookingId" class="text-white mx-auto btn" style="background:#a1a3f6; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Посмотреть детали</a>
+                <a asp-action="CreateReview" asp-route-bookingID="@item.BookingId" class="text-black mx-auto btn" style="background:#F2F063; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">Написать отзыв</a>
             </div>
             <hr />
         </section>
