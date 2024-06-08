@@ -1,26 +1,34 @@
-﻿@model IEnumerable<Petsitter.ViewModels.NewsVM>
+﻿ @model IEnumerable<Petsitter.ViewModels.NewsVM>
 
 @{
     ViewData["Title"] = "News";
 }
 
-<h1>News</h1>
+<div class="container">
+    <h1 class="h1-find">Новости</h1>
+   
+    <ul>
+        @foreach (var news in Model)
+        {
+             <div class="news__wrapper">
+            <li>
+                <h2>@news.Title</h2>
+                <p>Category: @news.Category</p>
+                <p>@news.Body</p>
+               @*  @if (news.Image != null)
+                {
+                    <img style="max-width: 400px;" src="data:image/png;base64, @Convert.ToBase64String(news.Image)" />
+                }
+                else
+                {
+                    <img style="max-width: 400px;" src="~/images/default-image.jpg" alt="Default Profile Image" />
+                } *@
+                <p>Date: @news.Date.ToString("dd.MM.yyyy")</p>
 
-<ul>
-    @foreach (var newsItem in Model)
-    {
-        <li>
-            <h3>@newsItem.Title</h3>
-            <p>@newsItem.Body</p>
-            <p>Date: @newsItem.Date.ToString("dd.MM.yyyy")</p>
-            <!-- Image Display (Optional) -->
-           @*  @if (newsItem.Image != null)
-            {
-                // Encode image as base64 (or use a helper method)
-                var base64Image = Convert.ToBase64String(newsItem.Image);
-                <img src="data:image/jpeg;base64,@base64Image" alt="@newsItem.Title" />
-            } *@
-            <p>Category: @newsItem.Category</p>
-        </li>
-    }
-</ul>
+            </li>
+            </div>
+
+        }
+    </ul>
+</div>
+

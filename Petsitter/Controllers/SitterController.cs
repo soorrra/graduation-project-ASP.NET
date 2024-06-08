@@ -16,6 +16,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Petsitter.Data.Services;
+using System.Security.Claims;
 
 
 namespace Petsitter.Controllers
@@ -67,6 +68,60 @@ namespace Petsitter.Controllers
             return View(PaginatedList<SitterDashboardVM>.Create(bookings.AsQueryable().AsNoTracking(), page ?? 1, pageSize));
 
         }
+
+        public IActionResult BookingConfirmation(int? page, string status)
+        {
+            int sitterID = Convert.ToInt32(HttpContext.Session.GetString("SitterID"));
+
+            SitterRepos sitterRepos = new SitterRepos(_db, _webHostEnvironment);
+            IEnumerable<SitterDashboardVM> bookings = sitterRepos.GetBooking(sitterID); ;
+            ViewData["UpComing"] = bookings.Select(b => b.upComingNbr).LastOrDefault();
+           
+            if (!string.IsNullOrEmpty(status))
+            {
+
+                bookings = sitterRepos.GetBookingByStatus(bookings, status);
+
+
+
+            }
+
+
+            int pageSize = 4;
+
+            return View(PaginatedList<SitterDashboardVM>.Create(bookings.AsQueryable().AsNoTracking(), page ?? 1, pageSize));
+
+        }
+
+
+
+        //public IActionResult BookingConfirmation()
+        //{
+        //    var sitterId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var bookings = _db.BookingConfirmation.Where(b => b.Confirmed == false && b.Booking.SitterId == sitterId).Select(b => b.Booking).ToList();
+        //    return View(bookings);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Confirm(int bookingId)
+        //{
+        //    var bookingConfirmation = _db.BookingConfirmations.Where(b => b.BookingID == bookingId).FirstOrDefault();
+        //    bookingConfirmation.Confirmed = true;
+        //    _context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
+        [HttpPost]
+        public IActionResult Reject(int bookingId)
+        {
+            var booking = _db.Bookings.Where(b => b.BookingId == bookingId).FirstOrDefault();
+            var bookingPet = _db.BookingPets.Where(bp => bp.BookingId == bookingId).FirstOrDefault();
+            _db.BookingPets.Remove(bookingPet);
+            _db.Bookings.Remove(booking);
+            _db.SaveChanges();
+            return RedirectToAction("BookingConfirmation");
+        }
+
         /// <summary>
         /// get details of booking with pet parent informatins
         /// </summary>

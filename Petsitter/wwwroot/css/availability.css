@@ -46,7 +46,7 @@
 
     /* Style for the "Save" button */
     .availability form .btn {
-        background-color: #6366F1;
+        background-color: #91AC8E;
 /*        color: #dce6f496;
 
 */  
@@ -58,7 +58,7 @@ border: 1px solid #ccc;
     }
         .availability form .btn:hover {
             background-color: #dce6f496;
-            color: #6366F1;
+            color: #91AC8E;
         }
     /* Style for the FullCalendar */
      #calendar {

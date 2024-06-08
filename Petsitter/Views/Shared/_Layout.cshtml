@@ -67,11 +67,11 @@
                         <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Booking" asp-action="ViewCreateBookingUser">@Localizer["Create New Booking"]</a>
                         </li>
-                        <li class="nav__list-item">
-                            <a class="hover-target" asp-area="" asp-controller="Booking" asp-action="ViewAnnouncement">@Localizer["View Announcement"]</a>
-                        </li>
                          <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Chat" asp-action="ViewMyChats">@Localizer["Chats"]</a>
+                        </li>
+                        <li class="nav__list-item">
+                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["News"]</a>
                         </li>
                         @if (!User.IsInRole("Admin"))
                         {
@@ -88,14 +88,20 @@
                         <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Sitter" asp-action="Availability">@Localizer["Availability"]</a>
                         </li>
-                         <li class="nav__list-item">
+                        @*  <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Booking" asp-action="ViewCreateBookingSitter">@Localizer["Create New Booking"]</a>
-                        </li>
+                        </li> *@
                         <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Booking" asp-action="ViewAnnouncement">@Localizer["View Announcement"]</a>
                         </li>
                         <li class="nav__list-item">
+                            <a class="hover-target" asp-area="" asp-controller="Sitter" asp-action="BookingConfirmation">Запросы</a>
+                        </li>
+                        <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Chat" asp-action="ViewMyChats">@Localizer["Chats"]</a>
+                        </li>
+                        <li class="nav__list-item">
+                            <a class="hover-target" asp-area="" asp-controller="Home" asp-action="News">@Localizer["News"]</a>
                         </li>
                         @if (!User.IsInRole("Admin"))
                         {

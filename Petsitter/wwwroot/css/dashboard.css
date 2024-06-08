@@ -130,7 +130,7 @@
 }
 
     .dashboard-count dt:nth-of-type(3) span, .dashboard-count dt:nth-of-type(3) h2 {
-        color: #6366F1;
+        color: #91AC8E;
     }
 
 /* Style the table */
@@ -155,7 +155,7 @@
     }
         .dashboard-table td a {
 /*            background-color: #dce6f496;
-*/            color: #6366F1;
+*/            color: #91AC8E;
 /*            border: 1px solid #ccc;
 */            font-weight: bold;
             width: 100%;

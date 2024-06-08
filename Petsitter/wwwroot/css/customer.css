@@ -1,5 +1,5 @@
 :root {
-    --indigo-500: #6366F1;
+    --indigo-500: #91AC8E;
     --red-500: #EF4444;
     --gray-500: #6B7280;
 }
@@ -245,7 +245,7 @@ img{
     height: 0;
     border-style: solid;
     border-width: 5px 0 7px 8px;
-    border-color: transparent transparent transparent #6366F1;
+    border-color: transparent transparent transparent #91AC8E;
     transform: rotate(180deg);
     position: absolute;
     left: 0;
@@ -269,7 +269,7 @@ img{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #6366F1;
+    background-color: #91AC8E;
     color: #fff;
     border-radius: 50%;
     width: 50px;
@@ -455,7 +455,7 @@ input[type="radio"]:checked + .radio-icon i {
 
 /* Style the checked state of the custom radio button */
 .radio-group input[type="radio"]:checked + label {
-    background-color: #6366F1;
+    background-color: #91AC8E;
     color: #fff;
 }
 
@@ -473,7 +473,7 @@ input[type="radio"]:checked + .radio-icon i {
 }
 
 .createpet-container .radio-group label:hover {
-    background-color: #6366F1;
+    background-color: #91AC8E;
     color: #fff;
 }
 
@@ -517,7 +517,7 @@ input[type="radio"]:checked + .radio-icon i {
     }
 
 .btn-img {
-    background-color: #6366F1;
+    background-color: #91AC8E;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -527,7 +527,7 @@ input[type="radio"]:checked + .radio-icon i {
 }
 
     .btn-img:hover {
-        background-color: #6366F1;
+        background-color: #91AC8E;
     }
 
 @media only screen and (max-width:480px){

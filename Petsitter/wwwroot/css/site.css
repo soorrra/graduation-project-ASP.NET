@@ -228,9 +228,9 @@ html {
     }
 
     .wrapper .btn {
-        border: solid 1px #6366F1;
+        border: solid 1px #91AC8E;
         color: white;
-        background-color: #6366F1;
+        background-color: #91AC8E;
         padding: 10px 30px;
         border-radius: 20px;
         text-decoration: none;
@@ -1375,8 +1375,7 @@ body.light {
     align-items: center;
     text-align: center;
     border-radius: 40px;
-    padding: 12px 10px;
-    width: 100px;
+    width: 110px;
     height: 60px;
     background: #90ad90;
     color: white;
@@ -1857,4 +1856,13 @@ body.light {
 
 .cat__footer__hand {
     animation: handMove 2.7s ease-in-out infinite;
+}
+
+.news__wrapper {
+    display: flex;
+    border-radius: 21px;
+    margin: auto 20px 30px 20px;
+    box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
+    background: #fff;
+    padding: 20px;
 }

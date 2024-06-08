@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 using Petsitter.Data;
 using Petsitter.Models;
 using Petsitter.ViewModels;
-using Microsoft.EntityFrameworkCore;
+using System.Drawing;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
+using NuGet.Packaging;
+using System;
 
 namespace Petsitter.Repositories
 {
@@ -76,18 +84,31 @@ namespace Petsitter.Repositories
 
         public void AddNews(NewsVM newsVM)
         {
+            //byte[] imageData = null;
+            //if (newsVM.Image != null)
+            //{
+            //    using var binaryReader = new BinaryReader(newsVM.Image.OpenReadStream());
+            //    imageData = binaryReader.ReadBytes((int)newsVM.Image.Length);
+            //}
+
             News newsToAdd = new News
             {
                 Title = newsVM.Title,
                 Body = newsVM.Body,
-                Date = newsVM.Date,
-                Image = newsVM.Image,
+                Date = DateTime.Now,
+                //Image = imageData,
                 Category = newsVM.Category
             };
 
             _db.News.Add(newsToAdd);
             _db.SaveChanges();
         }
+
+
+
+
+
+
     }
 }
 

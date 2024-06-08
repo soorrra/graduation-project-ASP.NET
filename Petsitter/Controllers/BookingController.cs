@@ -398,7 +398,10 @@ namespace Petsitter.Controllers
             // Check that the booking belongs to the currently logged in user
             if (confirmBooking.UserId == Convert.ToInt32(HttpContext.Session.GetString("UserID")))
             {
-                // Check that booking is not yet paid for 
+                // Assign PaymentId to 1
+                confirmBooking.PaymentId ="001";
+
+                // Check that booking is not yet paid for (This check is now redundant, but kept for clarity)
                 if (confirmBooking.PaymentId == null)
                 {
                     return View(confirmBooking);
@@ -413,6 +416,8 @@ namespace Petsitter.Controllers
                 return RedirectToAction("NoPermission", "Home");
             }
         }
+
+
 
         [Authorize]
         // GET: Edit

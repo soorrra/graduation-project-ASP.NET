@@ -10,20 +10,9 @@ namespace Petsitter.ViewModels
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime Date { get; set; }
-        public string? Image { get; set; }
+        public IFormFile? Image { get; set; }
         public string? Category { get; set; }
-
-        public static NewsVM FromModel(News news)
-        {
-            return new NewsVM
-            {
-                Id = news.Id,
-                Title = news.Title,
-                Body = news.Body,
-                Date = news.Date,
-                Image = news.Image,
-                Category = news.Category
-            };
-        }
     }
 }
+
+

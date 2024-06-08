@@ -12,22 +12,22 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Join us and start your journey as a pet sitter today by creating a new account</h4>
+            <h4>Регистрация</h4>
             <hr />
-            <h4 class="text-decoration-underline">Contat Details</h4>
+            <h4 class="text-decoration-underline">Контактные данные</h4>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group row mt-3">
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.FirstName"></label>
+                        <label asp-for="Input.FirstName">Имя</label>
                         <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.LastName" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.LastName"></label>
+                        <label asp-for="Input.LastName">Фамилия</label>
                         <span asp-validation-for="Input.LastName" class="text-danger"></span>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.PhoneNumber"></label>
+                        <label asp-for="Input.PhoneNumber">Номер телефона</label>
                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                     </div>
                 </div>
@@ -52,31 +52,30 @@
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                        <label asp-for="Input.Password"></label>
+                        <label asp-for="Input.Password">Пароль</label>
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                        <label asp-for="Input.ConfirmPassword"></label>
+                        <label asp-for="Input.ConfirmPassword">Повторите пароль</label>
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
             </div>
-            <h4 class="text-decoration-underline mt-3">Postal Address</h4>
             <div class="form-group row mt-3">
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.City" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.City"></label>
+                        <label asp-for="Input.City">Город</label>
                         <span asp-validation-for="Input.City" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input asp-for="Input.PostalCode" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.PostalCode"></label>
+                            <label asp-for="Input.PostalCode">Почтовый индекс</label>
                         <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
                     </div>
                 </div>
@@ -85,34 +84,34 @@
                 <div class="col-md-12">
                     <div class="form-floating">
                         <input asp-for="Input.StreetAddress" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.StreetAddress"></label>
+                        <label asp-for="Input.StreetAddress">Улица</label>
                         <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="text-decoration-underline mt-3">Account Type</h4>
+                <h4 class="text-decoration-underline mt-3">Тип аккаунта</h4>
                 <div>
                     <input asp-for="Input.UserType" type="radio" id="sitter" value="Sitter" />
-                    <label for="sitter" style="margin-right:1em;">Sitter</label>
+                    <label for="sitter" style="margin-right:1em;">Петситтер</label>
                     <input asp-for="Input.UserType" type="radio" id="petParent" value="Customer" />
-                    <label for="petParent">Pet Parent</label>
+                    <label for="petParent">Хозяин питомца</label>
                 </div>
             </div>
 
             <!-- This must be placed inside the form. -->
             <div class="g-recaptcha" data-sitekey='@ViewData["SiteKey"]'></div>
 
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg text-white mt-3" style="background:#6366F1; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
-                SIGN UP
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg text-white mt-3" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
+                Зарегистрироваться 
             </button>
             <hr/>
             <p class="mb-1 text-center">
-                Already have a Petsitter account?
+                Уже имеете аккаунт?
             </p>
             <div class="d-flex justify-content-center">
                 <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl"
-                   class="text-white w-50 btn mb-3 mt-3" style="background:#6366F1;
+                   class="text-white w-50 btn mb-3 mt-3" style="background:#91AC8E;
                             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">
                     Sign In
                 </a>

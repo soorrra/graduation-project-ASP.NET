@@ -1,0 +1,101 @@
+﻿@*@model IEnumerable<Petsitter.ViewModels.SitterDashboardVM>
+*@
+@using Petsitter.Controllers
+@model PaginatedList<Petsitter.ViewModels.SitterDashboardVM>
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<div class="container">
+
+    <div class=dashboard>
+       
+      
+
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>
+                        booking ID
+                    </th>
+                    <th>
+                        Pet Parent
+                    </th>
+                    <th>
+                        Pet Type
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+
+
+
+                    <th>
+                        Details
+                    </th>
+
+                </tr>
+            </thead>
+            @if (Model.Any())
+            {
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a>  @Html.DisplayFor(modelItem => item.bookingId)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.petParent)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.petType)
+                            </td>
+                            <td>
+                               
+                                @if (item.status == "UpComing")
+                                {
+                                    <div class="alert alert-danger mx-auto">
+
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.startDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.endDate)
+                            </td>
+
+
+                            <td>
+                                <form asp-action="Reject" asp-route-bookingId="@item.bookingId" method="post">
+                                    <input type="submit" value="Отказаться" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            }
+            else
+            {
+                <p>No Booking found for now.</p>
+            }
+
+        </table>
+
+    </div>
+</div>

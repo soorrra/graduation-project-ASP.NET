@@ -30,6 +30,8 @@ namespace Petsitter.Models
         public virtual DbSet<Message> Messages { get; set; } = null!;
         public virtual DbSet<Chat> Chats { get; set; } = null!;
         public virtual DbSet<News> News { get; set; } = null!;
+        public virtual DbSet<BookingConfirmation> BookingConfirmation { get; set; } = null!;
+
 
 
 
@@ -419,6 +421,23 @@ namespace Petsitter.Models
                 entity.Property(e => e.Category)
                     .HasMaxLength(255);
             });
+
+            //modelBuilder.Entity<BookingConfirmation>(entity =>
+            //{
+            //    entity.HasKey(e => e.BookingID)
+            //        .HasName("PK_BookingConfirmation");
+
+            //    entity.ToTable("BookingConfirmation");
+
+            //    entity.Property(e => e.BookingID)
+            //        .ValueGeneratedNever();
+
+            //    entity.Property(e => e.Confirmed)
+            //        .IsRequired();
+
+                
+            //});
+
 
 
             OnModelCreatingPartial(modelBuilder);

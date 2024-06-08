@@ -201,8 +201,8 @@
                                     }
                                 </div>
                                 <div class="more-info-link">
-                                    <a asp-controller="Booking" asp-action="SitterDetails" asp-route-sitterID="@item.SitterId">
-                                        <button class="card__btn">@Localizer["View profile"]</button>
+                                    <a class="register-button" asp-area="Identity" asp-page="/Account/Register">
+                                        <button class="card__btn ">@Localizer["View profile"]</button>
                                     </a>
                                 </div>
                             </div>
