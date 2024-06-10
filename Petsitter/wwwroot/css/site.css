@@ -3,7 +3,7 @@
 }
 
 p, span, a {
-    font-family: 'Lena', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -92,8 +92,9 @@ html {
     margin: 0 0 0 auto;
 }
 
-.nav-item a:hover{
+.nav-item a:hover {
     text-decoration: underline;
+    color: white;
 }
 
 @media screen and (max-width: 1440px) {
@@ -660,14 +661,16 @@ a {
 
 /* #Cursor
 ================================================== */
+body {
+    cursor: none; /* Скрывает системный курсор */
+}
 
 .cursor,
 .cursor2,
 .cursor3 {
     position: fixed;
-    border-radius: 50%;
     transform: translateX(-50%) translateY(-50%);
-    pointer-events: none;
+    pointer-events: none; 
     left: -100px;
     top: 50%;
     mix-blend-mode: difference;
@@ -684,10 +687,12 @@ a {
 
 .cursor2, .cursor3 {
     height: 36px;
-    width: 36px;
+    width: 39px;
     z-index: 99998;
     -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out
+    transition: all 0.3s ease-out;
+    background-image: url('/Images/crs4.png'); 
+    background-size: cover;
 }
 
     .cursor2.hover,
@@ -698,13 +703,9 @@ a {
     }
 
 .cursor2 {
-    border: 2px solid #fff;
-    box-shadow: 0 0 22px rgba(255, 255, 255, 0.6);
 }
 
     .cursor2.hover {
-        background: rgba(255,255,255,1);
-        box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
     }
 
 @media screen and (max-width: 1200px) {
@@ -712,6 +713,8 @@ a {
         display: none
     }
 }
+ 
+
 
 /* #Primary style
 ================================================== */
@@ -1431,7 +1434,9 @@ body.light {
     background: #90ad90;
     color: white;
 }
-
+    .find__sitter__btn:hover {
+        color: white;
+    }
 /* #Footer
 ================================================== */
 .main__footer {
