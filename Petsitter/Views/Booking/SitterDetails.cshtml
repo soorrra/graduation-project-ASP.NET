@@ -67,7 +67,7 @@
             }
             else
             {
-                <span>@ViewBag.TotalReview @((ViewBag.TotalReview == 1) ? "rating" : "ratings")</span>
+                <span>@ViewBag.TotalReview @((ViewBag.TotalReview == 1) ? "оценка" : "оценок")</span>
             }
         </p> 
       </div>
@@ -139,7 +139,7 @@
             else{
             @foreach (var item in Model)
             {
-                <div class="col-md-4">
+                <div class="col-md-4" style="margin-right:80px;">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div style="display: flex; align-items: center;">
@@ -154,8 +154,8 @@
                                 }
                                 <h5 class="card-title" style="margin: 0;">@Html.DisplayFor(modelItem => item.petParent)</h5>
                             </div>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.review)</p>
-                            <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.startDate) - @Html.DisplayFor(modelItem => item.endDate)</small></p>
+                                    <p class="details__review">@Html.DisplayFor(modelItem => item.review)</p>
+                                    <p class="details__review"><small class="text-muted">@Html.DisplayFor(modelItem => item.startDate) - @Html.DisplayFor(modelItem => item.endDate)</small></p>
                         </div>
                         <div class="card-footer">
                                 <small class="text-muted">

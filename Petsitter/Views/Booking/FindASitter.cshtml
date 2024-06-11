@@ -11,6 +11,8 @@
         <a asp-action="FindASitter"><button type="button" class="btn__reset__filters"></button></a>
 
         <div>
+            <label class="text__filter">Фильтры поиска</label>
+
                 <label class="text__filter">По виду:</label>
             <div class="checkbox__container">
                 @foreach (var petType in ViewBag.PetTypes)
@@ -54,7 +56,7 @@
         <div class="d-flex gap-2">
             <input type="text" class="form-control date" placeholder="Select all dates service is needed"
                    id="selectedDates" name="selectedDates" value="@ViewBag.SelectedDates" />
-            <button type="submit" class="btn btn-dark">Filter</button>
+            <button type="submit" class="btn btn-dark" style="border: none">Применить</button>
         </div>
     </div>
 </form>

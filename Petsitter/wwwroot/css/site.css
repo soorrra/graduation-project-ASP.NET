@@ -290,7 +290,7 @@ html {
 }
 .howItWorksP {
     font-weight: 400;
-    font-size: calc(35px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
+    font-size: calc(25px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
     color: #1d3417;
     float: right;
     max-width: 500px;
@@ -442,7 +442,6 @@ html {
     /* The slider */
     .slider {
         position: absolute;
-        cursor: pointer;
         top: 0;
         left: 0;
         right: 0;
@@ -652,7 +651,6 @@ html {
 
 
 a {
-    cursor: pointer;
 }
 
     a:hover {
@@ -670,12 +668,13 @@ body {
 .cursor3 {
     position: fixed;
     transform: translateX(-50%) translateY(-50%);
-    pointer-events: none; 
+    pointer-events: none;
     left: -100px;
     top: 50%;
     mix-blend-mode: difference;
     -webkit-transition: all 300ms linear;
     transition: all 300ms linear;
+    cursor: none;
 }
 
 .cursor {
@@ -683,6 +682,7 @@ body {
     height: 0;
     width: 0;
     z-index: 99999;
+    cursor: none;
 }
 
 .cursor2, .cursor3 {
@@ -691,13 +691,14 @@ body {
     z-index: 99998;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
-    background-image: url('/Images/crs4.png'); 
+    background-image: url('/Images/crs4.png');
     background-size: cover;
+    cursor: none;
 }
 
     .cursor2.hover,
     .cursor3.hover {
-        -webkit-transform: scale(2) translateX(-25%) translateY(-25%);
+        -webkit-transform: scale(1.2) translateX(-25%) translateY(-25%);
         transform: scale(2) translateX(-25%) translateY(-25%);
         border: none
     }
@@ -713,7 +714,10 @@ body {
         display: none
     }
 }
- 
+
+.btn, .a {
+    cursor: none;
+}
 
 
 /* #Primary style
@@ -758,7 +762,6 @@ body {
     width: 30px;
     position: relative;
     z-index: 2;
-    cursor: pointer;
     display: block;
     border-radius: 15px;
 }
@@ -769,7 +772,6 @@ body {
     display: block;
     background-color: #90ad90;
     margin-bottom: 7px;
-    cursor: pointer;
     -webkit-transition: background-color .5s ease, -webkit-transform .2s ease;
     transition: background-color .5s ease, -webkit-transform .2s ease;
     transition: transform .2s ease, background-color .5s ease;
@@ -884,7 +886,6 @@ body {
         text-decoration: none;
         color: rgba(255,255,255,0.6);
         overflow: hidden;
-        cursor: pointer;
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
         z-index: 2;
@@ -1276,6 +1277,7 @@ body.light {
     margin: auto auto 30px auto;
 }
 .btnServiceType {
+    padding: 10px 15px;
     z-index: 3;
     pointer-events: auto;
     border: hidden;
@@ -1284,6 +1286,7 @@ body.light {
     background: #90ad90;
     font-size: calc(50px + (10 - 6) * ((100vw - 1024px) / (600 - 1024)));
     color: white;
+    line-height: 100%;
 }
 
 /* #Found sitter cards
@@ -1867,6 +1870,22 @@ body.light {
     display: flex;
     border-radius: 21px;
     margin: auto 20px 30px 20px;
+    box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
+    background: #fff;
+    padding: 20px;
+}
+
+.reg {
+    margin: 0 auto;
+    border-radius: 21px;
+    box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
+    background: #fff;
+    padding: 20px;
+}
+
+.reg__1 {
+    margin: 0 auto 30px auto;
+    border-radius: 21px;
     box-shadow: 0 0 50px -10px rgba(151, 71, 255, 0.08);
     background: #fff;
     padding: 20px;

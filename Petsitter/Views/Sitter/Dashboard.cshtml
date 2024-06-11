@@ -26,7 +26,7 @@
         </a>
     </div>
     <form method="get" action="/Sitter/Dashboard">
-        <label for="booking-status-filter">Filter by Status:</label>
+        <label for="booking-status-filter">Фильтровать по статусу:</label>
         <select id="booking-status-filter" name="status" onchange="this.form.submit()">
             <option value="">-- Выберите статус --</option>
             <option value="UpComing">Предстоящие</option>
@@ -56,11 +56,25 @@
         <dt class="col">
             <h2>Отзывы</h2>
             <h3>Отзывы клиентов</h3>
+                    <div class="reviews-container">
+                        <span class="review-content">
+                            @ViewBag.Reviews
+                        </span>
+                    </div>
 
-            <span>
-                @ViewBag.Reviews
-            </span>
-        </dt>
+                    <style>
+                        .reviews-container {
+                            overflow-x: auto; 
+                            white-space: nowrap; 
+                        }
+
+                        .review-content {
+                            display: inline-block; 
+                        }
+                    </style>
+
+
+                </dt>
     </dl>
 
 </div>

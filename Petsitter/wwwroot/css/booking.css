@@ -25,12 +25,9 @@
     border: none;
     cursor: pointer;
     float: right;
+    background-color: transparent;
 }
-
-    .btn__reset__filters::after {
-        content: "Clear all";
-        margin-left: 5px;
-    }
+ 
 
 .checkbox__container {
     display: flex;
@@ -327,13 +324,22 @@
 
 .details__bio {
     width: 100%;
-    height: 100px;
+    height: 200px;
     overflow-y: scroll;
     scrollbar-width: thin;
     scrollbar-color: white white;
     margin-bottom: 20px;
 }
 
+
+.details__review  {
+    width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: white white;
+    margin-bottom: 20px;
+}
 
 .chat__wrapper {
     display: flex;

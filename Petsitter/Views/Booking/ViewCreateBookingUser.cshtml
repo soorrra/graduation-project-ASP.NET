@@ -4,7 +4,9 @@
     ViewData["Title"] = "Book";
 }
 <div class="container">
-
+    <p class="reg"> Здесь вы можете разместить объявление о поиске услуг по уходу за питомцами, что позволит петситтерам самостоятельно связаться с вами.</p>
+    </br>
+    </br>
     <div class="book__class__create">
     <form asp-action="ViewCreateBookingUser" class="booking-form">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -12,12 +14,12 @@
           
         </div>
         <p class="text-danger mb-1">
-            @Model.Message</>
+            @Model.Message</br>
             <div class="form-group mb-2">
-                <p class="mb-0">Add Pets</p>
+                <p class="mb-0">Добавить питомцев</p>
                 @if (Model.Pets.Count() == 0)
                 {
-                    <p>Please go to your profile and add a pet in order to proceed with booking!</p>
+                    <p>В вашем профиле еще нет питомцев! Пожалуйста, перейдите в редактирование профиля и добавьте ваших животных.</p>
                 }
                 @for (var i = 0; i < Model.Pets.Count(); i++)
                 {
