@@ -3,17 +3,30 @@
 @{
     ViewData["Title"] = "Add Pet Type";
 }
-
-<h1>Добавить новый вид животного</h1>
 <div class="container">
+<div class="reg">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="success-message" class="alert alert-success" role="alert" style="display: none;">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        <h1 class="h1-find">Добавьте новый вид животного</h1>
     <form asp-action="AddPetType" method="post">
         <div class="form-group">
-            <label asp-for="PetType1" class="control-label"></label>
             <input asp-for="PetType1" class="form-control" />
             <span asp-validation-for="PetType1" class="text-danger" style="width:200px"></span>
         </div>
+        </br>
         <div class="form-group">
             <input type="submit" value="Добавить" class="btn btn-primary" />
         </div>
     </form>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#success-message').fadeIn('slow').delay(3000).fadeOut('slow');
+    });
+</script>

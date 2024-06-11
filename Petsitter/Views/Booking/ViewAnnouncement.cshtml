@@ -15,15 +15,25 @@ else
     <div class="list-of-bookings">
         @foreach (var item in Model.Where(b => b.SitterId == 1)) 
         {
-            <section class="booking-section">
-
-                <div style="font-weight: bold;">@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)</div>
-                
-                <div class="pb-2">
-                    <a asp-action="BookingDetailsAnnouncement" asp-route-bookingID="@item.BookingId" class="text-white mx-auto btn" style="background:#a1a3f6; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);">See Booking Details</a>
+                <div class="reg__1">
+                    <section class="booking-section">
+                        <div style="font-weight: bold;">@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)</div>
+                        <div>
+                            <span class="sitter-name">@Html.DisplayFor(modelItem => item.SpecialRequests)</span>
+                            @for (int i = 1; i <= @item.Pets.Count - 1; i++)
+                            {
+                                <span>, @item.Pets[i].Name</span>
+                            }
+                            @if (@item.Pets.Count > 1)
+                            {
+                                <span> & @item.Pets[item.Pets.Count - 1].Name</span>
+                            }
+                        </div>
+                        <div>
+                            <a asp-controller="Chat" asp-action="ChatFromMyChats" asp-route-sitterID="@item.UserId" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); right:0;">Написать сообщение</a>
+                        </div>
+                    </section>
                 </div>
-                <hr />
-            </section>
         }
     </div>
 }

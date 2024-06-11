@@ -22,16 +22,15 @@
 <div class="getprofile-container">
 
     <div class="profile-wrapper">
-        <h2>Welcome @Html.DisplayFor(model => model.FirstName)!</h2>
+            <h2>Здравствуйте @Html.DisplayFor(model => model.FirstName)!</h2>
         <h3>
-            Explore your profile and click
+            Чтобы редактировать профиль нажмите
             <a asp-action="EditProfile" asp-route-id="@Model.UserId">
                
                 <span class="material-symbols-outlined">
                     account_box
                 </span>
             </a>
-            to edit your Profile!!
         </h3>
 
     </div>
@@ -54,9 +53,9 @@
                                 warning
                             </span>
                             <div class="p-2">
-                                <p class="m-0">Add a photo to increase your chance to be selected by our Pet parents</p>
+                                    <p class="m-0">Добавьте изображение профиля</p>
                             </div>
-                            <a asp-action="EditProfile" asp-route-id="@Model.UserId" class="btn btn-img">Add Picture</a>
+                            <a asp-action="EditProfile" asp-route-id="@Model.UserId" class="btn btn-img">Добавить изображение</a>
                         </div>
                     }
                     else
@@ -81,7 +80,7 @@
                     <div class="p-4">
                             @if (Model.ProfileBio != null)
                             {
-                                <h3 class="text-decoration-underline">PROFILE BIO</h3>
+                                <h3 class="text-decoration-underline">Описание профиля</h3>
                                 <p>
                                     @Html.DisplayFor(model => model.ProfileBio)
                                 </p>
@@ -89,13 +88,13 @@
                             else
                             {
                                 <p>
-                                    click here
+                                    нажмите здесь
                                     <a asp-action="EditProfile" asp-route-id="@Model.UserId">
                                         <span class="material-symbols-outlined">
                                             account_box
                                         </span>
                                     </a>
-                                    and add your profile bio
+                                    и добавьте описание профиля
                                 </p>
                             }
 
@@ -109,14 +108,14 @@
 
 
 
-            <h3 id="1">CONTACT DETAILS</h3>
+            <h3 id="1">Контактные данные</h3>
             <div class="row">
                 <div class="col-sm-6">
-                    <dt class="mb-2">First Name</dt>
+                    <dt class="mb-2">Имя</dt>
                     <dd>@Html.DisplayFor(model => model.FirstName)</dd>
                 </div>
                 <div class="col-sm-6">
-                    <dt class="mb-2">Last Name</dt>
+                    <dt class="mb-2">Фамилия</dt>
                     <dd>@Html.DisplayFor(model => model.LastName)</dd>
                 </div>
             </div>
@@ -126,29 +125,22 @@
                     <dd>@Html.DisplayFor(model => model.Email)</dd>
                 </div>
                 <div class="col-sm-6">
-                    <dt class="mb-2">Phone Number</dt>
+                    <dt class="mb-2">Номер телефона</dt>
                     <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3 id="2">POSTAL ADDRESS</h3>
-                </div>
-            </div>
+           
             <div class="row">
                 <div class="col-sm-6">
-                    <dt class="mb-2">City</dt>
+                    <dt class="mb-2">Город</dt>
                     <dd>@Html.DisplayFor(model => model.City)</dd>
                 </div>
-                <div class="col-sm-6">
-                    <dt class="mb-2">Postal Code</dt>
-                    <dd>@Html.DisplayFor(model => model.PostalCode)</dd>
-                </div>
+               
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <dt class="mb-2">Street Address</dt>
+                    <dt class="mb-2">Адрес</dt>
                     <dd>@Html.DisplayFor(model => model.StreetAddress)</dd>
                 </div>
             </div>
@@ -156,13 +148,13 @@
         </dl>
 
 
-        <h3 id="3">Pet Preferences</h3>
+        <h3 id="3">Виды питомцев</h3>
         <dd class="col-sm-10">
 
 
             <div class="d-flex align-items-start justify-content-between w-100">
                 <div>
-                    <h6> What type of pets do you accept?</h6>
+                    <h6> С каким видом(ми) вы работаете?</h6>
 
                     <div class="pets">
                         @foreach (var petType in Model.PetTypesAvailable)
@@ -174,7 +166,7 @@
                     </div>
                 </div>
                 <div>
-                    <h6> What type of service do you accept?</h6>
+                    <h6> Какой тип услуг вы оказываете?</h6>
 
                     <div class="pets">
                         @foreach (var serviceType in Model.ServiceTypesAvailable)
@@ -188,7 +180,7 @@
 
                 <div>
 
-                    <h6> What you want clients to pay per service?</h6>
+                    <h6> Какова ваша часовая ставка?</h6>
                     <p>@String.Format("{0:C}", Model.RatePerPetPerDay)</p>
                 </div>
             </div>

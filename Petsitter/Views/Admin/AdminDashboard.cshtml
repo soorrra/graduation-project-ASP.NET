@@ -6,14 +6,15 @@
 }  
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 <div class="container">
+    <div class="reg">
 
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="box-title">
-            <b>Users</b>
+            <b>Пользователи</b>
         </h3>
         <div class="admin link-header">
-            <a asp-controller="UserRole" asp-action="Index">Edit User Roles</a>
+            <a asp-controller="UserRole" asp-action="Index">Редактировать пользовательские роли</a>
         </div>
     </div>
     <!-- /.box-header -->
@@ -54,11 +55,12 @@
     <div class="panel-footer">
         <p class="box-title">
             <b>
-                Total Users
-                ered as of @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  :
+                Всего пользователей
+                на момент @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  :
             </b><span class="label label-primary">@Model.Count()</span>
         </p>
     </div>
+</div>
 </div>
 </div>
 <style>

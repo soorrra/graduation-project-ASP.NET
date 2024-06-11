@@ -72,6 +72,7 @@ namespace Petsitter.Controllers
             }
 
             adminRep.AddPetType(petType);
+            TempData["SuccessMessage"] = "Новый вид успешно добавлен!";
 
             return RedirectToAction("AddPetType");
         }
@@ -88,7 +89,7 @@ namespace Petsitter.Controllers
             adminRep.AddNews(newsVM);
 
             // After adding the news, redirect to a success page or display a success message
-            TempData["SuccessMessage"] = "News published successfully!";
+            TempData["SuccessMessage"] = "Новость опубликована!";
             return RedirectToAction("AddNews"); // or RedirectToAction("NewsList");
         }
     }

@@ -67,7 +67,7 @@ namespace Petsitter.Controllers
         public IActionResult ChatFromMyChats(int userID)
         {
             ChatRepo chatRepo = new ChatRepo(_db);
-            //сомнительная хрень, все х переделывай 
+
             string userName = HttpContext.Session.GetString("UserName");
             int fromUserID = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
             List<MessageVM> myMessages = chatRepo.GetMessageVMByUserId(fromUserID);
@@ -87,6 +87,22 @@ namespace Petsitter.Controllers
             return View("Chat", myMessages);
         }
 
+        public IActionResult ChatFromAnnouncement(int userID)
+        {
+            ChatRepo chatRepo = new ChatRepo(_db);
+            string userName = HttpContext.Session.GetString("UserName");
+            int fromUserID = userID;
+            List<MessageVM> myMessages = chatRepo.GetMessageVMByUserId(fromUserID);
+
+            int toUserId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+
+            ViewData["fromUserID"] = fromUserID;
+            ViewData["toUserID"] = toUserId;
+            ViewData["Messages"] = myMessages;
+            ViewData["UserName"] = userName;
+
+            return View("Chat", myMessages);
+        }
 
         [Authorize]
         public IActionResult ViewMyChats()

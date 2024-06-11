@@ -109,9 +109,9 @@
                                 <a class="hover-target" asp-area="" asp-controller="Sitter" asp-action="Profile">@Localizer["My Profile"]</a>
                             </li>
                         }
-                        <li class="nav__list-item">
+                       @*  <li class="nav__list-item">
                             <a class="hover-target" asp-area="" asp-controller="Sitter" asp-action="ReviewList">@Localizer["Review"]</a>
-                        </li>
+                        </li> *@
                     }
                     @*Later on this should be only accessed by admin*@
                     @if (User.IsInRole("Admin"))

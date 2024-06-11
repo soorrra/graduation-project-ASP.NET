@@ -399,7 +399,7 @@ namespace Petsitter.Controllers
             if (confirmBooking.UserId == Convert.ToInt32(HttpContext.Session.GetString("UserID")))
             {
                 // Assign PaymentId to 1
-                confirmBooking.PaymentId ="001";
+                confirmBooking.PaymentId ="1";
 
                 // Check that booking is not yet paid for (This check is now redundant, but kept for clarity)
                 if (confirmBooking.PaymentId == null)

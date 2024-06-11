@@ -8,8 +8,9 @@
             <h1 class="text-center">@ViewData["FirstName"]</h1>
 
             <div class="chat__wrapper">
-                            <ul id="list" class="chat__list">
-                                @foreach (var item in Model )
+        <ul id="list" class="chat__list" style="padding: 20px;">
+
+            @foreach (var item in Model)
                                 {
                                     int? fromUserID = ViewData["fromUserID"] as int?;
                                     int? toUserID = ViewData["toUserID"] as int?;
