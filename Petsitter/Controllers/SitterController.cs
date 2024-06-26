@@ -86,7 +86,6 @@ namespace Petsitter.Controllers
 
             }
 
-
             int pageSize = 4;
 
             return View(PaginatedList<SitterDashboardVM>.Create(bookings.AsQueryable().AsNoTracking(), page ?? 1, pageSize));

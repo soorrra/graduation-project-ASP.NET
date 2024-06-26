@@ -4,7 +4,7 @@
     ViewData["Title"] = "EditPet";
 }
 
-<h1 class="text-center">Update @Model.Name's Profile</h1>
+<h1 class="text-center">Обновите профиль питомца @Model.Name </h1>
 
 @{
 
@@ -33,7 +33,7 @@
                         {
                             if (pet.PetImage == null)
                             {
-                                <p>No Pet Image Given, add new Pet Image!</p>
+                                <p>Добавьте изображение питомца!</p>
                             }
                             else
                             {
@@ -56,14 +56,14 @@
                     <label class="control-label lead">Какой вид питомца?</label>
                     <div class="d-flex justify-content-center">
                         <label for="dog" class="radio-label m-4">
-                            <input asp-for="PetType" type="radio" value="Dog" id="dog" class="hidden-radio" />
+                            <input asp-for="PetType" type="radio" value="Собака" id="dog" class="hidden-radio" />
                             <span class="radio-icon">
                                 <i class="fas fa-dog fa-4x"></i>
                                 <span class="radio-circle"></span>
                             </span>
                         </label>
                         <label for="cat" class="radio-label m-4">
-                            <input asp-for="PetType" type="radio" value="Cat" id="cat" class="hidden-radio" />
+                            <input asp-for="PetType" type="radio" value="Кот" id="cat" class="hidden-radio" />
                             <span class="radio-icon">
                                 <i class="fas fa-cat fa-4x"></i>
                                 <span class="radio-circle"></span>
@@ -86,7 +86,7 @@
 
                 <div class="form-group row second-row">
                     <div class="col-md-6">
-                        <label asp-for="BirthYear" class="control-label">Birth Year</label>
+                        <label asp-for="BirthYear" class="control-label">Год рождения</label>
                         <select asp-for="BirthYear" class="form-control">
                             <option value="">--Select Year--</option>
                             @for (int year = DateTime.Now.Year; year >= 2002; year--)
@@ -101,7 +101,7 @@
                         <input asp-for="Instructions" class="form-control" />
                         <span asp-validation-for="Instructions" class="text-danger"></span>
                     </div>
-                    <label asp-for="Sex" class="control-label mt-2">Sex</label>
+                    <label asp-for="Sex" class="control-label mt-2">Пол</label>
                     <div class="col-md-12 radio-group">
                         <input asp-for="Sex" type="radio" id="f" value="F" />
                         <label for="f">F</label>
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <button class="save-btn rounded-3 lead">Save</button>
+                    <button class="save-btn rounded-3 lead">Сохранить</button>
                 </div>
             </form>
         </div>

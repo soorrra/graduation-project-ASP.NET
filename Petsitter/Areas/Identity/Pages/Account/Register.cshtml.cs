@@ -103,51 +103,51 @@ namespace Petsitter.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             /// 
-          
-            [Display(Name = "First Name")]
+
+            [Display(Name = "Имя")]
+            [Required(ErrorMessage = "Пожалуйста, укажите имя.")]
             public string FirstName { get; set; }
 
-           
-            [Display(Name = "Last Name")]
+            [Display(Name = "Фамилия")]
+            [Required(ErrorMessage = "Пожалуйста, укажите фамилию.")]
             public string LastName { get; set; }
 
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Пожалуйста, укажите адрес электронной почты.")]
+            [EmailAddress(ErrorMessage = "Неверный формат адреса электронной почты.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [Display(Name = "Phone Number")]
-            [Phone]
+            [Required(ErrorMessage = "Пожалуйста, укажите номер телефона.")]
+            [Phone(ErrorMessage = "Неверный формат номера телефона.")]
+            [Display(Name = "Номер телефона")]
             public string PhoneNumber { get; set; }
 
-            [Required]
-            [Display(Name = "City")]
+            [Required(ErrorMessage = "Пожалуйста, укажите город.")]
+            [Display(Name = "Город")]
             public string City { get; set; }
 
-            [Required]
-            [RegularExpression("^[A-Za-z]\\d[A-Za-z][ ]?\\d[A-Za-z]\\d$", ErrorMessage = "Please enter a valid postal code in the format A1A 1A1")]
-            [Display(Name = "Postal Code")]
+            [Required(ErrorMessage = "Пожалуйста, укажите почтовый индекс.")]
+            [RegularExpression("^[A-Za-z]\\d[A-Za-z][ ]?\\d[A-Za-z]\\d$", ErrorMessage = "Пожалуйста, введите действительный почтовый индекс в формате A1A 1A1.")]
+            [Display(Name = "Почтовый индекс")]
             [MaxLength(7)]
             public string PostalCode { get; set; }
 
-            [Required]
-            [Display(Name = "Street Address")]
+            [Required(ErrorMessage = "Пожалуйста, укажите адрес.")]
+            [Display(Name = "Адрес")]
             public string StreetAddress { get; set; }
 
-            [Required]
-            [Display(Name = "Account Type")]
+            [Required(ErrorMessage = "Пожалуйста, укажите тип аккаунта.")]
+            [Display(Name = "Тип аккаунта")]
             public string UserType { get; set; }
-            
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Пожалуйста, укажите пароль.")]
+            [StringLength(100, ErrorMessage = "{0} должен содержать не менее {2} и не более {1} символов.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Пароль")]
             public string Password { get; set; }
 
             /// <summary>
@@ -155,8 +155,8 @@ namespace Petsitter.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Подтвердите пароль")]
+            [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
             public string ConfirmPassword { get; set; }
         }
 

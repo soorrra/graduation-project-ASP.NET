@@ -123,6 +123,9 @@
   <data name="Browse sitters in your area" xml:space="preserve">
     <value>Найдите петситтеров в вашем районе</value>
   </data>
+  <data name="Cat" xml:space="preserve">
+    <value>Кот</value>
+  </data>
   <data name="Choose a pet sitter who fits your schedule and pay them directly" xml:space="preserve">
     <value>Выберите петситтера, который соответствует вашему графику, и платите напрямую</value>
   </data>

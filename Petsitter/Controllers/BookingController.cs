@@ -490,18 +490,18 @@ namespace Petsitter.Controllers
             }
         }
 
-        [Authorize]
-        [HttpPost]
-        public JsonResult PaySuccess([FromBody] IPN ipn)
-        {
-            BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
+        //[Authorize]
+        //[HttpPost]
+        //public JsonResult PaySuccess([FromBody] IPN ipn)
+        //{
+        //    BookingRepo bookingRepo = new BookingRepo(_db, _emailService);
 
-            string email = HttpContext.Session.GetString("Email");
+        //    string email = HttpContext.Session.GetString("Email");
 
-            IPN completeIPN = bookingRepo.AddTransaction(ipn, email);
+        //    IPN completeIPN = bookingRepo.AddTransaction(ipn, email);
 
-            return Json(completeIPN);
-        }
+        //    return Json(completeIPN);
+        //}
 
 
         public IActionResult SitterDetails(int sitterID, string message, string? rating, int? page)

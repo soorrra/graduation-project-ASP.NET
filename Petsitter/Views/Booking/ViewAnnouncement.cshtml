@@ -29,9 +29,11 @@ else
                                 <span> & @item.Pets[item.Pets.Count - 1].Name</span>
                             }
                         </div>
+                        <span class="sitter-name"></span>
+
                         <div>
-                            <a asp-controller="Chat" asp-action="ChatFromMyChats" asp-route-sitterID="@item.UserId" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); right:0;">Написать сообщение</a>
-                        </div>
+@*                             <a asp-controller="Chat" asp-action="ChatFromMyChats" asp-route-sitterID="@item.UserId" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); right:0;">Написать сообщение</a>
+ *@                        </div>
                     </section>
                 </div>
         }

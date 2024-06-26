@@ -4,8 +4,8 @@
 }
 <div class="container">
 
-<h2 class="text-uppercase">Welcome @Model.FirstName!</h2>
-<h3 style="color:#91AC8E; font-size:1.4em;">Update your profile!</h3>
+<h2 class="text-uppercase">Здравствуйте @Model.FirstName!</h2>
+<h3 style="color:#91AC8E; font-size:1.4em;">Обновите Ваш профиль!</h3>
 
 <div class="container-fluid editprofile-container">
     <hr />
@@ -103,10 +103,9 @@
                 </div>
 
             <div class="col-md-4">
-                        <h3 class="font-monospace">Pet preferences</h3>
                         <div class="d-flex flex-column w-100">
                     <div class="form-group p-3">
-                        <h6> What type of pets do you accept?</h6>
+                        <h6> Какой вид питомцев вы принимаете для оказания услуг?</h6>
 
                         <label for="SelectedPetTypes" class="control-label"></label>
                         @foreach (var petType in Model.PetTypesAvailable)
@@ -119,7 +118,7 @@
                     <h3 class="font-monospace">Service preferences</h3>
                     <div class="d-flex flex-column w-100">
                         <div class="form-group p-3">
-                            <h6> What type of service do you accept?</h6>
+                            <h6> Какой тип услуг вы предлагаете?</h6>
 
                             <label for="SelectedServiceTypes" class="control-label"></label>
                             @foreach (var serviceType in Model.ServiceTypesAvailable)
@@ -132,7 +131,7 @@
 
 
                     <div class="form-group p-3">
-                        <label >Rate Per Pet Per Day</label>
+                        <label >Цена за день</label>
                     <input asp-for="RatePerPetPerDay" type="text" class="form-control" autocomplete="username" aria-required="true"  />
                     <span asp-validation-for="RatePerPetPerDay" class="text-danger"></span>
                 </div>
@@ -141,7 +140,7 @@
         </div>
 
                 <div class="form-group mt-5">
-                    <button class="save-btn rounded-3 lead">Save</button>
+                    <button class="save-btn rounded-3 lead">Сохранить</button>
                 </div>
         </form>
 

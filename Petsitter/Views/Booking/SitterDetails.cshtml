@@ -117,14 +117,14 @@
         <div class="details__bio">
             @ViewBag.ProfileBio
         </div>
-              
-                <div>
-                    <a asp-controller="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); right:0;">Написать сообщение</a>
-                    <a asp-action="Book" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); left:0;">Забронировать услуги</a>
-                </div>
-                <div>
-                </div>
-        </div>
+                @if (User.IsInRole("Customer"))
+                {
+                    <div>
+                        <a asp-controller="Chat" asp-action="Chat" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); right:0;">Написать сообщение</a>
+                        <a asp-action="Book" asp-route-sitterID="@ViewBag.SitterID" class="mt-2 mb-4 text-white mx-auto col-12 col-md-6 btn" style="background:#91AC8E; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); left:0;">Забронировать услуги</a>
+                    </div>
+                }
+            </div>
     </div>
 
     <hr class="mt-4">

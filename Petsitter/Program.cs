@@ -28,7 +28,6 @@ builder.Services.AddScoped<BookingReminderService>();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
-
 builder.Services.AddControllersWithViews()
     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
 //builder.Services.AddHostedService<BookingReminderService>();

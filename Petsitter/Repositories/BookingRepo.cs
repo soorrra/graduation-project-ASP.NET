@@ -1,3 +1,4 @@
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
@@ -137,9 +138,9 @@ namespace Petsitter.Repositories
 
         public List<BookingVM> GetBookingsStartingTomorrow()
         {
-            DateTime tomorrow = DateTime.Today.AddDays(1);
+            DateTime tomorrow = DateTime.Today.AddDays(1).Date; // Игнорируем время, оставляем только дату
             IQueryable<BookingVM> bookings = from b in _db.Bookings
-                                             where b.StartDate == tomorrow
+                                             where b.StartDate != null && b.StartDate.Value.Date == tomorrow
                                              select new BookingVM
                                              {
                                                  BookingId = b.BookingId,
@@ -264,13 +265,13 @@ namespace Petsitter.Repositories
             var bookings = GetBookingsBySitter(booking.SitterId);
             var bookedDates = GetBookedDates(bookings);
             var availableDates = availabilityRepo.GetAvailableDates(availabilities);
-            var openDates = availableDates.Except(bookedDates);
+            var openDates = availableDates.Select(date => date.Date).Except(bookedDates);
 
             // Get all the dates of the booking.
             var bookingDates = new List<DateTime>();
-            for (DateTime date = booking.StartDate; date <= booking.EndDate; date = date.AddDays(1))
+            for (DateTime date = booking.StartDate.Date; date <= booking.EndDate.Date; date = date.AddDays(1))
             {
-                bookingDates.Add(date.Date);
+                bookingDates.Add(date);
             }
 
             // Check if any booking dates are dates that the sitter does not have open.
@@ -286,6 +287,7 @@ namespace Petsitter.Repositories
                 return false;
             }
         }
+
 
 
         // SECTION: Create and Update Methods
@@ -307,10 +309,12 @@ namespace Petsitter.Repositories
 
             // Add price to booking.
             newBooking = AddPriceToBooking(newBooking, pets.Count);
+          
 
             // Save to database.
             _db.Add(newBooking);
             _db.SaveChanges();
+
 
             // Create BookingPet objects and add to database.
             foreach (var pet in pets)
@@ -319,6 +323,9 @@ namespace Petsitter.Repositories
                 _db.Add(bookingPet);
                 _db.SaveChanges();
             }
+
+            newBooking = AddTransaction(newBooking);
+
 
             return newBooking.BookingId;
         }
@@ -505,22 +512,14 @@ namespace Petsitter.Repositories
         }
 
     
-        public IPN AddTransaction(IPN ipn, string email)
+        public Booking AddTransaction(Booking booking)
         {
-            // Add IPN record.
-            _db.IPNs.Add(ipn);
-            _db.SaveChanges();
-
-            // Update Booking record with payment ID.
-            Booking booking = _db.Bookings.Where(b => b.BookingId.ToString() == ipn.custom).FirstOrDefault();
-            booking.PaymentId = ipn.paymentID;
+           
+            booking.PaymentId = "1";
             _db.Bookings.Update(booking);
             _db.SaveChanges();
 
-            // Send confirmation email to the customer.
-            SendConfirmationEmail(email, booking);
-
-            return ipn;
+            return booking;
         }
 
         public async Task SendConfirmationEmail(string email, Booking booking)

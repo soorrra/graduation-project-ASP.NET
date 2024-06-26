@@ -73,15 +73,15 @@ namespace Petsitter.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Пожалуйста, укажите адрес электронной почты.")]
+            [EmailAddress(ErrorMessage = "Неверный формат адреса электронной почты.")]
             public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Пожалуйста, укажите пароль.")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -89,7 +89,7 @@ namespace Petsitter.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Запомнить меня?")]
             public bool RememberMe { get; set; }
         }
 

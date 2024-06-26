@@ -123,6 +123,9 @@
   <data name="Browse sitters in your area" xml:space="preserve">
     <value>Browse sitters in your area</value>
   </data>
+  <data name="Cat" xml:space="preserve">
+    <value>Cat</value>
+  </data>
   <data name="Choose a pet sitter who fits your schedule and pay them directly" xml:space="preserve">
     <value>Choose a pet sitter who fits your schedule and pay them directly</value>
   </data>

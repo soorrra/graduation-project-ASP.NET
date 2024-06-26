@@ -24,7 +24,7 @@
             
             <div style="font-weight: bold;">@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)</div>
             <div>
-                        <span class="sitter-name">@Html.DisplayFor(modelItem => item.SitterName)</span>будет присматривать за <span>@item.Pets[0].Name</span>
+                        <span class="sitter-name">@Html.DisplayFor(modelItem => item.SitterName)</span> будет присматривать за <span>@item.Pets[0].Name</span>
                 @for (int i = 1; i < @item.Pets.Count - 1; i++)
                 {
                     <span>, @item.Pets[i].Name</span>

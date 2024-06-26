@@ -46,7 +46,7 @@ namespace Petsitter.Services
                         {
                             ToEmail = user.Email,
                             Subject = "Напоминание о бронировании",
-                            Body = $"Уважаемый {user.FirstName}, напоминаем Вам о бронировании с {booking.StartDate} по {booking.EndDate}."
+                            Body = $"Уважаемый(-ая) {user.FirstName}, напоминаем Вам о бронировании с {booking.StartDate} по {booking.EndDate}."
                         };
 
                         var email = new MimeMessage();
@@ -69,7 +69,7 @@ namespace Petsitter.Services
                         catch (Exception ex)
                         {
                             // Log the exception
-                            Console.WriteLine("них не работает");
+                            Console.WriteLine("");
                         }
                         smtp.Disconnect(true);
                     }
