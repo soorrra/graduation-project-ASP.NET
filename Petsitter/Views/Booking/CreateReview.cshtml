@@ -25,7 +25,7 @@
     </div>
 }
 
-<h4>SITTER: @ViewBag.SitterName</h4>
+<h4>Петситтер: @ViewBag.SitterName</h4>
     @if (user.ProfileImage == null)
     {
         <p>No Profile Image Given, go edit profile link add your new Profile Image!</p>
@@ -37,7 +37,7 @@
 <hr class="mt-4">
 
 <div>
-    <h4>Service Date: </h4>
+    <h4>Дата: </h4>
 
     <p>@Model.StartDate.ToString("MMMM d, yyyy") - @Model.EndDate.ToString("MMMM d, yyyy")</p>
 
@@ -55,7 +55,7 @@
             <input type="hidden" asp-for="BookingId" />
 
             <div class="form-group">
-                <label class="control-label">RATING:</label>
+                <label class="control-label">Оценка:</label>
                 <div class="rating" style="text-align: left; margin-left: 0;">
                     <input type="radio" id="star5" name="rating" value="5" />
                     <label for="star5" title="5 stars">★</label>
@@ -73,13 +73,13 @@
             <hr>
 
             <div class="form-group">
-                <label asp-for="Review" class="control-label" style="text-transform: uppercase;"></label>
+                <label asp-for="Review" class="control-label" style="text-transform: uppercase;">Отзыв</label>
                 <textarea asp-for="Review" class="form-control" style="width: 500px; height: 200px; float: left;"></textarea>
                 <span asp-validation-for="Review" class="text-danger"></span>
             </div>
 
             <div class="form-group" style="clear: both;">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Создать" class="btn btn-primary" />
             </div>
         </form>
     </div>

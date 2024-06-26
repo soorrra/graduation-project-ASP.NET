@@ -15,17 +15,22 @@
     <div class="form-group">
         <input asp-for="SitterId" class="form-control" value="@Model.SitterId" type="hidden" />
     </div>
+    </br>
+            </br>
+            </br>
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label">Дата начала</label>
                 <input asp-for="StartDate" class="form-control" type="datetime-local" value="" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
+            </br>
+
             <div class="form-group">
                 <label asp-for="EndDate" class="control-label">Дата окончания</label>
                 <input asp-for="EndDate" class="form-control" type="datetime-local" value="" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
-
+            </br></br>
     <button type="submit" class="btn">Сохранить</button>
 </form>
 <div id="calendar"></div>
