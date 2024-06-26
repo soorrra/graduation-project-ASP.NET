@@ -9,13 +9,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-delete"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete Pet</h4>
+                        <h4 class="modal-title" id="myModalLabel">Удалить</h4>
                     </div>
                     <div class="modal-body delete-modal-body">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="confirm-delete">Yes</button>
-                        <button type="button" class="btn btn-default" id="btnClosePopup">No</button>
+                        <button type="button" class="btn btn-danger" id="confirm-delete">Да</button>
+                        <button type="button" class="btn btn-default" id="btnClosePopup">Отмена</button>
                     </div>
                 </div>
             </div>

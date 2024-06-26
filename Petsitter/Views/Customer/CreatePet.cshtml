@@ -22,7 +22,7 @@
                 <input type="hidden" asp-for="UserId" />
                 <input type="hidden" asp-for="PetId" />
                 
-                <label asp-for="PetType" class="text-center mb-2">What type of pet?</label>
+                <label asp-for="PetType" class="text-center mb-2">Какой вид питомца?</label>
                 <div class="form-group mb-4 pet-type-group">
                     <label for="dog" class="radio-label">
                         <input asp-for="PetType" type="radio" value="Dog" id="dog" class="hidden-radio" />
@@ -42,7 +42,7 @@
 
                 <div class="row profile-pic">
                     <div class="form-group mb-4">
-                        <label asp-for="PetImage" class="control-label mb-2">Select your pet image!</label>
+                        <label asp-for="PetImage" class="control-label mb-2">Выберите изображение Вашего питомца!</label>
                         <input asp-for="PetImage" class="form-control" />
                         <span asp-validation-for="PetImage" class="text-danger"></span>
                     </div>
@@ -50,19 +50,19 @@
 
                 <div class="form-group row mb-4">
                     <div class="col-sm-6">
-                        <label asp-for="Name" class="control-label mb-2">Pet Name</label>
+                        <label asp-for="Name" class="control-label mb-2">Кличка</label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="col-sm-6">
-                        <label asp-for="PetSize" class="control-label mb-2">Pet Size</label>
+                        <label asp-for="PetSize" class="control-label mb-2">Размер</label>
                         <select asp-for="PetSize" asp-items="@(new SelectList(Model.AvailableSizes))" class="form-control"></select>
                     </div>
                 </div>
 
                 <div class="form-group row mb-4">
                     <div class="col-sm-6">
-                        <label asp-for="BirthYear" class="control-label mb-2">Birth Year</label>
+                        <label asp-for="BirthYear" class="control-label mb-2">Год рождения</label>
                         <select asp-for="BirthYear" class="form-control">
                             <option value="">--Select Year--</option>
                             @for (int year = DateTime.Now.Year; year >= 2002; year--)
@@ -75,7 +75,7 @@
                     <div class="col-sm-6 radio-group">
                         <label asp-for="Sex" class="control-label mb-2">Sex</label>
                         <div>
-                            <input asp-for="Sex" type="radio" id="f" value="F" />
+                            <input asp-for="Sex" type="radio" id="f" value="Ж" />
                             <label for="f">F</label>
                             <input asp-for="Sex" type="radio" id="m" value="M" />
                             <label for="m">M</label>

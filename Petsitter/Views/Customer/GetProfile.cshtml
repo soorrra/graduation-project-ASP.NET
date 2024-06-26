@@ -123,7 +123,7 @@
             else
             {
                 <tr>
-                    <th>Name</th>
+                    <th>Кличка</th>
                 </tr>
                 @foreach (Pet pet in pets)
                 {
@@ -181,7 +181,7 @@
                                     <span class="material-symbols-outlined edit">edit</span>
                                 </a>
 
-                                    <a class="btn-delete" data-id="@pet.PetId" data-controller="Customer" data-action="DeletePet" data-body-message="Are you sure to delete @pet.Name on your pet list?">
+                                    <a class="btn-delete" data-id="@pet.PetId" data-controller="Customer" data-action="DeletePet" data-body-message="Вы уверены, что хотите удалить @pet.Name из списка питомцев?">
                                     <span class="material-symbols-outlined delete">delete</span>
                                 </a>
                             </div>

@@ -12,7 +12,7 @@
     <div class="mt-3 mb-3 back-to-profile lead" style="font-size:large;">
         <a asp-action="GetProfile" class="back-link">
             <span class="arrow" style="color:#91AC8E;"></span>
-            <span class="text text-lg-start mt-1">Back to Profile</span>
+            <span class="text text-lg-start mt-1">Назад</span>
         </a>
     </div>
     <div class="row justify-content-center">
@@ -100,22 +100,22 @@
 
         @*Pet List*@
         <div class="col-md-4 pet-lists">
-            <h3 class="text-uppercase">@Model.FirstName's Pet</h3>
+            <h3 class="text-uppercase">Ваши питомцы</h3>
             @if (pets.Count() == 0)
             {
-                <p class="lead" style="margin-left:20px;">You have no pets, click Add Pet button to add your first pet!</p>
+                <p class="lead" style="margin-left:20px;">Вы еще не добавили питомцев. Давайте сделаем это прямо сейчас!</p>
                 <div class="mb-4 mt-4" style="margin-left:20px;">
-                    <a asp-action="CreatePet" asp-route-id="@Model.CustomerId" class="pet-btn font-monospace lead rounded-2">🐶 Add Pet 🐱</a>
+                    <a asp-action="CreatePet" asp-route-id="@Model.CustomerId" class="pet-btn font-monospace lead rounded-2">🐶 Добавить 🐱</a>
                 </div>
             }
             else
             {
                  <div class="mb-4 mt-4" style="margin-left:20px;">
-                    <a asp-action="CreatePet" asp-route-id="@Model.CustomerId" class="pet-btn lead rounded-2">🐶 Add Pet 🐱</a>
+                        <a asp-action="CreatePet" asp-route-id="@Model.CustomerId" class="pet-btn lead rounded-2">🐶 Добавить 🐱</a>
                 </div>
                 <table class="table" style="margin-left:20px;">
                     <tr>
-                        <th>Name</th>
+                        <th>Кличка</th>
                     </tr>
                     @foreach (Pet pet in pets)
                     {
@@ -139,7 +139,7 @@
                                     <a asp-action="EditPet" asp-route-id="@pet.PetId">
                                         <span class="material-symbols-outlined edit">edit</span>
                                     </a>
-                                    <a class="btn-delete" data-id="@pet.PetId" data-controller="Customer" data-action="DeletePet" data-body-message="Are you sure to delete @pet.Name on your pet list?">
+                                    <a class="btn-delete" data-id="@pet.PetId" data-controller="Customer" data-action="DeletePet" data-body-message="Вы уверены, что хотите удалить @pet.Name из списка питомцев?">
                                         <span class="material-symbols-outlined delete" style="color:red; margin-left:5px;">delete</span>
                                     </a>
                                 </div>
